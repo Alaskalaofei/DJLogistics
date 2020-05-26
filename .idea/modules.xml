@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/djlogistics.iml" filepath="$PROJECT_DIR$/djlogistics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-dao/djlogistics-dao.iml" filepath="$PROJECT_DIR$/djlogistics-dao/djlogistics-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-serviceimpl/djlogistics-serviceimpl.iml" filepath="$PROJECT_DIR$/djlogistics-serviceimpl/djlogistics-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-web/djlogistics-web.iml" filepath="$PROJECT_DIR$/djlogistics-web/djlogistics-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-common/djlogisticscommon.iml" filepath="$PROJECT_DIR$/djlogistics-common/djlogisticscommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-service/djlogisticsservice.iml" filepath="$PROJECT_DIR$/djlogistics-service/djlogisticsservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-util/djlogisticsutil.iml" filepath="$PROJECT_DIR$/djlogistics-util/djlogisticsutil.iml" />
+    </modules>
+  </component>
+</project>
