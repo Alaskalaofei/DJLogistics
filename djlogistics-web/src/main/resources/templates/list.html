@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>内容</td>
+    </tr>
+    <tr th:each="list:${blog}">
+    <td th:text="${list.content}"></td>
+    </tr>
+</table>
+</body>
+</html>
