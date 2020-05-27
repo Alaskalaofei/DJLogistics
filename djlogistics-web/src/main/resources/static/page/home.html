@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页</title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+		<style type="text/css">
+			.kuang {
+				width: 10%;
+				height: 500px;
+				border: 1px solid #777F9C;
+				border-radius: 10px;
+				margin-left: 2%;
+				text-align: center;
+				margin-top: 20px;
+				float: left;
+			}
+
+			.kuang-top {
+				width: 100%;
+				height: 35px;
+				background-color: #777F9C;
+				border-top-right-radius: 10px;
+				border-top-left-radius: 10px;
+			}
+
+			.kuang-top-li {
+				font-size: 17px;
+				color: #fff;
+				line-height: 35px;
+			}
+
+			.kuang-li {
+				margin-top: 23px;
+			}
+
+			.kuang-li-er {
+				margin-top: 90px;
+			}
+
+			.left-right {
+				margin-left: 2%;
+				margin-top: 20%;
+				float: left;
+			}
+
+			#bottomk {
+				width: 100%;
+				height: 30px;
+				background-color: #EAEDF1;
+				position: fixed;
+				bottom: -20px;
+			}
+
+			.dahuoxiaobao {
+				line-height: 30px;
+				margin-left: 20px;
+			}
+
+			.dahuoxiaobao2 {
+				line-height: 30px;
+			}
+
+			.br {
+				display: none;
+			}
+			.bb{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="height: 600px;">
+			<!-- 收货阶段start -->
+			<div class="kuang">
+				<div class="kuang-top">
+					<div class="kuang-top-li">收货阶段</div>
+				</div>
+				<div class="kuang-li">
+					<a href="javascript:;"  data-iframe-tab="page/order_import.html" data-title="订单导入">
+						<div>
+							<div><img src="../images/daoru.png" width="33px" /></div>
+							<br />
+							<div>订单导入</div>
+						</div>
+					</a>
+					<br /><br class="br2"/>
+					<div class="bottom-img"><img src="../images/bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/orderprediction.html" data-title="订单预报">
+						<div>
+							<br />
+							<br class="br2"/>
+							<div><img src="../images/yubao.png" width="33px" /></div>
+							<br />
+							<div>订单预报</div>
+						</div>
+					</a>
+					<div class="aa">
+						<br /><br />
+						<div><img src="../images/bottom.png" /></div>
+						<a href="javascript:void(0)" data-iframe-tab="page/Receipt_record_sheet.html" data-title="404页面">
+							<div>
+								<br /><br />
+								<div><img src="../images/ludan.png" width="33px" /></div>
+								<br />
+								<div>收货录单</div>
+							</div>
+						</a>
+					</div>
+					<div class="bb">
+						<br />
+						<div><img src="../images/bottom.png" /></div>
+						<a href="javascript:void(0)" data-iframe-tab="page/Thewholebagofreceiving.html" data-title="404页面">
+							<div>
+					
+								<br />
+								<div><img src="../images/zhengdai.png" width="33px" /></div>
+								<br />
+								<div>整袋收货</div>
+							</div>
+						</a>
+					</div>
+					<div class="bb">
+						<br />
+						<div><img src="../images/bottom.png" /></div>
+						<a href="javascript:void(0)" data-iframe-tab="page/Fast_shipping.html" data-title="404页面">
+							<div>
+								<br />
+								<div><img src="../images/kuaisu.png" width="33px" /></div>
+								<br />
+								<div>快速收货</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- 收货阶段end -->
+			<div class="left-right"> <img src="../images/right.png" width="33px" /> </div>
+			<!-- 转运阶段start -->
+			<div class="kuang">
+				<div class="kuang-top">
+					<div class="kuang-top-li">转运阶段</div>
+				</div>
+				<div class="kuang-li kuang-li-er">
+					<a href="javascript:;" data-iframe-tab="page/Transshipmentdispatch.html" data-title="404页面">
+						<div>
+							<div><img src="../images/fajian.png" width="33px" /></div>
+							<br />
+							<div>转运发件</div>
+						</div>
+					</a>
+					<br /><br /><br /><br />
+					<div><img src="../images/bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/Transferto.html" data-title="404页面">
+						<div>
+							<br /><br /><br /><br />
+							<div><img src="../images/zhuanyundaojian.png" width="33px" /></div>
+							<br />
+							<div>转运到件</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 转运阶段end -->
+			<div class="left-right"> <img src="../images/right.png" width="33px" /> </div>
+			<!-- 出货阶段start -->
+			<div class="kuang">
+				<div class="kuang-top">
+					<div class="kuang-top-li">出货阶段</div>
+				</div>
+				<div class="kuang-li kuang-li-san">
+				<a href="javascript:void(0)"  data-iframe-tab="page/delivery.html" data-title="排货">
+								<div class="kuang-si">
+									<div><img src="../images/paihuo.png" width="33px" /></div>
+									<br />
+									<div>排货</div>
+								</div>
+							</a>
+					<div class="bbb">
+					<br />
+					<br class="br" />
+					<div><img src="../images/bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/Agenttoplaysingle.html" data-title="打单">
+						<div class="kuang-si">
+							<br />
+							<br class="br" />
+							<div><img src="../images/dingdan.png" width="33px" /></div>
+							<br />
+							<div>打单</div>
+						</div>
+					</a>
+					</div>
+					<div id="ccc" style="display: none;">
+					<br />
+					<br class="br" />
+					<div><img src="../images/bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/bagging.html" data-title="装袋">
+								<div class="kuang-si">
+									<br />
+									<br class="br" />
+									<div><img src="../images/dingdan.png" width="33px" /></div>
+									<br />
+									<div>装袋</div>
+								</div>
+							</a>
+					</div>
+					<div class="bbb">
+						<br />
+						<div><img src="../images/bottom.png" /></div>
+						<a href="javascript:void(0)" data-iframe-tab="page/UpperPlate.html" data-title="上板">
+							<div class="kuang-si">
+								<br />
+								<div><img src="../images/shangban.png" width="33px" /></div>
+								<br />
+								<div>上板</div>
+							</div>
+						</a>
+					</div>
+					<br />
+					<br class="br" />
+					<div><img src="../images/bottom.png" /></div>
+				<a href="javascript:void(0)" data-iframe-tab="page/Shipment.html" data-title="出货">
+							<div class="kuang-si">
+								<br />
+								<br class="br" />
+								<div><img src="../images/chuhuo.png" width="33px" /></div>
+								<br />
+								<div>出货</div>
+							</div>
+						</a>
+				</div>
+			</div>
+			<!-- 出货阶段end -->
+			<div class="left-right"> <img src="../images/left_right.png" width="33px" /> </div>
+			<!-- 港货异常start -->
+			<div class="kuang">
+				<div class="kuang-top">
+					<div class="kuang-top-li">港货异常</div>
+				</div>
+				<div class="kuang-li">
+					<a href="javascript:void(0)" data-iframe-tab="page/Registrationofformerissueofport_hand.html"a fa-hourglass-end">
+						<div>
+							<div><img src="../images/wentidengji.png" width="33px" /></div>
+							<br />
+							<div>问题登记</div>
+						</div>
+					</a>
+					<br /><br />
+					<div class="bottom-img"><img src="../images/top_bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/Checkfrontquestion_hand.html" data-title="404页面" >
+						<div>
+							<br /><br />
+							<div><img src="../images/wentihuifu.png" width="33px" /></div>
+							<br />
+							<div>问题回复</div>
+						</div>
+					</a>
+					<br /><br />
+					<div><img src="../images/top_bottom.png" /></div>
+					<a href="javascript:;" data-iframe-tab="page/Pre-portproblemsolving_hand.html" data-title="404页面" >
+						<div>
+							<br /><br />
+							<div><img src="../images/wentichuli.png" width="33px" /></div>
+							<br />
+							<div>问题处理</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 港货异常end -->
+			<div class="left-right"> <img src="../images/right.png" width="33px" /> </div>
+			<!-- 退货start -->
+			<div class="kuang">
+				<div class="kuang-top">
+					<div class="kuang-top-li">退货</div>
+				</div>
+				<div class="kuang-li kuang-li-er">
+					<a href="javascript:void(0)" data-iframe-tab="page/ReturnToWarehouse.html" data-title="退件入库" >
+						<div>
+							<div><img src="../images/tuijianruku.png" width="33px" /></div>
+							<br />
+							<div>退件入库</div>
+						</div>
+					</a>
+					<br /><br /><br /><br />
+					<div><img src="../images/top_bottom.png" /></div>
+					<a href="javascript:void(0)" data-iframe-tab="page/ReturnToCustomer.html" data-title="退返客服" >
+						<div>
+							<br /><br /><br /><br />
+							<div><img src="../images/tuifankehu.png" width="33px" /></div>
+							<br />
+							<div>退返客服</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- 退货end -->
+		</div>
+		<!-- 底部选项卡start -->
+		<div class="layui-form-item" id="bottomk">
+			<div class="layui-inline dahuoxiaobao">
+				<a href="javascript:void(0)" >
+					<div>
+						<div id="aa"><img src="../images/dahuo.png" width="15px" />  大货</div>
+					</div>
+				</a>
+			</div>
+			<div class="layui-inline" style="width: 1px; height: 30px; background-color: #C4C4C4;"></div>
+			<div class="layui-inline dahuoxiaobao2">
+				<a href="javascript:void(0)" >
+					<div>
+						<div id="bb"><img src="../images/xiaobao.png" width="15px" />  小包</div>
+					</div>
+				</a>
+			</div>
+			<div class="layui-inline" style="width: 1px; height: 30px; background-color: #C4C4C4;"></div>
+		</div>
+		
+		<!-- 底部选项卡end -->
+		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script>
+		    layui.use(['element', 'layer', 'layuimini','form'], function () {
+		        var $ = layui.jquery,
+		            element = layui.element,
+		            layer = layui.layer,
+		            form = layui.form;
+				//触发事件
+				$("#bb").click(function() {
+					$(".bbb").css("display", "none");
+					$("#ccc").css("display", "block");
+					$(".bb").css("display", "block");
+					$(".aa").css("display", "none");
+					$(".br").css("display", "block")
+					$(".br2").css("display", "none")
+				})
+				$("#aa").click(function() {
+					$(".bbb").css("display", "block");
+					$("#ccc").css("display", "none");
+					$(".aa").css("display", "block");
+					$(".bb").css("display", "none");
+					$(".br").css("display", "none");
+					$(".br2").css("display", "block")
+				})
+		
+		    });
+		</script>
+	</body>
+</html>

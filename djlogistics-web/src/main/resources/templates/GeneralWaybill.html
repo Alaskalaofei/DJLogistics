@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+	</head>
+	<body>
+		<br />
+		<div style="margin-left: 25px;">
+			<form class="layui-form layui-form-pane" action="">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="font-size: 14px;background-color: #286ed6;width: 140px;"
+						 id="SelectWaybillToBeShipped">选取待出货运单</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm " style="font-size: 14px;background-color: #286ed6;width: 84px;" id="PickBag">选取袋</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm " style="font-size: 14px;background-color: #286ed6;width: 84px;" id="SelectionBoard">选取板</button>
+					</div>
+					<div class="layui-inline">
+						<a href=""><button type="button" class="layui-btn layui-btn-sm " style="font-size: 14px;background-color: #e9161e;width: 84px;">撤销运单</button></a>
+					</div>
+					<div class="layui-inline">
+						<a href="javascript:void(0)"  data-iframe-tab="page/BoardOnCompletion.html" data-title="显示袋" data-icon="fa fa-hourglass-end">
+							<button type="button" class="layui-btn layui-btn-sm  " style="font-size: 14px;background-color: #286ed6;width: 84px;">显示袋</button>
+						</a>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm " style="background-color: #286ed6;width: 84px;font-size: 14px;" id="DisplayPanel">显示板</button>
+					</div>
+					<div class="layui-inline" style="margin-left: 20px;">
+						<input style="width: 240px;height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+						 autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-inline" style="margin-left: 40px;">
+						<span style="font-weight: 800;">总运单号：<span>13125657</span></span>
+					</div>
+				</div>
+				<div class="layui-form-item" style="margin-top: -20px;">
+					<p style="color: red;font-size: 13px;">注意:原则上同一运单要求装在同一总运单中，总运单的运单异常分两种情况: 1、少件未出; 2、出在其他总运单</p>
+				</div>
+				<div class="layui-form-item" style="width: 98%;">
+					<table class="layui-hide" id="test"></table>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								票数
+							</div>
+							<div class="layui-form-item">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								库存件数
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								扫描件数
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								总实重
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								总袋数
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								总板数
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								出货件数
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								出货实重
+							</div>
+							<div class="layui-form-item">
+								<input style="width: 80px;height: 25px;" type="text" name="title" required lay-verify="required" placeholder="0"
+								 autocomplete="off" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-inline">
+							<div class="layui-form-item">
+								发送时间
+							</div>
+							<div class="layui-form-item">
+								<input style="width: 120px;height: 25px;" type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item" style="height: 20px;">
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<button type="button" class="layui-btn layui-btn-sm " style="background-color: #286ed6;width: 80px;font-size: 14px;">发送</button>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<div class="layui-form-item" style="height: 15px;">
+
+							</div>
+							<div class="layui-form-item" style="width: 80px;">
+								<input type="checkbox" name="" title="是否验证问题件" lay-skin="primary" checked>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+	<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+	<script src="../js/xm-select.js"></script>
+	<script>
+		layui.use(['layer', 'form', 'jquery', 'laydate', 'layuimini','element','table'], function() {
+			var $ = layui.jquery;
+			var layer = layui.layer;
+			var form = layui.form;
+			var table = layui.table;
+			var laydate = layui.laydate;
+			var  element = layui.element;
+
+			//常规用法
+			laydate.render({
+				elem: '#test1'
+			});
+			table.render({
+				elem: '#test',
+				url: '/demo/table/user/',
+				cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+				height: 450,
+				toolbar: true,
+				defaultToolbar: ['filter', 'print', 'exports'],
+				cols: [
+					[{
+						field: 'id',
+						title: '扫描时间'
+					}, {
+						field: 'username',
+						title: '类型'
+					}, {
+						field: 'sex',
+						title: '扫描单号',
+					}, {
+						field: 'city',
+						title: '转单号码'
+					}, {
+						field: 'sign',
+						title: '运单号码',
+					}, {
+						field: 'experience',
+						title: '客户',
+					}, {
+						field: 'score',
+						title: '指定路线',
+					}, {
+						field: 'classify',
+						title: '运单件数'
+					}, {
+						field: 'wealth',
+						title: '出货重',
+					}, {
+						field: 'wealth',
+						title: '目的地',
+					}, {
+						field: 'wealth',
+						title: '走货路线',
+					}, {
+						field: 'wealth',
+						title: '报关类型',
+					}, {
+						field: 'wealth',
+						title: '货物类型'
+					}]
+				],
+				page: true
+			});
+			$("#SelectionBoard").click(function() {
+				layer.open({
+					type: 2,
+					content: "SelectionBoard.html",
+					area: ['900px', '500px'],
+					title: '选取板',
+				});
+			})
+			$("#PickBag").click(function() {
+				layer.open({
+					type: 2,
+					content: "PickBag.html",
+					area: ['900px', '500px'],
+					title: '选取袋',
+				});
+			})
+			$("#DisplayPanel").click(function() {
+				layer.open({
+					type: 2,
+					content: "DisplayPanel.html",
+					area: ['850px', '500px'],
+					title: '显示板',
+				});
+			})
+			$("#SelectWaybillToBeShipped").click(function() {
+				layer.open({
+					type: 2,
+					content: "SelectWaybillToBeShipped.html",
+					area: ['900px', '500px'],
+					title: '选取待出货运单',
+				});
+			})
+		});
+	</script>
+</html>

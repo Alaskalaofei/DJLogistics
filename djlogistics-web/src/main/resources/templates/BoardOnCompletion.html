@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
+		<style type="text/css">
+			.a{
+				display: inline-block;
+				background-color: #286ed6;
+				color: #FFFFFF;
+				width: 30px;
+				height: 20px;
+				line-height: 20px;
+				border-radius: 15px;	//圆角的大小
+			}
+		</style>
+	</head>
+	<body style="background-color: #f6f6f6;">
+		<br />
+		<div style="margin-left: 25px;">
+			<form class="layui-form layui-form-pane" action="">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: #000000;width: 100px;">全部明细
+							<span class="a">1</span>
+						</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: #000000;width: 100px;">已关联
+							<span class="a">1</span>
+						</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: red;width: 100px;">未关联
+							<span style="background-color: red;" class="a">1</span>
+						</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 100px;">快速关联</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 100px;" id="AssociatedShift">关联班次</button>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: red;color: FFFFFF;width: 100px;">取消关联</button>
+					</div>
+					<div class="layui-inline">
+						<h3>已关联班次：</h3>
+					</div>
+				</div>
+				<div class="layui-form-item" style="margin-right: 20px;">
+					<table class="layui-hide" id="test"></table>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<div class="layui-form-item">
+							票数
+						</div>
+						<div class="layui-form-item" style="width: 120px;">
+							<input type="text" name="title" required  lay-verify="required" placeholder="0" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-form-item">
+							总件数
+						</div>
+						<div class="layui-form-item" style="width: 120px;">
+							<input type="text" name="title" required  lay-verify="required" placeholder="0" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-form-item">
+							总重量
+						</div>
+						<div class="layui-form-item" style="width: 120px;">
+							<input type="text" name="title" required  lay-verify="required" placeholder="0.000" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-form-item" style="height: 23px;">
+							
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 80px;">完成</button>
+							</div>
+							<div class="layui-inline">
+									<span style="font-size: 15px;font-weight:700;margin-left: 10px;">板号：<span>11111113243</span></span>
+							</div>
+							<div class="layui-inline">
+									<input type="checkbox" name="" title="是否验证问题件" lay-skin="primary" checked>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js"></script>
+	<script>
+		layui.use(['layer', 'form', 'jquery','table'], function() {
+			var $ = layui.jquery,
+			layer = layui.layer,
+			form = layui.form,
+			table=layui.table;
+			
+			table.render({
+				elem: '#test',
+				url: '/demo/table/user/',
+				cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+				height:450,
+				toolbar: true,
+				defaultToolbar: ['filter', 'print', 'exports'],
+				cols: [
+					[{
+							field: 'id',
+							title: '扫描时间'
+						}, {
+							field: 'username',
+							title: '类型'
+						}, {
+							field: 'sex',
+							title: '扫描单号',
+						}, {
+							field: 'city',
+							title: '转单号码'
+						}, {
+							field: 'sign',
+							title: '运单号码',
+						} 
+						, {
+							field: 'experience',
+							title: '客户',
+						}, {
+							field: 'score',
+							title: '指定路线',
+						}, {
+							field: 'classify',
+							title: '运单件数'
+						}, {
+							field: 'wealth',
+							title: '出货重',
+						}, {
+							field: 'wealth',
+							title: '目的地',
+						}, {
+							field: 'wealth',
+							title: '走货路线',
+						}, {
+							field: 'wealth',
+							title: '报关类型',
+						}, {
+							field: 'wealth',
+							title: '货物类型'
+						}
+					]
+				]
+			});
+			$("#AssociatedShift").click(function(){
+				layer.open({
+					type: 2,
+					content: 'AssociatedShift.html',
+					area: ['740px', '500px'],
+					title:'选择班次交接单'
+				})
+			})
+		});
+	</script>
+</html>

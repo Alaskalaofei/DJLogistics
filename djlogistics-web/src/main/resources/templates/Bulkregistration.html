@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
+	</head>
+	<body>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<blockquote class="layui-elem-quote layui-text" style="width: 1005px;">
+						问题件信息
+					</blockquote>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>问题状态</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+							<option value="4">element</option>
+							<option value="5">laytpl</option>
+							<option value="6">upload</option>
+							<option value="7">laydate</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>处理时限(小时)</label>
+					<div class="layui-input-block">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">问题描述</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">运单号码（多笔运单回车换行输入）</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js"></script>
+	<script>
+		layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table', 'soulTable', 'element'], function() {
+			var element = layui.element;
+			var $ = layui.jquery;
+			var layer = layui.layer;
+			var form = layui.form;
+			var layedit = layui.layedit;
+			var laydate = layui.laydate;
+			var table = layui.table;
+			var soulTable = layui.soulTable;
+			var element = layui.element;
+
+
+
+		});
+	</script>
+</html>

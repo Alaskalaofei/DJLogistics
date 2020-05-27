@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
+	</head>
+	<body>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>导入模板</label>
+					<div class="layui-input-inline">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+							<option value="4">element</option>
+							<option value="5">laytpl</option>
+							<option value="6">upload</option>
+							<option value="7">laydate</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;background-color: #286ED6;">模板下载</button>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;background-color: #286ED6;">导入</button>
+				</div>
+				<div class="layui-inline">
+					<div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="demo" style="width: 200px;">
+						<div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<div class="layui-input-block">
+						<label class="layui-form-label-block"><span style="color: red;">*</span>导入文件</label>
+						<label class="layui-form-label-block"><span style="color: red;margin-left: 130px;">*</span>导入时间</label>
+						<label class="layui-form-label-block"><span style="color: red;margin-left: 110px;">*</span>状态</label>
+						<label class="layui-form-label-block"><span style="color: red;margin-left: 70px;">*</span>总行数</label>
+						<label class="layui-form-label-block"><span style="color: red;margin-left: 100px;">*</span>错误行数</label>
+					</div>
+					<div class="layui-input-block">
+						<input type="text" name="title" style="margin: 0;" required lay-verify="required" autocomplete="off" class="layui-input-block">
+						<input type="text" name="title" style="margin: 0;" required lay-verify="required" autocomplete="off" class="layui-input-block">
+						<input type="text" name="title" style="margin: 0;width: 100px;" required lay-verify="required" autocomplete="off" class="layui-input-block">
+						<input type="text" name="title" style="margin: 0;width: 150px;" required lay-verify="required" autocomplete="off" class="layui-input-block">
+						<input type="text" name="title" style="margin: 0;width: 150px;" required lay-verify="required" autocomplete="off" class="layui-input-block">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;background-color: #286ED6;">文件下载</button>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;background-color: #286ED6;">历史日志</button>
+				</div>
+			</div>
+			<table class="layui-hide" id="test"></table>
+		</form>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js"></script>
+	<script>
+		// 自定义模块
+		layui.config({
+			base: '../ext/', // 模块目录
+			version: 'v1.5.4'
+		}).extend({ // 模块别名
+			soulTable: 'soulTable'
+		});
+		layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table', 'soulTable', 'element'], function() {
+			var element = layui.element;
+			var $ = layui.jquery;
+			var layer = layui.layer;
+			var form = layui.form;
+			var layedit = layui.layedit;
+			var laydate = layui.laydate;
+			var table = layui.table;
+			var soulTable = layui.soulTable;
+			var element = layui.element;
+
+			//日期
+			laydate.render({
+				elem: '#date'
+			});
+			laydate.render({
+				elem: '#date1'
+			});
+
+			//触发事件
+			var active = {
+				offset: function(othis) {
+					var type = othis.data('type'),
+						text = othis.text();
+
+					layer.open({
+						type: 2,
+						offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+							,
+						id: 'layerDemo' + type //防止重复弹出
+							,
+						content: 'Receivingbagmanagementxz.html',
+						area: ['1050px', '450px'],
+						btn: ['保存', '关闭'],
+						btnAlign: 'c' //按钮居中
+							,
+						shade: 0 //不显示遮罩
+							,
+						yes: function(index) {
+							layer.closeAll();
+						}
+					});
+				}
+			};
+
+			$('#layerDemo .layui-btn').on('click', function() {
+				var othis = $(this),
+					method = othis.data('method');
+				active[method] ? active[method].call(this, othis) : '';
+			});
+
+
+
+			table.render({
+				elem: '#test',
+				url: '../api/demo1.json',
+				toolbar: true,
+				title: '用户数据表',
+				totalRow: true,
+				contextmenu: {
+					// 表格内容右键菜单配置
+					body: [{
+							name: '选中',
+							click: function(obj) {
+
+								$.post("/pxy/getReordById", {
+									'id': obj.row.rid
+								}, function(result) {
+									if (result) {
+										layer.msg("选择成功");
+
+									} else {
+										layer.msg("选择失败");
+									}
+								})
+							}
+						},
+						{
+							name: '删除当前行数据',
+							click: function(obj) {
+								var data = obj.row;
+								layer.confirm('真的删除行么', {
+									title: '提示',
+									icon: 3
+								}, function(index) {
+									$.ajax({
+										url: "/pxy/rdelete",
+										type: "post",
+										dataType: "text",
+										data: {
+											"rid": data.rid
+										},
+										success: function(res) {
+											if (res == 'true') {
+												obj.del();
+												layer.msg("删除成功！");
+											}
+										}
+									});
+									layer.close(index);
+								});
+							}
+						}
+					],
+				},
+				cols: [
+					[{
+						field: 'id',
+						title: 'ID',
+						width: 80,
+						fixed: 'left',
+						unresize: true,
+						sort: true,
+						totalRowText: '合计'
+					}, {
+						field: 'username',
+						title: '用户名',
+						width: 120,
+						edit: 'text'
+					}, {
+						field: 'email',
+						title: '邮箱',
+						width: 150,
+						edit: 'text',
+						templet: function(res) {
+							return '<em>' + res.email + '</em>'
+						}
+					}, {
+						field: 'experience',
+						title: '积分',
+						width: 80,
+						sort: true,
+						totalRow: true
+					}, {
+						field: 'sex',
+						title: '性别',
+						width: 80,
+						edit: 'text',
+						sort: true
+					}, {
+						field: 'logins',
+						title: '登入次数',
+						width: 100,
+						sort: true,
+						totalRow: true
+					}, {
+						field: 'sign',
+						title: '签名'
+					}, {
+						field: 'city',
+						title: '城市',
+						width: 100
+					}, {
+						field: 'ip',
+						title: 'IP',
+						width: 120
+					}, {
+						field: 'joinTime',
+						title: '加入时间',
+						width: 120
+					}, {
+						fixed: 'right',
+						title: '操作',
+						toolbar: '#barDemo',
+						width: 150
+					}]
+				],
+				done: function() {
+					soulTable.render(this)
+				},
+				page: true,
+				limit: 2
+			});
+
+			
+		});
+	</script>
+</html>

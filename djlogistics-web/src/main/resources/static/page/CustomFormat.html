@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>自定义格式</title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    	<link rel="stylesheet" href="../css/public.css" media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+	    <style type="text/css">
+			.btn-bgcolor {
+				background-color: #286ED6;
+				width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<form class="layui-form" action="">
+			<blockquote class="layui-elem-quote layui-text" style="width: 260px; height: 5px !important; line-height: 5px;">
+				基本信息
+			</blockquote>
+			<div class="layui-form-item layui-inline" pane="">
+				<label class="layui-form-label">可用格式</label>
+			    <div class="layui-input-block">
+			      <input type="checkbox" name="like1[write]" lay-skin="primary" title="可用格式（识别列号定位列）">
+			    </div>
+			</div>
+			<br />
+			<div class="layui-inline">
+			    <label class="layui-form-label">账单公式</label>
+			    <div class="layui-input-block">
+			      <select name="interest" lay-filter="aihao">
+			        <option value=""></option>
+			        <option value="0">写作</option>
+			        <option value="1">阅读</option>
+			        <option value="2">游戏</option>
+			        <option value="3">音乐</option>
+			        <option value="4">旅行</option>
+			      </select>
+			    </div>
+  			</div>
+  			<div class="layui-inline">
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">保存</button>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">另存为</button>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm "style="background-color: red;width: 80px;">删除</button>
+				</div>
+				<div class="layui-inline">
+					<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">加载</button>
+				</div>
+			</div>
+			<br />
+			<blockquote class="layui-elem-quote layui-text" style="width: 260px; height: 5px !important; line-height: 5px;">
+				基本信息
+			</blockquote>
+		</form>
+		<div>
+			<table class="layui-hide" id="test"></table>
+		</div>
+	<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		
+		layui.use(['jquery','table','form'], function(){
+		  var table = layui.table;
+		  var $ = layui.jquery;
+		  var form = layui.form;
+		  
+		  table.render({
+		    elem: '#test'
+		    ,url:'../api/Student.json'
+		    ,toolbar: '#toolbarDemo'
+		    ,cols: [[
+		      {field:'id', width:300, title: '行号', sort: true}
+		      ,{field:'username', width:500, title: '运单号码'}
+		      ,{field:'sex', width:500, title: '错误说明', sort: true}
+		    ]]
+		    ,page: true
+		  });
+		  //头工具栏事件
+		  table.on('toolbar(test)', function(obj){
+		    var checkStatus = table.checkStatus(obj.config.id); //获取选中行状态
+		    switch(obj.event){
+		      case 'getCheckData':
+		        var data = checkStatus.data;  //获取选中行数据
+		        layer.alert(JSON.stringify(data));
+		      break;
+		    };
+		  });
+		});
+	</script>
+		
+	</body>`
+</html>

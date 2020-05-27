@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新增转运单</title>
+		<script src="../lib/layui-v2.5.4/layui.js"></script>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
+	</head>
+	<style type="text/css">
+		span{
+			color: red;
+		}
+	</style>
+	<body>
+	<div class="layui-fluid">
+	    <form class="layui-form">
+	        <div class="layui-form-item">
+	            <div class="layui-inline">
+	                <label class="layui-input-inline"><span>*</span>转运单号<input class="layui-input" type="text" autocomplete="off" /></label><div></div>
+	            </div>
+	            <div class="layui-inline">
+	                <label class="layui-input-inline"><span>*</span>到件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
+	            </div>
+	        </div>
+	        <div class="layui-form-item">
+	            <p>
+	                备注
+	            </p>
+	            <input class="layui-input" type="text" autocomplete="off" />
+	        </div>
+	        <div class="layui-form-item">
+	            <input name="checkbox" title="走货路线必须归属为到件网点" type="checkbox" />
+	        </div>
+	        <div class="layui-form-item">
+	            <div class="layui-input-block" style="text-align: right;">
+	                <a class="layui-btn">修改</a>
+	                 
+	            </div>
+	        </div>
+	    </form>
+	</div>
+	</body>
+	<script>
+		
+			layui.use(['element', 'form'], function() {
+				var element = layui.element,
+					form = layui.form;
+				form.render();
+			});
+	</script>
+</html>

@@ -1,0 +1,1553 @@
+{
+  "clearInfo": {
+    "clearUrl": "api/clear.json"
+  },
+  "homeInfo": {
+    "title": "首页",
+    "icon": "fa fa-home",
+    "href": "/home.html"
+  },
+  "logoInfo": {
+    "title": "DJLogistics",
+    "image": "/logo.png",
+    "href": ""
+  },
+  "menuInfo": {
+    "currency": {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "child": [
+        {
+          "title": "平台配置",
+          "href": "",
+          "icon": "fa fa-desktop",
+          "target": "_self",
+          "child": [
+            {
+              "title": "一级模块设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "平台菜单设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "平台职位角色",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "销售模块设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "平台选项配置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "平台调用表配置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "配置管理",
+          "href": "",
+          "icon": "fa fa-gear",
+          "target": "_self",
+          "child": [
+            {
+              "title": "打印配置",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "APP升级",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "导出设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "参数设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "短信设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "系统环境配置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "组织",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+            {
+              "title": "公司设置",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "网点管理",
+              "href": "/statmag.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "员工管理",
+              "href": "/staffmanagement.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "职位角色",
+              "href": "/rolemag.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "授权管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "选项设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "OMS授权",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "操作日志",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "基础",
+          "href": "",
+          "icon": "fa fa-navicon",
+          "target": "_self",
+          "child": [
+            {
+              "title": "目的地管理",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "代理管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户分组",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "寄件人管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "公共收件人",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "拉货管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "扫描状态",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "问题状态",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "科目管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "帐单公式",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "汇率设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "资金账户",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "收支科目",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "收件箱设置",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "策略",
+          "href": "",
+          "icon": "fa fa-external-link",
+          "target": "_self",
+          "child": [
+            {
+              "title": "订单",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "运单分配规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "目的地策略",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "品名对照规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "17单号规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "客户打单规定",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "EDI开通",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "订单EDI",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "操作",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "排货策略",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "分拣策略",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "装袋策略",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "上板策略",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "重量采集设置",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "单号验证规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "代理",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "代理EDI接口",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "转单分配规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "英文品名规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "黑名单规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单追踪设置",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "干线追踪设置",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "轨迹匹配设置",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单自动追踪规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "打单导入分解",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "寄件随机名单",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "自动转单规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "订单",
+          "href": "",
+          "icon": "fa fa-newspaper-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "订单导入",
+              "href": "/order_import.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "订单预报",
+              "href": "/orderprediction.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "操作",
+          "href": "",
+          "icon": "fa fa-sliders",
+          "target": "_self",
+          "child": [
+            {
+              "title": "入库",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "收件录单",
+	              "href": "/Receipt_record_sheet.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "快速收货",
+	              "href": "/Fast_shipping.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "整袋收货",
+	              "href": "/Thewholebagofreceiving.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单导入修改",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "专线录单",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单修改",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "变更审核",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "条码打印",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "查货",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "收货上架",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单查询2",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "单证",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "单证预查",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "排货",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "代理打单",
+	              "href": "/Agenttoplaysingle_hand.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "打单查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "打单审核",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单推送",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单附件上传",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "运单附件管理",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "班次交接",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "在途跟踪",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "出库",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "袋装",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "扫描打印",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "上板",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "出货",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "出货变更",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "转运",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "转运发件",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "转运到件",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "退件",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "退件客户",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "退件入库",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "仓内",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "清仓",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "来货上架",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "异常",
+          "href": "",
+          "icon": "fa fa-exclamation-circle",
+          "target": "_self",
+          "child": [
+            {
+              "title": "港前",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "港前问题件等级",
+	              "href": "/Registrationofformerissueofport_hand.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港前问题件处理",
+	              "href": "/Pre-portproblemsolving_hand.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港前问题件查询",
+	              "href": "/Checkfrontquestion_hand.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "已处理完毕港前问题件",
+	              "href": "/Thepreportproblemhasbeendealtwith_hand.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "港后",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "港后问题件登记",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港后问题件处理",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港后问题件查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "港后2",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "港后问题件登记",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港后问题件处理",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "港后问题件查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "代理",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "代理问题件登记",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "代理问题件处理",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "代理问题件查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "客服",
+          "href": "",
+          "icon": "fa fa-headphones",
+          "target": "_self",
+          "child": [
+            {
+              "title": "追踪查询",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "运单轨迹追踪",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "干线轨迹追踪",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "班次轨迹追踪",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "短信",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "发件箱查询",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "报价",
+          "href": "",
+          "icon": "fa fa-edit",
+          "target": "_self",
+          "child": [
+            {
+              "title": "客户",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "指定路线",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户运费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户运费2",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户燃油",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收整袋运费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户偏远费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户包装费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收客户超值费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应收代收手续费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "进位规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "计抛规则",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "派送代理",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "走货路线",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+              	{
+	              "title": "应付派送运费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应付派送燃油",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应付代收手续费",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "承运代理",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "出港路由",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应付承运报价",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "内部",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "内部收取成本",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "内部成本报价",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "销售成本报价",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            },
+            {
+              "title": "查价",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+	              "title": "应收报价查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "应付报价查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "销售成本报价",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	},
+	            	{
+	              "title": "偏远查询",
+	              "href": "/welcome-2.html",
+	              "icon": "",
+	              "target": "_self"
+	            	}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "应收结算",
+          "href": "",
+          "icon": "fa fa-arrow-up",
+          "target": "_self",
+          "child": [
+            {
+              "title": "客户费用导入",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户帐单明细",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "运单结算明细",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户帐单明细（袋）",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户帐单管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户余额管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "客户解锁查询",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "费用补录管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "结算规则",
+          "href": "",
+          "icon": "fa fa-line-chart",
+          "target": "_self",
+          "child": [
+            {
+              "title": "收入成本规则",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "重量补差规则",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "收入成本源报表",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "月末结转",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "应付结算",
+          "href": "",
+          "icon": "fa fa-arrow-down",
+          "target": "_self",
+          "child": [
+            {
+              "title": "派送对帐单导入",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "派送对帐单管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "派送帐单明细",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "承运帐单明细",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "承运费用分摊",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "应付帐单管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "代理余额管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "贷款结算",
+          "href": "",
+          "icon": "fa fa-jpy",
+          "target": "_self",
+          "child": [
+            {
+              "title": "贷款导入",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "贷款回款",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "回款对账单导入",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "回款对账单管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "贷款回款账单",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "贷款返款",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "贷款返款账单",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "出纳",
+          "href": "",
+          "icon": "fa fa-user-plus",
+          "target": "_self",
+          "child": [
+            {
+              "title": "客户收款",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "客户收款登记",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户收款管理",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户收款审核",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户核销管理",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "代理付款",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "代理付款申请",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "代理付款管理",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "代理核销管理",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "代理付款",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "费用报销",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "费用报销",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "报销付款",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "账户转账",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "资金账户管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "出纳明细",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "其他出纳",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "报表",
+          "href": "",
+          "icon": "fa fa-bar-chart",
+          "target": "_self",
+          "child": [
+            {
+              "title": "客户类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "客户发货日报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "操作类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "仓库操作日报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "出货预报日报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "操作工作量日报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "承运类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "总运单时效报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "结算类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "客户对账报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户账龄报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户进出报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "客户来往报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "毛利类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "指定路线毛利分析",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "总运单毛利分析",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "网点毛利",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            },
+		            {
+		              "title": "公司毛利分析",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            },
+            {
+              "title": "销售类",
+              "href": "",
+              "icon": "fa fa-circle",
+              "target": "_self",
+              "child": [
+              	{
+		              "title": "销售客户数报表",
+		              "href": "/welcome-2.html",
+		              "icon": "",
+		              "target": "_self"
+		            }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "CRM",
+          "href": "",
+          "icon": "fa fa-pie-chart",
+          "target": "_self",
+          "child": [
+            {
+              "title": "客户视图",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "运单视图",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "调度",
+          "href": "",
+          "icon": "fa fa-exchange",
+          "target": "_self",
+          "child": [
+            {
+              "title": "车辆管理",
+              "href": "/welcome-1.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            },
+            {
+              "title": "车线管理",
+              "href": "/welcome-2.html",
+              "icon": "fa fa-circle",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

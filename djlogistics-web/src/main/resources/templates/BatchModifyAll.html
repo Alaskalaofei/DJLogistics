@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>批量修改全部</title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    	<link rel="stylesheet" href="../css/public.css" media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+	    <style type="text/css">
+			.btn-bgcolor {
+				background-color: #286ED6;
+				width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<form class="layui-form" action="">
+			<blockquote class="layui-elem-quote layui-text" style="width: 260px; height: 5px !important; line-height: 5px;">
+				修改信息
+			</blockquote>
+			<div class="layui-inline" >
+			    <div class="layui-input-block">
+			    	<input type="checkbox" name="like1[write]" lay-skin="primary" title="金额">
+		      		<input type="checkbox" name="like1[read]" lay-skin="primary" title="币别">
+			    </div>
+		  	</div>
+			<br />
+			<div class="layui-inline">
+			    <div class="layui-input-inline">
+			       <input type="tel" name="" class="layui-input">
+			    </div>
+		    </div>
+			<div class="layui-inline">
+			    <div class="">
+			      <select name="interest" lay-filter="aihao">
+			        <option value=""></option>
+			        <option value="0">写作</option>
+			        <option value="1">阅读</option>
+			        <option value="2">游戏</option>
+			        <option value="3">音乐</option>
+			        <option value="4">旅行</option>
+			      </select>
+			    </div>
+  			</div>
+  			<br /><br />
+  			<div class="layui-inline" >
+			    <div class="layui-input-block">
+			    	<input type="checkbox" name="like1[write]" lay-skin="primary" title="账单备注">
+		      		<input type="checkbox" name="like1[read]" lay-skin="primary" title="内部备注">
+			    </div>
+		  	</div>
+			<br />
+			<div class="layui-inline">
+			    <div class="layui-input-inline">
+			       <input type="tel" name="" class="layui-input">
+			    </div>
+		    </div>
+		    <div class="layui-inline">
+			    <div class="layui-input-inline">
+			       <input type="tel" name="" class="layui-input" style="width: 220px;">
+			    </div>
+		    </div>
+		    <div class="lrayui-inline" >
+			    <div class="layui-input-block">
+			    	<input type="checkbox" name="like1[write]" lay-skin="primary" title="锁定">
+		      		<input type="checkbox" name="like1[read]" lay-skin="primary" title="刷新汇率">
+			    </div>
+			    <div class="layui-input-block">
+			    	<input type="checkbox" name="like1[write]" lay-skin="primary">
+		      		<input type="checkbox" name="like1[read]" lay-skin="primary">
+			    </div>
+		  	</div>
+		</form>
+	<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+	<script src="../js/jquery-1.12.4.js"></script>
+	<script>
+		
+		layui.use(['jquery','form','laydate'], function(){
+		  var $ = layui.jquery;
+		  var form = layui.form;
+		  var laydate = layui.laydate;
+		   //日期
+		  laydate.render({
+		    elem: '#date'
+		  });
+		  laydate.render({
+		    elem: '#date1'
+		  });
+		});
+	</script>
+		
+	</body>`
+</html>

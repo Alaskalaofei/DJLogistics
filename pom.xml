@@ -9,7 +9,7 @@
         <module>djlogistics-serviceimpl</module>
         <module>djlogistics-dao</module>
         <module>djlogistics-util</module>
-
+        <module>djlogistics-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

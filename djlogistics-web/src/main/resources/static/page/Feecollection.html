@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+	</head>
+	<body>
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<blockquote class="layui-elem-quote layui-text" style="width: 1500px;">
+						补录信息
+					</blockquote>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<span style="color: red;">*</span>运单号码
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							转单号码
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							寄件时间
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							邮编
+						</div>
+					</div>
+					<div class="layui-form-item" style="width: 150px;margin-bottom: 20px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin-left: 100px;margin: 0;margin-top: 20px;">
+					<span class="site-demo-button" id="layerDemo">
+						<button type="button" data-method="offset" data-type="auto" class="layui-btn layui-btn-primary layui-btn-sm"
+						 disabled="disabled"><i class="layui-icon layui-icon-search"></i></button>
+					</span>
+				</div>
+				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
+					<div class="layui-form-item" style="width: 150px;margin-top: 30px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin: 0;margin-bottom: 5px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							客户编号
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 20px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							客户名称
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 20px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin: 0;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<span style="color: red;">*</span>金额
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 25px;width: 100px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline" style="margin: 0;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<span style="color: red;">*</span>币别
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 25px;width: 100px;">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+							<option value="4">element</option>
+							<option value="5">laytpl</option>
+							<option value="6">upload</option>
+							<option value="7">laydate</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<span style="color: red;">*</span>寄件网点
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 25px;width: 400px;">
+						<select name="modules" lay-verify="required" lay-search="">
+							<option value="">直接选择或搜索选择</option>
+							<option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option>
+							<option value="4">element</option>
+							<option value="5">laytpl</option>
+							<option value="6">upload</option>
+							<option value="7">laydate</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							账单备注
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 20px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 500px;">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline" style="margin-left: 50px;">
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							内部备注
+						</div>
+					</div>
+					<div class="layui-form-item" style="margin-bottom: 20px;">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 500px;">
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js"></script>
+	<script>
+		// 自定义模块
+		layui.config({
+			base: '../ext/', // 模块目录
+			version: 'v1.5.4'
+		}).extend({ // 模块别名
+			soulTable: 'soulTable'
+		});
+		layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table', 'soulTable', 'element'], function() {
+			var element = layui.element;
+			var $ = layui.jquery;
+			var layer = layui.layer;
+			var form = layui.form;
+			var layedit = layui.layedit;
+			var laydate = layui.laydate;
+			var table = layui.table;
+			var soulTable = layui.soulTable;
+			var element = layui.element;
+
+			//日期
+			laydate.render({
+				elem: '#date'
+			});
+
+		});
+	</script>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>承运帐单明细</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <link rel="stylesheet" href="../css/layuimini.css" media="all">
+    <style type="text/css">
+		.btn-bgcolor {
+			background-color: #286ED6;
+			width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<form class="layui-form" action="">
+		<div class="layui-form-item">
+			<ul class="layui-nav layui-inline" style="width: 100px; height: 30px; background-color: #286ED6; text-align: center;">
+				<li class="layui-nav-item" style="line-height: 30px; margin-right: 10px;">
+					<a href="javascript:;" style="color: #fff; font-size: 10px;">账单制作</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:;" class="login-out">选择</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class="login-out">全部</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<div class="layui-inline">
+				<button type="button" class="layui-btn layui-btn-sm" style="background-color: green;">费用录入</button>
+			</div>
+			<div class="layui-inline">
+				<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">修改</button>
+			</div>
+			<div class="layui-inline">
+				<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">批价</button>
+			</div>
+			
+			<ul class="layui-nav layui-inline" style="width: 100px; height: 30px; background-color: red; text-align: center;">
+				<li class="layui-nav-item" style="line-height: 30px; margin-right: 10px;">
+					<a href="javascript:;" style="color: #fff; font-size: 10px;">取消结算</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:;" class="login-out">取消结算</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class="login-out">恢复结算</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<ul class="layui-nav layui-inline" style="width: 80px; height: 30px; background-color: #286ED6; text-align: center;">
+				<li class="layui-nav-item" style="line-height: 30px; margin-right: 10px;">
+					<a href="javascript:;" style="color: #fff; font-size: 10px;">冻结</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:;" class="login-out">冻结</a>
+						</dd>
+						<dd>
+							<a href="javascript:;" class="login-out">取消冻结</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<div class="layui-inline">
+				<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">自定义导出</button>
+			</div>
+		</div>
+		<div class="layui-inline">
+		    <label class="layui-form-label">单号类型</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+	      <label class="layui-form-label">单号</label>
+	      <div class="layui-input-inline">
+	        <input type="tel" name="" class="layui-input">
+	      </div>
+	    </div>
+	    <div class="layui-inline">
+		    <label class="layui-form-label">应付网点</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+		    <label class="layui-form-label">承运代理</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+	    <br /><br />
+	    <div class="layui-form-item layui-inline">
+		    <label class="layui-form-label">日期类型</label>
+		    <div class="layui-input-block">
+		      <input type="radio" name="sex" value="发生日期" title="发生日期" checked="">
+		      <input type="radio" name="sex" value="寄件日期" title="寄件日期">
+		    </div>
+		</div>
+	    <div class="layui-inline">
+	      <label class="layui-form-label">日期</label>
+	      <div class="layui-input-inline">
+	        <input type="text" class="layui-input" id="test16" placeholder="开始 到 结束">
+	      </div>
+	    </div>
+	    <div class="layui-inline">
+		    <label class="layui-form-label">科目</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+		    <label class="layui-form-label">数据来源</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<br /><br />
+	    <div class="layui-form-item layui-inline" style="width: 150px;">
+  			<label class="layui-form-label">金额</label>
+		    <div class="layui-input-block">
+		    <span class="a">
+		      <input type="checkbox" id="aa" name="like1[write]" lay-skin="primary">
+		     </span>
+		    </div>
+		</div>
+		<div class="layui-form-item layui-inline" >
+		    <div class="layui-inline">
+		      <div class="layui-input-inline" style="width: 75px;">
+		        <input id="b" type="text" name="price_min" disabled="disabled" placeholder="￥"  autocomplete="off" class="layui-input kemus">
+		      </div>
+		      <div class="layui-form-mid">-</div>
+		      <div class="layui-input-inline" style="width: 75px;">
+		        <input  id="c" type="text" name="price_max" disabled="disabled" placeholder="￥"  autocomplete="off" class="layui-input kemus">
+		      </div>
+		    </div>
+		 </div>
+		<div class="layui-inline"  style="width: 21%;">
+		    <label class="layui-form-label">结算状态</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+		    <label class="layui-form-label">锁定状态</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+		    <label class="layui-form-label">对账员</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<br /><br />
+  		<div class="layui-inline">
+		    <label class="layui-form-label">航班类型</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline" style="width: 22.5%;">
+		    <label class="layui-form-label">出港路由</label>
+		    <div class="layui-input-block">
+		      <select name="interest" lay-filter="aihao">
+		        <option value=""></option>
+		        <option value="0">写作</option>
+		        <option value="1">阅读</option>
+		        <option value="2">游戏</option>
+		        <option value="3">音乐</option>
+		        <option value="4">旅行</option>
+		      </select>
+		    </div>
+  		</div>
+  		<div class="layui-inline">
+	      <label class="layui-form-label">始发港</label>
+	      <div class="layui-input-inline">
+	        <input type="tel" name="" class="layui-input" style="width: 220px;">
+	      </div>
+	    </div>
+	    <div class="layui-inline">
+	      <label class="layui-form-label">目的港</label>
+	      <div class="layui-input-inline">
+	        <input type="tel" name="" class="layui-input" style="width: 220px;">
+	      </div>
+	    </div>
+	    <br /><br />
+	    <div class="layui-inline">
+	      <label class="layui-form-label">航班/车牌号</label>
+	      <div class="layui-input-inline">
+	        <input type="tel" name="" class="layui-input" style="width: 220px;">
+	      </div>
+	    </div>
+		<div align="center">
+			<button type="button" class="layui-btn layui-btn-normal">查询</button>
+			<button type="button" class="layui-btn layui-btn-primary">重置</button>
+		</div>
+	</form>
+	<div>
+		<table class="layui-hide" id="test"></table>
+	</div>
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script src="../js/jquery-1.12.4.js"></script>
+<script>
+		layui.use(['jquery','table','form','laydate','element'], function(){
+		  var table = layui.table;
+		  var $ = layui.jquery;
+		  var form = layui.form;
+		  var element = layui.element;
+		  var laydate = layui.laydate;
+		  
+		  $(".a").click(function(){
+		  	if($("#aa").is(":checked") || $("#bb").is(":checked")){
+		  		$("#b").prop("disabled",false)
+		  		$("#c").prop("disabled",false)
+		  	}else{
+		  		$("#b").prop("disabled",true)
+		  		$("#c").prop("disabled",true)
+		  	}
+
+		  })
+		  
+		  table.render({
+		    elem: '#test'
+		    ,url:'../api/Student.json'
+		    ,toolbar: '#toolbarDemo'
+		    ,cols: [[
+		      {field:'id', width:300, title: '行号', sort: true}
+		      ,{field:'username', width:500, title: '运单号码'}
+		      ,{field:'sex', width:500, title: '错误说明', sort: true}
+		    ]]
+		    ,page: true
+		  });
+		  
+		  
+		  //头工具栏事件
+		  table.on('toolbar(test)', function(obj){
+		    var checkStatus = table.checkStatus(obj.config.id); //获取选中行状态
+		    switch(obj.event){
+		      case 'getCheckData':
+		        var data = checkStatus.data;  //获取选中行数据
+		        layer.alert(JSON.stringify(data));
+		      break;
+		    };
+		  });
+		  //日期
+				laydate.render({
+					elem: '#test16',
+					type: 'datetime',
+					range: '到',
+					format: 'yyyy-M-d H:m:s'
+				});
+		  });
+		  
+		</script>
+</body>
+</html>
