@@ -5,44 +5,136 @@
 		<title>转运到件管理</title>
 		<script src="../lib/layui-v2.5.4/layui.js"></script>
 		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 	</head>
+	<style type="text/css">
+		.btn-bgcolor {
+			background-color: #286ED6;
+			width: 80px;
+		}
+		
+		.btn-bgcolor2 {
+			margin-top: 14.4%;
+			background-color: #286ED6;
+			width: 70px;
+		}
+		.btn-bgcolor4 {
+					color: #000000;
+			background-color: #f0f0f0;
+			width: 70px;
+		}
+		.btn-bgcolor3 {
+
+			margin-top: 14.4%;
+			width: 70px;
+		}
+		
+		#luxian {
+			position: absolute;
+			left: 16%;
+			top: 30%;
+		}
+	</style>
 	<body>
 		<div class="layui-fluid">
 		    <div class="layui-row">
 		        <div class="layui-col-xs12">
 		            <div class="layui-row">
 		                <div class="layui-col-xs12">
-		                    <div class="layui-btn-container">
-		                        <button class="layui-btn layui-btn-lg layui-btn-normal">继续到件</button><button class="layui-btn layui-btn-lg layui-btn-normal">到达</button><button class="layui-btn layui-btn-lg layui-btn-danger">撤销到件</button><button class="layui-btn layui-btn-lg layui-btn-normal">打印</button><button class="layui-btn layui-btn-lg layui-btn-primary">导出</button><button class="layui-btn layui-btn-lg layui-btn-normal">通用导出</button>
-		                    </div>
+		                    
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<button type="button"  class="layui-btn layui-btn-sm  btn-bgcolor" id="a">继续到件</button>
+								</div>
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor" id="XG">到达</button>
+								</div>
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor" style="background-color: #E9161E;">撤销到件</button>
+								</div>
+							
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">打印</button>
+								</div>
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor4" >导出</button>
+								</div>
+								<div class="layui-inline">
+									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor" >通用导出</button>
+								</div>
+							</div>
 		                </div>
 		                <div class="layui-col-xs12">
 		                    <form class="layui-form">
 		                         <div class="layui-col-xs12">
 		                            <div class="layui-form-item">
+		                             <div class="layui-inline" style="width: 120px;">
+		                             	<div class="layui-form-item">
+		                             		<select name="city" lay-verify="required">
+		                             			<option value="">转运单号</option>
+		                             
+		                             			<option value="">总运单号</option>
+		                             		</select>
+		                             	</div>
+		                             	<div class="layui-form-item" style="margin-top:-11% !important;">
+		                             		<textarea class="layui-textarea"></textarea>
+		                             		<div class="layui-form-item">
+		                             			<button type="button" class="layui-btn layui-btn-sm" style="width: 120px; margin-top: 2px;"> 清空</button>
+		                             		</div>
+		                             	</div>
+		                             </div>
 		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline"><select><option value="0">转运单号</option><option value="1">转运号码</option></select><div>
-		                                        <input class="layui-input" />
-		                                    </div>
-		                                    </label>
+		                                	<div class="layui-form-item">
+		                                	转运日期
+		                                	</div>
+		                                	<div class="layui-form-item" style="width: 240px;">
+		                                		<input type="text" class="layui-input" id="test16" placeholder="开始时间    -   结束时间">
+		                                	</div>
 		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运日期----从<input name="createTime" class="magicalcoder-laydate layui-input" type="text" autocomplete="off" lay-verify="magicalCoderVerify" /></label><div></div>
+		                                <div class="layui-inline" style="margin-left: -10px;">
+		                                	<div class="layui-form-item">
+		                                		到件网点
+		                                	</div>
+		                                	<div class="layui-form-item" style="width: 120px;">
+		                                		<select name="city" lay-verify="required">
+		                                			<option value=""></option>
+		                                			<option value="">运单号码</option>
+		                                			<option value="">参考编号</option>
+		                                			<option value="">订单号码</option>
+		                                		</select>
+		                                	</div>
 		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运日期---到<input name="createTime" class="magicalcoder-laydate layui-input" type="text" autocomplete="off" lay-verify="magicalCoderVerify" /></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">到件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">发件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运单状态<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline"><a class="layui-btn">按钮</a><a class="layui-btn">按钮</a></label><div></div>
+		                              <div class="layui-inline" style="margin-left: -10px;">
+		                              							<div class="layui-form-item">
+		                              								发件网点
+		                              							</div>
+		                              							<div class="layui-form-item" style="width: 120px;">
+		                              								<select name="city" lay-verify="required">
+		                              									<option value=""></option>
+		                              									<option value="">运单号码</option>
+		                              									<option value="">参考编号</option>
+		                              									<option value="">订单号码</option>
+		                              								</select>
+		                              							</div>
+		                              						</div>
+		                               <div class="layui-inline" style="margin-left: -10px;">
+		                               							<div class="layui-form-item">
+		                               								转运单状态
+		                               							</div>
+		                               							<div class="layui-form-item" style="width: 120px;">
+		                               								<select name="city" lay-verify="required">
+		                               									<option value=""></option>
+		                               									<option value="">运单号码</option>
+		                               									<option value="">参考编号</option>
+		                               									<option value="">订单号码</option>
+		                               								</select>
+		                               							</div>
+		                               						</div>
+		                                <div class="layui-inline" style="margin-top: -5px;">
+		                                	<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">查询</button>
+		                                	<button type="button" class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor3">重置</button>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -57,10 +149,21 @@
 		</div>
 	</body>
 	<script>
-		layui.use(['element', 'form'], function() {
-			var element = layui.element,
-				form = layui.form;
-			form.render();
+		layui.use(['element', 'form', 'jquery', 'table','element','layuimini','laydate'], function() {
+			var $ = layui.jquery,
+			element = layui.element,
+			layer = layui.layer,
+			form = layui.form,
+			table = layui.table,
+			laydate = layui.laydate;
+				//日期
+				laydate.render({
+					elem: '#test16',
+					type: 'datetime',
+					range: '到',
+					format: 'yyyy-M-d'
+				});
+/* 			form.render(); */
 		});
 		layui.use(["table", "jquery", "layer", "form", "laypage"], function() {
 			var table = layui.table,

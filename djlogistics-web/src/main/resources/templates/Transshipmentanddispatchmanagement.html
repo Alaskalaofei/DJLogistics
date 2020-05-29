@@ -4,96 +4,192 @@
 		<meta charset="utf-8">
 		<title>转运发件管理</title>
 		<script src="../lib/layui-v2.5.4/layui.js"></script>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 	</head>
+	<style type="text/css">
+		.btn-bgcolor {
+			background-color: #286ED6;
+			width: 80px;
+		}
+
+		.btn-bgcolor2 {
+			background-color: #ff1c1f;
+			width: 80px;
+		}
+
+		.btn-bgcolor4 {
+			background-color: #00cc00;
+			width: 80px;
+		}
+.btn-bgcolor5 {
+				margin-top: 14.4%;
+				width: 70px;
+			}
+		.btn-bgcolor3 {
+
+			margin-top: 14.4%;
+			width: 70px;
+		}
+
+		#luxian {
+			position: absolute;
+			left: 16%;
+			top: 30%;
+		}
+	</style>
 	<body>
 		<div class="layui-fluid">
-		    <div class="layui-row">
-		        <div class="layui-col-xs12">
-		            <div class="layui-row">
-		                <div class="layui-col-xs12">
-		                    <div class="layui-btn-container">
-		                        <button id="Addtransfernote" class="layui-btn layui-btn-lg" >新增</button><button id="Updatetransfernote" class="layui-btn layui-btn-lg layui-btn-normal">修改</button><button class="layui-btn layui-btn-lg layui-btn-danger">撤销</button><button class="layui-btn layui-btn-lg layui-btn-normal">继续发件</button><button class="layui-btn layui-btn-lg layui-btn-normal">发送</button><button class="layui-btn layui-btn-lg layui-btn-danger">撤销发送</button><button class="layui-btn layui-btn-lg">打印</button><button class="layui-btn layui-btn-lg layui-btn-primary">导出</button><button class="layui-btn layui-btn-lg">通用导出</button>
-		                    </div>
-		                </div>
-		                <div class="layui-col-xs12">
-		                    <form class="layui-form">
-		                        <div class="layui-col-xs12">
-		                            <div class="layui-form-item">
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline"><select><option value="0">转运单号</option><option value="1">转运号码</option></select><div>
-		                                        <input class="layui-input" />
-		                                    </div>
-		                                    </label>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运日期----从<input name="createTime" class="magicalcoder-laydate layui-input" type="text" autocomplete="off" lay-verify="magicalCoderVerify" /></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运日期---到<input name="createTime" class="magicalcoder-laydate layui-input" type="text" autocomplete="off" lay-verify="magicalCoderVerify" /></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">发件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">到件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline">转运单状态<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
-		                                </div>
-		                                <div class="layui-inline">
-		                                    <label class="layui-input-inline"><a class="layui-btn">按钮</a><a class="layui-btn">按钮</a></label><div></div>
-		                                </div>
-		                            </div>
-		                        </div>
-		                    </form>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="layui-col-xs12">
+			<div class="layui-row">
+				<div class="layui-col-xs12">
+					<div class="layui-row">
+						<div class="layui-col-xs12">
+							<div class="layui-btn-container">
+								<button id="Addtransfernote" class="layui-btn layui-btn-sm btn-bgcolor4">新增</button><button id="Updatetransfernote"
+								 class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">修改</button><button class="layui-btn layui-btn-sm layui-btn-danger btn-bgcolor2">撤销</button><button
+								 class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">继续发件</button><button class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">发送</button><button
+								 class="layui-btn layui-btn-sm layui-btn-danger btn-bgcolor2">撤销发送</button><button class="layui-btn layui-btn-sm btn-bgcolor">打印</button><button
+								 class="layui-btn layui-btn-sm layui-btn-primary">导出</button><button class="layui-btn layui-btn-sm btn-bgcolor">通用导出</button>
+							</div>
+						</div>
+						<div class="layui-col-xs12">
+							<form class="layui-form">
+								<div class="layui-col-xs12">
+									<div class="layui-form-item">
+										<div class="layui-inline">
+											<label class="layui-input-inline"><select>
+													<option value="0">转运单号</option>
+													<option value="1">转运号码</option>
+												</select>
+												<div>
+													<input class="layui-input" />
+												</div>
+											</label>
+										</div>
+										<div class="layui-inline">
+											<div class="layui-form-item">
+												转运日期
+											</div>
+											<div class="layui-form-item" style="width: 240px;">
+												<input type="text" class="layui-input" id="test16" placeholder="开始时间    -   结束时间">
+											</div>
+										</div>
+										<div class="layui-inline" style="margin-left: -10px;">
+											<div class="layui-form-item">
+												发件网点
+											</div>
+											<div class="layui-form-item" style="width: 120px;">
+												<select name="city" lay-verify="required">
+													<option value=""></option>
+													<option value="">运单号码</option>
+													<option value="">参考编号</option>
+													<option value="">订单号码</option>
+												</select>
+											</div>
+										</div>
+										<div class="layui-inline" style="margin-left: -10px;">
+											<div class="layui-form-item">
+												到件网点
+											</div>
+											<div class="layui-form-item" style="width: 120px;">
+												<select name="city" lay-verify="required">
+													<option value=""></option>
+													<option value="">运单号码</option>
+													<option value="">参考编号</option>
+													<option value="">订单号码</option>
+												</select>
+											</div>
+										</div>
+									<div class="layui-inline" style="margin-left: -10px;">
+																<div class="layui-form-item">
+																	转运单状态
+																</div>
+																<div class="layui-form-item" style="width: 120px;">
+																	<select name="city" lay-verify="required">
+																		<option value=""></option>
+																		<option value="">运单号码</option>
+																		<option value="">参考编号</option>
+																		<option value="">订单号码</option>
+																	</select>
+																</div>
+															</div>
+										<div class="layui-inline" style="margin-top: -5px;">
+											<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor btn-bgcolor5">查询</button>
+											<button type="button" class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor5">重置</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs12">
 					<table class="layui-table" id="test" lay-filter="test"></table>
 				</div>
-		    </div>
+			</div>
 		</div>
 	</body>
-		<script>
-			layui.use('layer',function(){
-				 var $ = layui.jquery, layer = layui.layer;
-				 
-				 $("#Addtransfernote").on("click",function(){
-						layer.open({
-							    		  type:2,
-											content:'addTransshipmentanddispatchmanagement.html',
-											area:['800px','500px'],
-											title:'编辑学生信息',
-											success: function (layero, index) {   //弹出层弹出后的回调函数
-								                var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
-								                iframe.child(data.id);   // 向子页面的全局函数child传参
-								            },			
-											end:function(){     //弹出层销毁后的事件
-												table.reload("userTableReload");//增加成功后刷新表格
-											}
-							    	  })
+	
+		
+
+
+	<script>
+		layui.use(['element', 'form', 'jquery', 'table', 'element', 'layuimini', 'laydate'], function() {
+					var $ = layui.jquery,
+						element = layui.element,
+						layer = layui.layer,
+						form = layui.form,
+						table = layui.table,
+						laydate = layui.laydate;
+					//日期
+					laydate.render({
+						elem: '#test16',
+						type: 'datetime',
+						range: '到',
+						format: 'yyyy-M-d'
 					});
-				 
-					$("#Updatetransfernote").on("click",function(){
-											layer.open({
-												    		  type:2,
-																content:'addTransshipmentanddispatchmanagement.html',
-																area:['800px','500px'],
-																title:'编辑学生信息',
-																success: function (layero, index) {   //弹出层弹出后的回调函数
-													                var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
-													                iframe.child(data.id);   // 向子页面的全局函数child传参
-													            },			
-																end:function(){     //弹出层销毁后的事件
-																	table.reload("userTableReload");//增加成功后刷新表格
-																}
-												    	  })
-										});
-				
-			})
-		</script>
+					});
+		layui.use('layer', function() {
+			var $ = layui.jquery,
+				layer = layui.layer;
+
+			$("#Addtransfernote").on("click", function() {
+				layer.open({
+					type: 2,
+					content: 'addTransshipmentanddispatchmanagement.html',
+					area: ['800px', '500px'],
+					title: '编辑学生信息',
+					success: function(layero, index) { //弹出层弹出后的回调函数
+						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
+						iframe.child(data.id); // 向子页面的全局函数child传参
+					},
+					end: function() { //弹出层销毁后的事件
+						table.reload("userTableReload"); //增加成功后刷新表格
+					}
+				})
+			});
+
+			$("#Updatetransfernote").on("click", function() {
+				layer.open({
+					type: 2,
+					content: 'addTransshipmentanddispatchmanagement.html',
+					area: ['800px', '500px'],
+					title: '编辑学生信息',
+					success: function(layero, index) { //弹出层弹出后的回调函数
+						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
+						iframe.child(data.id); // 向子页面的全局函数child传参
+					},
+					end: function() { //弹出层销毁后的事件
+						table.reload("userTableReload"); //增加成功后刷新表格
+					}
+				})
+			});
+
+		})
+	</script>
+	
 	<script>
 		layui.use(['element', 'form'], function() {
 			var element = layui.element,
@@ -106,7 +202,7 @@
 				layer = layui.layer,
 				form = layui.form,
 				util = layui.util;
-	
+
 			table.render({
 				elem: '#test',
 				url: '',
@@ -166,8 +262,8 @@
 				page: true,
 				id: 'userTableReload'
 			});
-	
-	
+
+
 			//根据条件查询表格数据重新加载
 			var $ = layui.$,
 				active = {
@@ -207,9 +303,9 @@
 					var type = $(this).data('type');
 					active[type] ? active[type].call(this) : '';
 				});
-	
-	
-	
+
+
+
 		});
 	</script>
 </html>
