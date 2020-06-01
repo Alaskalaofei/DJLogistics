@@ -11,18 +11,16 @@
     <packaging>jar</packaging>
     <artifactId>djlogistics-common</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <!--这个是时间格式化必备-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--json-->
+        <!--导入工具util模块-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.35</version>
+            <groupId>com.csdj</groupId>
+            <artifactId>djlogistics-util</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
