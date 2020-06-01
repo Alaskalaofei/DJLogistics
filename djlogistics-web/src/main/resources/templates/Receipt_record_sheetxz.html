@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/html">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
@@ -119,9 +119,6 @@
 						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				<div class="layui-inline" style="width: 130px;">
-					<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
-				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-inline">
@@ -194,18 +191,23 @@
 						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
+				<label class="layui-form-label"><span style="color: #ff0000;">*</span>税金付款</label>
+				<div class="layui-input-inline">
+					<select name="modules" lay-verify="required" lay-search="">
+						<option value="">直接选择或搜索选择</option>
+						<option value="1">layer</option>
+						<option value="2">form</option>
+						<option value="3">layim</option>
+						<option value="4">element</option>
+						<option value="5">laytpl</option>
+						<option value="6">upload</option>
+						<option value="7">laydate</option>
+					</select>
+				</div>
 				<div class="layui-inline">
-					<div class="layui-input-inline">
-						<select name="modules" lay-verify="required" lay-search="">
-							<option value="">直接选择或搜索选择</option>
-							<option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option>
-							<option value="4">element</option>
-							<option value="5">laytpl</option>
-							<option value="6">upload</option>
-							<option value="7">laydate</option>
-						</select>
+					<label class="layui-form-label"><span style="color: red;">*</span>代收款</label>
+					<div class="layui-input-block">
+						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
@@ -336,7 +338,7 @@
 							,
 						id: 'one' + type //防止重复弹出
 							,
-						content: 'Singleinformation_hand.html',
+						content: '/Singleinformation_hand.html',
 						area: ['1050px', '600px'],
 						btnAlign: 'c' //按钮居中
 							,

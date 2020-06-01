@@ -9,7 +9,7 @@
   },
   "logoInfo": {
     "title": "DJLogistics",
-    "image": "../images/logo.png",
+    "image": "/images/logo.png",
     "href": ""
   },
   "menuInfo": {
