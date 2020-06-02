@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>出货</title>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
-		<link rel="stylesheet" href="../css/layuimini.css" media="all">
+		<link rel="stylesheet" href="/lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="/css/layuimini.css" media="all">
 	</head>
 
 	<body>
@@ -21,7 +21,7 @@
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;" name="title" id="id" required lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
+									<input type="text" style="width: 260px;height: 50px;" name="title"  required lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input">
 
 								</div>
 							</div>
@@ -35,7 +35,7 @@
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;margin-top: -11px;" name="title" id="id" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" style="width: 260px;height: 50px;margin-top: -11px;" name="title"  required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;" name="title" id="id" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" style="width: 260px;height: 50px;" name="title"  required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" id="asdfg" style="width: 260px;height: 50px;margin-top: -11px;" name="title" id="client5" required lay-verify="required" disabled="disabled" autocomplete="off" class="layui-input layui-disabled">
+									<input type="text" id="asdfg" style="width: 260px;height: 50px;margin-top: -11px;" name="title"  required lay-verify="required" autocomplete="off" class="layui-input layui-disabled">
 								</div>
 							</div>
 						</div>
@@ -70,8 +70,8 @@
 					<p style="background-color: #F5F5F5; width: 500px; line-height: 25px;"><span style="background-color: #00c1de;">&nbsp;</span><span style="margin-left: 20px;">出港路由规则</span></p>
 					<div>
 						<p style="line-height: 35px;">
-							<span>出港路由<span>
-							<span style="margin-left: 100px;">下一网点<span>
+							<span>出港路由</span>
+							<span style="margin-left: 100px;">下一网点</span>
 					
 						</p>
 						<input type="text" style="width: 150px;height:26px;border: 1px solid #d1d1d1;" />
@@ -79,8 +79,8 @@
 					</div>
 					<div>
 						<p style="line-height: 35px;">
-							<span>走货路线<span>
-							<span style="margin-left: 100px;">报关方式<span>
+							<span>走货路线</span>
+							<span style="margin-left: 100px;">报关方式</span>
 						</p>
 						<input type="text" style="width: 150px;height:26px;border: 1px solid #d1d1d1;" />
 						<input type="text" style="width: 150px;height:26px;border: 1px solid #d1d1d1;" />
@@ -90,15 +90,15 @@
 				<div style="margin-left: 10px;margin-right: 10px;">
 					<table class="layui-hide"  id="test"></table>
 					<button type="button" class="layui-btn layui-btn-normal layui-btn-sm">发送</button>
-				<a href="javascript:void(0)" data-iframe-tab="page/general_waybill.html" data-title="总运单管理" data-icon="fa fa-hourglass-end">
+				<a href="javascript:void(0)" data-iframe-tab="general_waybill.html" data-title="总运单管理" data-icon="fa fa-hourglass-end">
 					<button type="button" class="layui-btn layui-btn-normal layui-btn-sm">总运单管理</button>
 				</a>
 				</div>
 				
 		</form>
 	</body>
-		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
-		<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script src="/lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 	<script>
 		var abc;
 		layui.use(['layer', 'form', 'jquery', 'table','element','layuimini'], function() {
@@ -184,13 +184,13 @@
 			}
 			var wu2 = function() {
 				if ($("#client4").is(':checked')) {
-					$("#client5").removeClass("layui-disabled")
-					$("#client5").prop('disabled', false);
+					$("#asdfg").removeClass("layui-disabled")
+					$("#asdfg").prop('disabled', false);
 					form.render();
 				} else {
-					$("#client5").addClass("layui-disabled");
-					$("#client5").prop('disabled', true);
-					$("#client5").val("");
+					$("#asdfg").addClass("layui-disabled");
+					$("#asdfg").prop('disabled', true);
+					$("#asdfg").val("");
 					form.render();
 				}
 			}

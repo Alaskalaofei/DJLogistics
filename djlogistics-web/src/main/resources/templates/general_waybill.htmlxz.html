@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>新增总运单</title>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
+		<link rel="stylesheet" href="/lib/layui-v2.5.4/css/layui.css">
+		<link rel="stylesheet" href="/lib/layui-v2.5.4/css/soulTable.css" media="all">
 	</head>
 	<body>
 		<br />
@@ -121,15 +121,17 @@
 				</div>
 					</div>
 					<p style="background-color: #f5f5f5; width: 98%; line-height: 30px;"><span style="background-color: #00c1de;">&nbsp;</span>&nbsp;&nbsp;总运单信息</p>
-					<table class="layui-hide" id="test"></table>
+
 			</form>
+			<table class="layui-hide" id="test" lay-filter="test"></table>
 		</div>
 	</body>
-	<script src="../lib/layui-v2.5.4/layui.js"></script>
-	<script src="../js/xm-select.js"></script>
+	<script src="/lib/layui-v2.5.4/layui.js"></script>
+	<script src="/js/xm-select.js"></script>
 	<script>
-		layui.use(['layer', 'form', 'jquery', 'table'], function() {
-		var $ = layui.jquery,
+		layui.use(['element', 'layer', 'form', 'laydate', 'table','layuimini'], function() {
+			var $ = layui.jquery,
+					element = layui.element,
 					layer = layui.layer,
 					form = layui.form,
 					table = layui.table,
@@ -141,7 +143,7 @@
 				// window.parent.location.replace(location.href)//刷新父级页面 
 			})	;
 			
-									var demo1 = xmSelect.render({
+			var demo1 = xmSelect.render({
 				el: '#aa',
 				language: 'zn',
 				data: [{
@@ -163,23 +165,26 @@
 				var selectArr = demo1.getValue();
 				document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
 			}
-			
-			 table.render({
-    elem: '#test'
-    ,url:'/demo/table/user/'
-    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
-    ,cols: [[
-      {field:'id', width:80, title: 'ID', sort: true}
-      ,{field:'username', width:80, title: '用户名'}
-      ,{field:'sex', width:80, title: '性别', sort: true}
-      ,{field:'city', width:80, title: '城市'}
-      ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
-      ,{field:'experience', title: '积分', sort: true}
-      ,{field:'score', title: '评分', sort: true}
-      ,{field:'classify', title: '职业'}
-      ,{field:'wealth', width:137, title: '财富', sort: true}
-    ]]
-  });
+
+			table.render({
+				elem: '#test',
+				url: '/test/table/demo1.json',
+				title: '用户数据表',
+				cols: [
+					[
+						{ type: 'checkbox', fixed: 'left' }, { field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true }, { field: 'username', title: '用户名', width: 120, edit: 'text' }, {
+						field: 'email',
+						title: '邮箱',
+						width: 150,
+						edit: 'text',
+						templet: function(res) {
+							return '<em>' + res.email + '</em>'
+						}
+					}, { field: 'sex', title: '性别', width: 80, edit: 'text', sort: true }, { field: 'city', title: '城市', width: 100 }, { field: 'sign', title: '签名' }, { field: 'experience', title: '积分', width: 80, sort: true }, { field: 'ip', title: 'IP', width: 120 }, { field: 'logins', title: '登入次数', width: 100, sort: true }, { field: 'joinTime', title: '加入时间', width: 120 }, { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+					]
+				],
+				page: true
+			});
 			
 		});
 			
