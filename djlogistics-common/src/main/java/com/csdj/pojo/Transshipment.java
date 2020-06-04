@@ -1,25 +1,26 @@
 package com.csdj.pojo;
 
+import java.util.Date;
 
 public class Transshipment {
 
   private Integer tid;
-  private Integer oid;
-  private java.sql.Date transshipmentDate;
+  private String transhipmentNo;
+  private Date transshipmentDate;
   private Integer dispatchOutlets;
   private Integer reachPieceOutlets;
   private Integer transitStatusId;
   private Integer dispatchError;
-  private Integer votesArrived;
-  private Integer numberOfPiecesArrived;
-  private Integer votesNotYetArrived;
-  private Integer piecesNotArrived;
+  private Integer totalVotesArrived;
+  private Integer totalPiecesArrived;
+  private Integer totalVotesNot_Arrived;
+  private Integer lessThanTotal_Pieces;
   private Integer arrivalException;
-  private java.sql.Date sendOutDate;
+  private Date sendOutDate;
   private Integer sender;
-  private java.sql.Date creationTime;
+  private Date creationTime;
   private Integer createdBy;
-
+  private String remarks;
 
   public Integer getTid() {
     return tid;
@@ -29,24 +30,21 @@ public class Transshipment {
     this.tid = tid;
   }
 
-
-  public Integer getOid() {
-    return oid;
+  public String getTranshipmentNo() {
+    return transhipmentNo;
   }
 
-  public void setOid(Integer oid) {
-    this.oid = oid;
+  public void setTranshipmentNo(String transhipmentNo) {
+    this.transhipmentNo = transhipmentNo;
   }
 
-
-  public java.sql.Date getTransshipmentDate() {
+  public Date getTransshipmentDate() {
     return transshipmentDate;
   }
 
-  public void setTransshipmentDate(java.sql.Date transshipmentDate) {
+  public void setTransshipmentDate(Date transshipmentDate) {
     this.transshipmentDate = transshipmentDate;
   }
-
 
   public Integer getDispatchOutlets() {
     return dispatchOutlets;
@@ -56,7 +54,6 @@ public class Transshipment {
     this.dispatchOutlets = dispatchOutlets;
   }
 
-
   public Integer getReachPieceOutlets() {
     return reachPieceOutlets;
   }
@@ -64,7 +61,6 @@ public class Transshipment {
   public void setReachPieceOutlets(Integer reachPieceOutlets) {
     this.reachPieceOutlets = reachPieceOutlets;
   }
-
 
   public Integer getTransitStatusId() {
     return transitStatusId;
@@ -74,7 +70,6 @@ public class Transshipment {
     this.transitStatusId = transitStatusId;
   }
 
-
   public Integer getDispatchError() {
     return dispatchError;
   }
@@ -83,42 +78,37 @@ public class Transshipment {
     this.dispatchError = dispatchError;
   }
 
-
-  public Integer getVotesArrived() {
-    return votesArrived;
+  public Integer getTotalVotesArrived() {
+    return totalVotesArrived;
   }
 
-  public void setVotesArrived(Integer votesArrived) {
-    this.votesArrived = votesArrived;
+  public void setTotalVotesArrived(Integer totalVotesArrived) {
+    this.totalVotesArrived = totalVotesArrived;
   }
 
-
-  public Integer getNumberOfPiecesArrived() {
-    return numberOfPiecesArrived;
+  public Integer getTotalPiecesArrived() {
+    return totalPiecesArrived;
   }
 
-  public void setNumberOfPiecesArrived(Integer numberOfPiecesArrived) {
-    this.numberOfPiecesArrived = numberOfPiecesArrived;
+  public void setTotalPiecesArrived(Integer totalPiecesArrived) {
+    this.totalPiecesArrived = totalPiecesArrived;
   }
 
-
-  public Integer getVotesNotYetArrived() {
-    return votesNotYetArrived;
+  public Integer getTotalVotesNot_Arrived() {
+    return totalVotesNot_Arrived;
   }
 
-  public void setVotesNotYetArrived(Integer votesNotYetArrived) {
-    this.votesNotYetArrived = votesNotYetArrived;
+  public void setTotalVotesNot_Arrived(Integer totalVotesNot_Arrived) {
+    this.totalVotesNot_Arrived = totalVotesNot_Arrived;
   }
 
-
-  public Integer getPiecesNotArrived() {
-    return piecesNotArrived;
+  public Integer getLessThanTotal_Pieces() {
+    return lessThanTotal_Pieces;
   }
 
-  public void setPiecesNotArrived(Integer piecesNotArrived) {
-    this.piecesNotArrived = piecesNotArrived;
+  public void setLessThanTotal_Pieces(Integer lessThanTotal_Pieces) {
+    this.lessThanTotal_Pieces = lessThanTotal_Pieces;
   }
-
 
   public Integer getArrivalException() {
     return arrivalException;
@@ -128,15 +118,13 @@ public class Transshipment {
     this.arrivalException = arrivalException;
   }
 
-
-  public java.sql.Date getSendOutDate() {
+  public Date getSendOutDate() {
     return sendOutDate;
   }
 
-  public void setSendOutDate(java.sql.Date sendOutDate) {
+  public void setSendOutDate(Date sendOutDate) {
     this.sendOutDate = sendOutDate;
   }
-
 
   public Integer getSender() {
     return sender;
@@ -146,15 +134,13 @@ public class Transshipment {
     this.sender = sender;
   }
 
-
-  public java.sql.Date getCreationTime() {
+  public Date getCreationTime() {
     return creationTime;
   }
 
-  public void setCreationTime(java.sql.Date creationTime) {
+  public void setCreationTime(Date creationTime) {
     this.creationTime = creationTime;
   }
-
 
   public Integer getCreatedBy() {
     return createdBy;
@@ -164,4 +150,11 @@ public class Transshipment {
     this.createdBy = createdBy;
   }
 
+  public String getRemarks() {
+    return remarks;
+  }
+
+  public void setRemarks(String remarks) {
+    this.remarks = remarks;
+  }
 }
