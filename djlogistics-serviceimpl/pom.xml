@@ -49,6 +49,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- pageHelp 用于分页 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.4</version>
+        </dependency>
     </dependencies>
 
     <build>

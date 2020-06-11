@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+    <style type="text/css">
+        .inputwid{
+            width: 150px;
+        }
+        .inputwid2{
+            width: 318px;
+        }
+        .inputmar{
+            margin-top: -20px;
+        }
+        .btn-bgcolor2 {
+            margin-top: 14.4%;
+            background-color: #286ED6;
+            width: 70px;
+        }
+        .btn-bgcolor3 {
+            margin-top: 14.4%;
+            width: 70px;
+        }
+        .lab-clolr{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-container">
+    <br />
+    <form class="layui-form" lay-filter="formTest" id="form1">
+        <blockquote class="layui-elem-quote layui-text" style=" height: 5px !important; line-height: 5px;">
+            运单<span class="lab-clolr">(红色字体为必填项)</span>
+        </blockquote>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">运单号码</div>
+                <div class="layui-form-item inputwid">
+                    <input type="hidden" name="oid" >
+                    <input type="text" name="waybillNumber" lay-filter="inputbt" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">参考编号</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="referenceNumber" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件网点</div>
+                <div class="layui-form-item inputwid">
+                    <select name="mailingOutlets" id="outlet" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">客户</div>
+                <div class="layui-form-item inputwid">
+                    <select name="customerId" id="customer" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item inputmar">
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">指定路线</div>
+                <div class="layui-form-item inputwid">
+                    <select name="specifyTheRoute" id="luxian1" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">目的地</div>
+                <div class="layui-form-item inputwid">
+                    <select name="takeTheCargoRoute" id="luxian2" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件日期</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="mailingDate" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <blockquote class="layui-elem-quote layui-text" style=" height: 5px !important; line-height: 5px;">
+            货物信息<span class="lab-clolr">(红色字体为必填项)</span>
+        </blockquote>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">报关方式</div>
+                <div class="layui-form-item inputwid">
+                    <select name="customsDeclarationMethod" id="selectcustoms" lay-verify="required" lay-search="">
+
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">货物类型</div>
+                <div class="layui-form-item inputwid">
+                    <select name="goodsType" id="goodstype" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">件数</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="totalPieces" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">实重</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="totalActualweight" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item inputmar">
+            <div class="layui-inline">
+                <div class="layui-form-item">包数</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="totalPackages" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">中文名</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="chineseName" class="layui-input">
+                </div>
+            </div>
+            <!--<div class="layui-inline">
+                <div class="layui-form-item">英文名</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="price_max" class="layui-input">
+                </div>
+            </div>-->
+        </div>
+    </form>
+
+    <form class="layui-form" lay-filter="formTest1" id="form2">
+        <blockquote class="layui-elem-quote layui-text" style=" height: 5px !important; line-height: 5px;">
+            寄件人<span class="lab-clolr">(红色字体为必填项)</span>
+        </blockquote>
+        <br/><br/>
+        <div class="layui-form-item inputmar">
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件人</div>
+                <div class="layui-form-item inputwid">
+                    <input type="hidden" name="orderid">
+                    <input type="text" name="name" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件电话</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="phone" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件地址1</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="address1" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">寄件地址2</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="address2" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">寄件地址3</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="address3" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件国家</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="state" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件省/洲</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="province" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件城市</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="city" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">寄件邮编</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="postcode" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <blockquote class="layui-elem-quote layui-text" style=" height: 5px !important; line-height: 5px;">
+            收件人<span class="lab-clolr">(红色字体为必填项)</span>
+        </blockquote>
+        <br/><br/>
+        <div class="layui-form-item inputmar">
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件人</div>
+                <div class="layui-form-item inputwid">
+                    <input type="hidden" name="id">
+                    <input type="text" name="aname" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件电话</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="aphone" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件地址1</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="aaddress1" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">收件地址2</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="aaddress2" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">收件地址3</div>
+                <div class="layui-form-item inputwid"  style="width: 250px;">
+                    <input type="text" name="aaddress3" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件国家</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="astate" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件省/洲</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="aprovince" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件城市</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="acity" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item lab-clolr">收件邮编</div>
+                <div class="layui-form-item inputwid">
+                    <input type="text" name="apostcode" class="layui-input">
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class="layui-form" lay-filter="formTest3">
+        <div class="layui-form-item">
+            <div class="layui-inline" style="margin-top: -20px; margin-left: 70%;">
+                <button type="button" onclick="submitGo()" class="layui-btn layui-btn-sm  btn-bgcolor2">保存</button>
+                <button type="button" class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor3">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+<script>
+    var ida;
+    function child(d) {
+        ida=d;
+    }
+    layui.use(['element', 'layer', 'form', 'laydate', 'table'], function() {
+        var $ = layui.jquery,
+            element = layui.element,
+            layer = layui.layer,
+            form = layui.form,
+            table = layui.table,
+            laydate = layui.laydate;
+
+        //网点下拉框加载
+        $("#outlet").ready(outlet);
+        function outlet(){
+            $("#outlet option").remove();
+            $.post("/lxrorder/getOutletAll",function (result) {
+                $.each(result, function (index,item) {
+                    $("#outlet").append("<option value='"+item.oid+"'>"+item.name+"</option>");
+                })
+                form.render();
+            })
+
+        }
+
+        //客户下拉框加载
+        $("#customer").ready(customer);
+        function customer(){
+            $("#customer option").remove();
+            $.post("/lxrorder/getCustomer",function (result) {
+                var data=eval(result);
+                $.each(result, function (index,item) {
+                    $("#customer").append("<option value='"+item.cid+"'>"+item.name+"</option>");
+                })
+                form.render();
+            })
+        }
+
+        //路线下拉框加载
+        $("#luxian2").ready(luxian2);
+        function luxian2(){
+            $("#luxian2 option").remove();
+            $("#luxian1 option").remove();
+            $.post("/lxrorder/getSpecificroute",function (result) {
+                $.each(result, function (index,item) {
+                    $("#luxian1").append("<option value='"+item.id+"'>"+item.routeName+"</option>");
+                    $("#luxian2").append("<option value='"+item.id+"'>"+item.routeName+"</option>");
+                })
+                form.render();
+            })
+
+        }
+
+        //报关方式
+        $("#selectcustoms").ready(selectcustoms);
+        function selectcustoms(){
+            $("#selectcustoms option").remove();
+            $.post("/lxrorder/getCustomsdeclarationmethod",function (result) {
+                var data=eval(result);
+                $.each(result, function (index,item) {
+                    $("#selectcustoms").append("<option value='"+item.cid+"'>"+item.customsDeclarationMethod+"</option>");
+                })
+                form.render();
+            })
+        }
+
+        //货物类型
+        $("#goodstype").ready(goodstype);
+        function goodstype(){
+            $("#goodstype option").remove();
+            $.post("/lxrorder/getTypeofgoods",function (result) {
+                var data=eval(result);
+                $.each(result, function (index,item) {
+                    $("#goodstype").append("<option value='"+item.tid+"'>"+item.tname+"</option>");
+                })
+                form.render();
+            })
+        }
+        //页面加载给表单赋值
+        $.post("/lxrorder/getOrderById",{'oid':ida},function (result) {
+            var data=eval(result);
+            form.val("formTest",data);
+        })
+        // 查询地址
+        $.post("/lxrorder/getAddressByOrderId",{'oid':ida},function (result) {
+            var data=eval(result);
+                    form.val("formTest1",data);
+
+        })
+        //保存按钮点击事件
+        window.submitGo=function () {
+            var name=$("input[name='name']").val();
+            var phone=$("input[name='phone']").val();
+            var address1=$("input[name='address1']").val();
+            var state=$("input[name='state']").val();
+            var province=$("input[name='province']").val();
+            var city=$("input[name='city']").val();
+            var postcode=$("input[name='postcode']").val();
+
+            var aname=$("input[name='aname']").val();
+            var aphone=$("input[name='aphone']").val();
+            var aaddress1=$("input[name='aaddress1']").val();
+            var astate=$("input[name='astate']").val();
+            var aprovince=$("input[name='aprovince']").val();
+            var acity=$("input[name='acity']").val();
+            var apostcode=$("input[name='apostcode']").val();
+            if(name ==null || name==""){
+                $("input[name='name']").focus();
+            }else if(phone==null || phone==""){
+                $("input[name='phone']").focus();
+            }else if(address1==null || address1==""){
+                $("input[name='address1']").focus();
+            }else if(state==null || state==""){
+                $("input[name='state']").focus();
+            }else if(province==null || province==""){
+                $("input[name='province']").focus();
+            }else if(city==null || city==""){
+                $("input[name='city']").focus();
+            }else if(postcode==null || postcode==""){
+                $("input[name='postcode']").focus();
+            }else if(aname==null || aname==""){
+                $("input[name='aname']").focus();
+            }else if(aphone==null || aphone==""){
+                $("input[name='aphone']").focus();
+            }else if(aaddress1==null || aaddress1==""){
+                $("input[name='aaddress1']").focus();
+            }else if(astate==null || astate==""){
+                $("input[name='astate']").focus();
+            }else if(aprovince==null || aprovince==""){
+                $("input[name='aprovince']").focus();
+            }else if(acity==null || acity==""){
+                $("input[name='acity']").focus();
+            }else if(apostcode==null || apostcode==""){
+                $("input[name='apostcode']").focus();
+            }else{
+               /* var address=$("#form2").serialize();
+                var order=$("#form1").serialize();
+                $.post("lxrorder/updateOrderAdd",$("#form2").serialize(),$("#form1").serialize(),function (result) {
+                    if(result==true){
+                        layer.msg("保存成功");
+                    }else{
+                        layer.msg("保存失败");
+                    }
+                })*/
+               $.ajax({
+                    type: "post",
+                    url: "/lxrorder/updateOrderAdd",
+                    data:$("#form1").serialize(),
+                    success: function (result) {
+                        if(result!="no"){
+                            $("input[name='orderid']").val(result);
+                            $.post("lxrorder/updateAddressAdd",$("#form2").serialize(),function (result) {
+                                if(result==true){
+                                    layer.msg("保存成功");
+                                }else{
+                                    layer.msg("保存失败");
+                                }
+                            })
+                        }else{
+                            alert("异常");
+                        }
+
+
+
+                    }
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>

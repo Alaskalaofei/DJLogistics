@@ -7,6 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/soulTable.css" media="all">
 		<style type="text/css">
 			.btn-bgcolor2 {
 				margin-top: 14.4%;
@@ -31,77 +32,188 @@
 				<div class="layui-form-item">可选格式</div>
 				<div class="layui-form-item">
 					<div class="layui-inline" style="width: 300px;">
-						<select name="city" lay-verify="required">
-							<option value=""> </option>
-							<option value="">运单号码</option>
-							<option value="">参考编号</option>
-							<option value="">订单号码</option>
+						<select name="modules" id="uploadColown" lay-verify="required" lay-search="">
 						</select>
 
 					</div>
 					<div class="layui-inline" style="margin-top: -4.5%;">
-						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">保存</button>
-						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">另存为</button>
-						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2" style="background-color:#E9161E; margin-left: 40px;">删除</button>
+						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2" id="btnGo">保存</button>
+						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2" id="btnDel" style="background-color:#E9161E; margin-left: 40px;">删除</button>
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<div id="test2" class="demo-transfer"></div>
 				</div>
 				<div class="layui-inline" style="margin-top: -4.5%; position: absolute; right: 20px;">
-					<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">导出</button>
-					<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor5">取消</button>
+<!--					<button type="button" onclick="btnUpload()" class="layui-btn layui-btn-sm  btn-bgcolor2">导出</button>-->
+				<!--<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor5" id="btnclose">取消</button>-->
 				</div>
 			</form>
 		</div>
 		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
 		<script>
-			layui.use(['transfer', 'layer', 'util'], function() {
+			// 自定义模块
+			layui.config({
+				base: 'ext/',   // 模块目录
+				version: 'v1.5.4'
+			}).extend({ // 模块别名
+				soulTable: 'soulTable'
+			});
+			layui.use(['transfer', 'layer', 'util','form','table','soulTable'], function() {
 				var $ = layui.$,
 					transfer = layui.transfer,
 					layer = layui.layer,
+						form=layui.form,
+						table=layui.table,
+						soulTable = layui.soulTable,
 					util = layui.util;
 				//模拟数据
 				var data1 = [{
-					"value": "1",
-					"title": "李白"
+					"value": "oid",
+					"title": "订单编号"
 				}, {
-					"value": "2",
-					"title": "杜甫"
+					"value": "ostate",
+					"title": "订单状态"
 				}, {
-					"value": "3",
-					"title": "苏轼"
+					"value": "waybillNumber",
+					"title": "运单号码"
 				}, {
-					"value": "4",
-					"title": "李清照"
+					"value": "referenceNumber",
+					"title": "参考号码"
 				}, {
-					"value": "5",
-					"title": "鲁迅"
+					"value": "chineseName",
+					"title": "中文名"
 				}, {
-					"value": "6",
-					"title": "巴金"
+					"value": "creationTime",
+					"title": "创建时间"
 				}, {
-					"value": "7",
-					"title": "冰心"
+					"value": "totalPackages",
+					"title": "合计包数"
 				}, {
-					"value": "8",
-					"title": "矛盾"
+					"value": "totalPieces",
+					"title": "合计件数"
 				}, {
-					"value": "9",
-					"title": "贤心"
+					"value": "name",
+					"title": "寄件网点"
+				},
+				{
+					"value": "cname",
+					"title": "客户编码"
+				},
+				{
+					"value": "pname",
+					"title": "包装类型"
+				},{
+					"value": "gName",
+					"title": "货物类型"
+				},{
+					"value": "customsDeclarationMethod",
+					"title": "报关方式"
 				}]
-
 				//定义标题及数据源
 				transfer.render({
 					elem: '#test2',
-					title: ['候选文人', '获奖文人'] //自定义标题
-						,
-					data: data1,
+					title: ['全选', '全选'] //自定义标题
+					,data: data1,
 					width: 250 //定义宽度
 					,height: 310 //定义高度
+					,id:'dome1'
 				})
 
-				
+				//列表 下拉框加载
+				$("#uploadColown").ready(uploadColown);
+				function uploadColown(){
+					$("#uploadColown option").remove();
+					$("#uploadColown").append("<option value=''>选择或搜索</option>");
+					$.post("/toOrder/getUploadColown",function (result) {
+						$.each(result, function (index,item) {
+							$("#uploadColown").append("<option value='"+item.id+"'>"+item.name+"</option>");
+						})
+						form.render();
+					})
+
+				}
+				//删除
+				$("#btnDel").on("click",function () {
+					if($("#uploadColown").val()==null ||$("#uploadColown").val()==""){
+						layer.msg('请选择要删除的格式');
+					}else{
+						if(confirm("确认要删除吗?")){
+							$.post("/toOrder/delColown",{'id':$("#uploadColown").val()},function (result) {
+								if(result==true){
+									form.render();
+									layer.msg('删除成功');
+									uploadColown();
+									parent.daochu2();
+								}else{
+									layer.msg('删除失败');
+								}
+							})
+						}
+					}
+
+				})
+
+				//保存
+				$("#btnGo").on("click",function () {
+					var getData = transfer.getData('dome1');
+					if(getData.length>0){
+						layer.open({
+							id:1,
+							type: 1,
+							title:'请输入名称',
+							area:['300px','150px'],
+							style: 'width:120%;height:auto;',
+							content: "<div style='display:flex;justify-content:center;'><input id='area' autocomplete='off' style='width:100%;height:45px;'/></div>",
+							btn:['保存','取消'],
+							yes:function (index,layero) {
+								//获取输入框里面的值
+								var closeContent = $("#area").val();
+								if(closeContent==null ||closeContent=='' ){
+									layer.msg("请确认是否填写");
+								}else{
+									/*alert(JSON.stringify(getData));
+									layer.msg(closeContent);
+									layer.close(index);*/
+									//新增导出列表
+									$.post("toOrder/getupload",{'uname':closeContent},function (result) {
+										if(result>0){
+											//向对象数组添加新的属性
+											getData.forEach(tem => {
+												tem.uploadid = result;
+											})
+											var data=JSON.stringify(getData);
+											$.ajax({
+												type: "post",
+												url: "toOrder/addcolumn",
+												data: data,
+												dataType: "json",
+												contentType: 'application/json;charset=utf-8',
+												success: function (res) {
+													if(res==true){
+														layer.close(index);
+														form.render();
+														layer.msg('保存成功');
+														uploadColown();
+														parent.daochu2();
+													}else{
+														layer.msg('保存失败');
+													}
+												}
+											});
+										}
+									})
+								}
+							},
+							no:function (index,layero) {
+								layer.close(index);
+							}
+						});
+					}else{
+						layer.msg("请选择列");
+					}
+
+				})
 
 			});
 		</script>

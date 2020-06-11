@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csdj.mapper.LxrToOrder">
+
+    <!--新增上传-->
+    <insert id="addOrders" parameterType="Orderupload">
+        INSERT INTO `orderupload`(`name`,`date`,state,`row`,error,customerid)
+        VALUES(#{name},#{date},#{state},#{row},#{error},#{customerid});
+    </insert>
+    <!--上传查询-->
+    <select id="getOrders" resultType="Orderupload">
+        SELECT * FROM orderupload WHERE ouid=(SELECT MAX(ouid) FROM orderupload)
+    </select>
+
+<!--    批量新增订单-->
+    <insert id="addOrdersList" parameterType="java.util.List">
+        INSERT INTO `order`(`oid`,`state`,`waybill_number`,`reference_number`,`billing_status`,`order_bag_no`,`order_date`,`mailing_outlets`,`mailing_date`,`packing_type`,`goods_type`,`chinese_name`,`customs_declaration_method`,`delivery_outlets`,`order_data_source`,`creation_time`,`created_by`,`customer_id`,`total_actualweight`,`total_votes`,`total_pieces`,`total_packages`,`specify_the_route`,`take_the_cargo_route`) VALUES
+        <foreach collection="list" separator=","  item="item">
+            (#{item.oid},#{item.state},#{item.waybillNumber},#{item.referenceNumber},#{item.billingStatus},#{item.orderBagNo},#{item.orderDate},#{item.mailingOutlets},#{item.mailingDate},#{item.packingType},#{item.goodsType},#{item.chineseName},#{item.customsDeclarationMethod},#{item.deliveryOutlets},#{item.orderDataSource},#{item.creationTime},#{item.createdBy},#{item.customerId},#{item.totalActualweight},#{item.totalVotes},#{item.totalPieces},#{item.totalPackages},#{item.specifyTheRoute},#{item.takeTheCargoRoute})
+        </foreach>
+    </insert>
+<!--    批量新增导出列表-->
+    <insert id="addColown"  parameterType="java.util.List">
+        INSERT INTO `column` (`value`,`title`,`uploadid`)VALUES
+        <foreach collection="list" separator=","  item="item">
+            (#{item.value},#{item.title},#{item.uploadid})
+        </foreach>
+    </insert>
+<!--    新增列名称表-->
+    <insert id="addUploadColown" parameterType="Uploadcolumn">
+        <selectKey resultType="int" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `uploadcolumn`(`name`)VALUE(#{name})
+    </insert>
+<!--    查询列表-->
+    <select id="getUploadColown" resultType="Uploadcolumn">
+        SELECT * FROM `uploadcolumn`
+    </select>
+
+    <!--    查询列表byid-->
+    <select id="getColownById" resultType="Column">
+        SELECT * FROM `column` where uploadid=#{uploadid}
+    </select>
+<!--    批量删除列-->
+    <delete id="delColownByUploadid">
+        delete  from `column` where uploadid=#{uploadid}
+
+    </delete>
+
+<!--    根据id删除列名称-->
+    <delete id="delUploadColownById">
+        delete  from uploadcolumn where id=#{id}
+    </delete>
+
+    <select id="login" resultType="SysUser">
+        select * from sys_user where `username`=#{username} and `password`=#{password}
+    </select>
+</mapper>

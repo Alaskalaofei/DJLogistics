@@ -6,7 +6,8 @@
 		<link rel="icon" href="images/favicon.ico">
 		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
 		<link rel="stylesheet" href="css/layuimini.css" media="all">
-		<link rel="stylesheet" href="css/layui-v2.5.4/css/soulTable.css" />
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/soulTable.css" media="all">
+<!--		<link rel="stylesheet" href="css/layui-v2.5.4/css/soulTable.css" />-->
 		<style type="text/css">
 					.btn-bgcolor {
 						background-color: #286ED6;
@@ -35,59 +36,52 @@
 					<form class="layui-form layui-form-pane" action="">
 						<div class="layui-form-item">
 							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">选择发货</button>
+								<button type="button" id="fahuo" class="layui-btn layui-btn-sm  btn-bgcolor"  lay-event="getCheckData">选择发货</button>
 							</div>
 							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">全部收货</button>
+								<button type="button" id="shouhuo" class="layui-btn layui-btn-sm  btn-bgcolor">全部收货</button>
 							</div>
+
 							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">面单打印</button>
-							</div>
-							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">标签打印</button>
-							</div>
-							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">预报修改</button>
+								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor" onclick="updateOrder()">预报修改</button>
 							</div>
 		
-							<div class="layui-inline">
+							<!--<div class="layui-inline">
 								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">批量修改</button>
-							</div>
+							</div>-->
 							<div class="layui-inline">
-								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor" style="width: 80px; background-color: #E9161E;">取消订单</button>
+								<button type="button" id="quxiao" class="layui-btn layui-btn-sm  btn-bgcolor" style="width: 80px; background-color: #E9161E;">取消订单</button>
 							</div>
 							<ul class="layui-nav layui-inline" style="width: 80px; height: 30px; background-color: #286ED6; text-align: center;">
 								<li class="layui-nav-item" style="line-height: 30px; margin-right: 10px;">
 									<a href="javascript:;" style="color: #fff; font-size: 10px;">导出</a>
-									<dl class="layui-nav-child">
-										<dd>
-											<a href="javascript:;" class="login-out" id="zidingyi">自定义导出</a>
-										</dd>
+									<dl class="layui-nav-child" id="daochu" >
+
 									</dl>
 								</li>
 								<li class="layui-nav-item layuimini-select-bgcolor mobile layui-hide-xs">
 									<a href="javascript:;" data-bgcolor="配色方案"><i class="fa fa-ellipsis-v"></i></a>
 								</li>
 							</ul>
-							<div class="layui-inline">
+							<!--<div class="layui-inline">
 								<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">单号导出</button>
-							</div>
+							</div>-->
 						</div>
 						<!-- 导航end -->
 						<!-- 搜索start -->
 						<div class="layui-form-item">
 							<div class="layui-inline" style="width: 150px;">
 								<div class="layui-form-item">
-									<select name="city" lay-verify="required">
-										<option value="">运单号码</option>
-										<option value="">参考编号</option>
-										<option value="">订单号码</option>
+									<select  id="select1" lay-verify="required">
+										<option value="运单号码">运单号码</option>
+										<option value="参考编号">参考编号</option>
+										<option value="订单号码">订单号码</option>
 									</select>
 								</div>
 								<div class="layui-form-item" style="margin-top:-11% !important;">
-									<textarea class="layui-textarea"></textarea>
+									<textarea class="layui-textarea" id="ttArea"></textarea>
 									<div class="layui-form-item">
-										<button type="button" class="layui-btn layui-btn-sm" style="width: 9.375rem; margin-top: 2px;"> 清空</button>
+										<button type="button" id="btnClear" class="layui-btn layui-btn-sm" style="width: 9.375rem; margin-top: 2px;"> 清空</button>
 									</div>
 								</div>
 							</div>
@@ -97,7 +91,7 @@
 										订单日期
 									</div>
 									<div class="layui-form-item" style="width: 280px;">
-										<input type="text" class="layui-input" id="test16" placeholder="开始时间 到 结束时间">
+										<input type="text" class="layui-input" autocomplete="off" id="test16" placeholder="开始时间 到 结束时间">
 									</div>
 								</div>
 								<div class="layui-inline">
@@ -105,11 +99,7 @@
 										寄件网点
 									</div>
 									<div class="layui-form-item" style="width: 150px;">
-										<select name="city" lay-verify="required">
-											<option value=""></option>
-											<option value="">运单号码</option>
-											<option value="">参考编号</option>
-											<option value="">订单号码</option>
+										<select name="modules" id="outlet" lay-verify="required" lay-search="">
 										</select>
 									</div>
 								</div>
@@ -120,17 +110,18 @@
 									<div class="layui-form-item">
 										<div class="layui-inline">
 											<div class="layui-input-inline" style="width: 150px;">
-												<input type="search" name="keyword" autocomplete="off" class="layui-input" />
+											<!--	<input type="search" name="keyword" autocomplete="off" class="layui-input" />
 												<a href="javascript:;"><i class="layui-icon" style="position: absolute;top:12px;right: 8px;">&#xe615;</i></a>
+											-->
+												<select name="modules" id="customer" lay-verify="required" lay-search="">
+												</select>
 											</div>
 											<div class="layui-input-inline" style="width: 200px; ">
 												<input type="text" name="price_max" autocomplete="off" disabled="" class="layui-input">
 											</div>
 										</div>
 									</div>
-		
 								</div>
-		
 							</div>
 							<div class="layui-form-item" id="luxian">
 								<div class="layui-inline">
@@ -138,11 +129,7 @@
 										走货路线
 									</div>
 									<div class="layui-form-item" style="width: 150px;">
-										<select name="city" lay-verify="required">
-											<option value=""></option>
-											<option value="">运单号码</option>
-											<option value="">参考编号</option>
-											<option value="">订单号码</option>
+										<select name="modules" id="luxian1" lay-verify="required" lay-search="">
 										</select>
 									</div>
 								</div>
@@ -151,26 +138,21 @@
 										指定路线
 									</div>
 									<div class="layui-form-item" style="width: 150px;">
-										<select name="city" lay-verify="required">
-											<option value=""></option>
-											<option value="">运单号码</option>
-											<option value="">参考编号</option>
-											<option value="">订单号码</option>
+										<select name="modules" id="luxian2" lay-verify="required" lay-search="">
 										</select>
 									</div>
 		
 								</div>
 								<div class="layui-inline">
-									<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">查询</button>
-									<button type="button" class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor3">重置</button>
+									<button type="button" id="btnGo" class="layui-btn layui-btn-sm  btn-bgcolor2">查询</button>
+									<button type="reset"   class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor3">重置</button>
 								</div>
-		
 							</div>
 						</div>
 						<!-- 搜索end -->	
 		
 						<!-- 显示数据start -->
-						  <table class="layui-hide" id="myTable"></table>
+						  <table class="layui-hide" id="myTable" lay-filter="test"></table>
 						<!-- 显示数据end -->
 					</form>
 				</div>
@@ -178,16 +160,17 @@
 				<script>
 					// 自定义模块
 					layui.config({
-						base: '../ext/',   // 模块目录
+						base: 'ext/',   // 模块目录
 						version: 'v1.5.4'
-					}).extend({                         // 模块别名
+					}).extend({ // 模块别名
 						soulTable: 'soulTable'
 					});
-					layui.use(['element', 'layer', 'form', 'laydate','table'], function() {
+					layui.use(['element', 'layer', 'form', 'laydate','table','soulTable'], function() {
 						var $ = layui.jquery,
 							element = layui.element,
 							layer = layui.layer,
 							form = layui.form,
+							soulTable = layui.soulTable,
 							table = layui.table,
 							laydate = layui.laydate;
 						//日期
@@ -197,27 +180,26 @@
 							range: '到',
 							format: 'yyyy-M-d H:m:s'
 						});
-						table.render({
+						var dataNum=0;
+						var userData=[];
+						var myTable = table.render({
 							elem: '#myTable'
-							,url: '#'
-							,toolbar: true
-							,height: 400
-							,totalRow: true
-							,contextmenu: {
+							,url: '/lxrorder/getOrderAll'
+							,height: 320
+							,overflow: 'tips'
+							/*,contextmenu: {
 								// 表格内容右键菜单配置
 								body: [
 									{
 										name: '是否选中',
 										icon: 'layui-icon layui-icon-theme',
 										children: [
-											
 											{
 												name: '选中此条',
 												click: function(obj) {
-													obj.trElem.css('background', '#e67664');
-													//userData.push(JSON.stringify(obj.row.bregistered));
-													//alert(JSON.stringify(obj.row.bphone));
-													var data=obj.row.bphone;
+
+													obj.trElem.css('background', '#90CD00');
+													var data=obj.row.oid;
 													var bool=true;
 													if(userData.length>0){
 														userData.forEach(function (result) {
@@ -231,7 +213,6 @@
 													}
 													if(bool==true){
 														userData.push(data)
-											
 													}
 													layer.msg('选择成功！');
 												}
@@ -240,7 +221,7 @@
 											{
 												name: '取消选择',
 												click: function(obj) {
-													var data=obj.row.bphone;
+													var data=obj.row.oid;
 													obj.trElem.css('background', '#fff');
 													userData.forEach(function (result,index) {
 														if(data.indexOf(result)!=-1){
@@ -252,28 +233,69 @@
 											}
 										]
 									}
-								],
-							}
+								]
+							}*/
 							,cols:  [
 								[
-									{field:'rid', title:'档案编号', width:100, fixed: 'left', unresize: true, sort: true}
-									,{field:'bname', title:'姓名', width:120}
-									,{field:'bcertificate', title:'身份证号码' ,width:200}
-									,{field:'bage', title:'年龄',width:80}
-									,{field:'birth', title:'出生日期', width:130, sort: true}
-									,{field:'bregistered', title:'地址',width:130, sort: true}
-									,{field:'bphone', title:'手机号码'}
+									{type:'checkbox',fixed: 'left'}
+									,{field:'oid', title:'订单编号', width:120, unresize: true, sort: true}
+									,{field:'ostate', title:'订单状态', width:120,templet:'<a>{{d.orderstate.ostate}}</a>'}
+									,{field:'waybillNumber', title:'运单号码' , width:120}
+									,{field:'referenceNumber', title:'参考号码', width:120}
+									,{field:'chineseName', title:'中文名',  sort: true, width:120}
+									,{field:'creationTime', title:'创建时间', sort: true, width:120}
+									,{field:'totalPackages', title:'合计包数', width:120}
+									,{field:'totalPieces', title:'合计件数', width:120}
+									,{field:'name', title:'寄件网点', width:120,templet:'<a>{{d.outlet.name}}</a>'}
+									,{field:'cname', title:'客户编码', width:120,templet:'<a>{{d.customer.name}}</a>'}
+									,{field:'pname', title:'包装类型', width:120,templet:'<a>{{d.packagingtype.pname}}</a>'}
+									,{field:'gName', title:'货物类型 ', width:120,templet:'<a>{{d.goodsTypes.gName}}</a>'}
+									,{field:'customsDeclarationMethod', title:'报关方式', width:120,templet:'<a>{{d.customsdeclarationmethod.customsDeclarationMethod}}</a>'}
 								]
 							],
 							limit:5
 							,page:true
 							,id:"tableData"
+							,limits:[5,7,10,15]
 							,where: { map: "all" }
 							,done: function () {
 								soulTable.render(this)
 							}
-						})
-						$("#zidingyi").on("click",function(){
+						});
+						//导出下拉查询
+						$("#daochu").ready(daochu);
+						function daochu(){
+							$("#daochu dd").remove();
+							$.post("/toOrder/getUploadColown",function (result) {
+								$.each(result, function (index,item) {
+									$("#daochu").append("<dd><a href=\"javascript:;\" class=\"login-out uploads\" onclick='upload("+item.id+")' >"+item.name+"</a></dd>");
+								})
+							})
+							$("#daochu").append("<dd><a href=\"javascript:;\" class=\"login-out\" onclick='openCustom()' id=\"zidingyi\">自定义导出</a></dd>");
+							form.render();
+						}
+						window.daochu2=function(){
+							daochu();
+						}
+						//自定义 自定义导出
+						window.upload=function(id){
+							var data=[];
+							$.post("/toOrder/getColownById",{'id':id},function (res) {
+								$.each(res,function (index,item) {
+									data.push(item.value);
+								})
+								soulTable.export(myTable, {
+									filename: 'order.xlsx',
+									columns: data
+								});
+							})
+
+						}
+						//自定义导出
+						/*$("#zidingyi").on("click",function(){
+							openCustom();
+						})*/
+						window.openCustom=function(){
 							layer.open({
 								type:2,
 								content:'custom.html',
@@ -282,13 +304,204 @@
 								success: function (layero, index) {   //弹出层弹出后的回调函数
 									//var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
 									//iframe.child(data.id);   // 向子页面的全局函数child传参
-								},			
+								},
 								end:function(){     //弹出层销毁后的事件
 									//table.reload("userTable");//增加成功后刷新表格
 								}
-						  })
+							})
+						}
+						//网点下拉框加载
+						$("#outlet").ready(outlet);
+						function outlet(){
+							$("#outlet option").remove();
+							$("#outlet").append("<option value=''>选择或搜索</option>");
+							$.post("/lxrorder/getOutletAll",function (result) {
+								$.each(result, function (index,item) {
+									$("#outlet").append("<option value='"+item.oid+"'>"+item.name+"</option>");
+								})
+								form.render();
+							})
+
+						}
+						//路线下拉框加载
+						$("#luxian2").ready(luxian2);
+						function luxian2(){
+							$("#luxian2 option").remove();
+							$("#luxian2").append("<option value=''>选择或搜索</option>");
+							$("#luxian1 option").remove();
+							$("#luxian1").append("<option value=''>选择或搜索</option>");
+							$.post("/lxrorder/getSpecificroute",function (result) {
+								$.each(result, function (index,item) {
+									$("#luxian1").append("<option value='"+item.id+"'>"+item.routeName+"</option>");
+									$("#luxian2").append("<option value='"+item.id+"'>"+item.routeName+"</option>");
+								})
+								form.render();
+							})
+
+						}
+						//客户下拉框加载
+						$("#customer").ready(customer);
+						function customer(){
+							$("#customer option").remove();
+							$("#customer").append("<option value=''>选择或搜索</option>");
+							$.post("/lxrorder/getCustomer",function (result) {
+								var data=eval(result);
+								$.each(result, function (index,item) {
+									$("#customer").append("<option value='"+item.cid+"'>"+item.name+"</option>");
+								})
+								form.render();
+							})
+						}
+						//清空按钮
+						$("#btnClear").on("click",function () {
+							$("#ttArea").val("");
 						})
-						
+
+						//搜索按钮点击事件
+						$("#btnGo").on("click",function () {
+							table.reload('tableData',{
+								page:{curr:1},
+								where:{'dates':$("#test16").val()
+									,'luxian1':$("#luxian1").val()
+									,'luxian2':$("#luxian2").val()
+									,'outlet':$("#outlet").val()
+									,'customer':$("#customer").val()
+									,'select1':$("#select1").val()
+									,'ttArea':$("#ttArea").val()
+									}
+							})
+						})
+						//发货
+						$("#fahuo").on("click",function () {
+
+							var checkStatus = table.checkStatus('tableData');
+							var ids = [];
+							$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+								if(o.orderstate.oid==1){
+									ids.push(o.oid);
+								}
+
+							});
+							if (ids.length <1) {
+								layer.msg('请选择至少一条待收货的数据');
+								return false;
+							}else{
+								if(confirm("确认要发货吗?")){
+									$.ajax({
+										type: "post",
+										url: "lxrorder/updateStateByOid",
+										data: JSON.stringify(ids),
+										dataType: "json",
+										contentType: 'application/json;charset=utf-8',
+										success: function (res) {
+											if(res==true){
+												layer.msg(ids.length+'条商品发货成功');
+												table.reload("tableData");
+											}else{
+												layer.msg('发货失败');
+											}
+										}
+									});
+								}
+							}
+						});
+						//修改预报
+						window.updateOrder=function(){
+							var checkStatus = table.checkStatus('tableData');
+							var ids = [];
+							$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+								if(o.orderstate.oid !=2 && o.orderstate.oid !=4 && o.orderstate.oid !=7){
+									ids.push(o.oid);
+								}
+							});
+							if (ids.length <1) {
+								layer.msg('请选择一条数据');
+								return false;
+							}else{
+								if(ids.length>1){
+									layer.msg('请选择一条非【已签收,已收货,已取消】数据');
+								}else{
+									layer.open({
+										type:2,
+										content:'updateOrder.html',
+										area:['700px','500px'],
+										title:'预报修改',
+										success: function (layero, index) {   //弹出层弹出后的回调函数
+											var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+											iframe.child(ids[0]);   // 向子页面的全局函数child传参
+										},
+										end:function(){     //弹出层销毁后的事件
+											//table.reload("userTable");//增加成功后刷新表格
+										}
+									})
+								}
+							}
+						}
+						//收货
+						$("#shouhuo").on("click",function () {
+							var checkStatus = table.checkStatus('tableData');
+							var ids = [];
+							$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+								if(o.orderstate.oid !=1){
+									ids.push(o.oid);
+								}
+							});
+							if (ids.length <1) {
+								layer.msg('请选择至少一条未发货数据');
+								return false;
+							}else{
+								if(confirm("确认要全部收货吗?")){
+									$.ajax({
+										type: "post",
+										url: "lxrorder/updateOstateByOid",
+										data: JSON.stringify(ids),
+										dataType: "json",
+										contentType: 'application/json;charset=utf-8',
+										success: function (res) {
+											if(res==true){
+												layer.msg(ids.length+'条商品收货成功');
+												table.reload("tableData");
+											}else{
+												layer.msg('收货失败');
+											}
+										}
+									});
+								}
+							}
+						});
+
+						//取消订单
+						$("#quxiao").on("click",function () {
+							var checkStatus = table.checkStatus('tableData');
+							var ids = [];
+							$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+								if(o.orderstate.oid !=4  && o.orderstate.oid !=2){
+									ids.push(o.oid);
+								}
+							});
+							if (ids.length <1) {
+								layer.msg('请选择未签收或已收货以外的订单');
+								return false;
+							}else{
+								if(confirm("确认要取消订单吗?")){
+									$.ajax({
+										type: "post",
+										url: "lxrorder/updatequxiao",
+										data: JSON.stringify(ids),
+										dataType: "json",
+										contentType: 'application/json;charset=utf-8',
+										success: function (res) {
+											if(res==true){
+												layer.msg(ids.length+'条商品已取消订单');
+												table.reload("tableData");
+											}else{
+												layer.msg('取消订单失败');
+											}
+										}
+									});
+								}
+							}
+						});
 					});
 				</script>
 			</body>

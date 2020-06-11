@@ -22,8 +22,8 @@
 	</head>
 	<body>
 		<div style="margin-left: 20px;">
-			<form class="layui-form" action="">
-				<div class="layui-form-item">
+			<form class="layui-form" enctype="multipart/form-data" method="post">
+				<!--<div class="layui-form-item">
 					<span style="color: red; font-size: 30px; position: relative; top: 13px;">*</span> 导入模板
 				</div>
 				<div class="layui-form-item mar-top">
@@ -38,64 +38,63 @@
 						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">模板下载</button>
 						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">自定义格式</button>
 					</div>
-				</div>
+				</div>-->
 				<div class="layui-form-item">
 					<span style="color: red; font-size: 30px; position: relative; top: 13px;">*</span>客户
 				</div>
 				<div class="layui-form-item mar-top">
 					<div class="layui-inline ">
-						<select name="city" lay-verify="required">
-							<option value="">运单号码</option>
-							<option value="">参考编号</option>
-							<option value="">订单号码</option>
+						<select name="customer" id="customer" lay-verify="required" lay-search="">
 						</select>
 					</div>
 					<div class="layui-inline ">
-						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">导入</button>
+						<input type="file" id="files" name="file">
+						<button type="button" id="btnGo" class="layui-btn layui-btn-sm  btn-bgcolor">导入</button>
+						<a href="file/order.xls" download="order.xls">下载模板</a>
 					</div>
-					<div class="layui-inline " style="color: red; font-size: 9px;">
+					<div class="layui-inline " style="color: red; font-size: 11px;">
+						<br/><br/>
 						<div class="layui-form-item">1、导入文件格式支持.xls、.xlsx，文件大小不超过10M</div>
 						<div class="layui-form-item">2、导入时，请确认导入模板中表头的完整性；如单个运单最多的Invoice数据有10条，需有10组对应表头</div>
 					</div>
 				</div>
-
-				<div class="layui-form-item mar-top">
+			<!--	<div class="layui-form-item mar-top">
 					<div class="layui-inline">
 						<input type="checkbox" name="like1[write]" lay-skin="primary" title="自动获取运单号" checked="">
 					</div>
-				</div>
+				</div>-->
 				<!--  -->
 				<div class="layui-form-item">
 					<div class="layui-inline">
 						<div class="layui-form-item">批次号</div>
-						<div class="layui-form-item"> <input type="text" class="layui-input" /></div>
+						<div class="layui-form-item"> <input type="text" id="ouid" class="layui-input" /></div>
 					</div>
 					<div class="layui-inline">
 						<div class="layui-form-item">导入文件</div>
-						<div class="layui-form-item"><input type="text" class="layui-input" /></div>
+						<div class="layui-form-item"><input type="text" id="names" class="layui-input" /></div>
 					</div>
 					<div class="layui-inline">
 						<div class="layui-form-item">导入时间</div>
-						<div class="layui-form-item" style="width: 150px;"><input type="text" class="layui-input" /></div>
+						<div class="layui-form-item" style="width: 150px;"><input type="text" id="date" class="layui-input" /></div>
 					</div>
 					<div class="layui-inline">
 						<div class="layui-form-item">状态</div>
-						<div class="layui-form-item" style="width: 80px;"><input type="text" class="layui-input" /></div>
+						<div class="layui-form-item" style="width: 80px;"><input type="text" id="state" class="layui-input" /></div>
 					</div>
 					<div class="layui-inline">
 						<div class="layui-form-item">总行数</div>
-						<div class="layui-form-item" style="width: 110px;"><input type="text" class="layui-input" /></div>
+						<div class="layui-form-item" style="width: 110px;"><input type="text" id="row" class="layui-input" /></div>
 					</div>
 					<div class="layui-inline">
 						<div class="layui-form-item">错误行数</div>
-						<div class="layui-form-item" style="width: 110px;"><input type="text" class="layui-input" /></div>
+						<div class="layui-form-item" style="width: 110px;"><input type="text" id="err" class="layui-input" /></div>
 					</div>
-					<div class="layui-inline">
+					<!--<div class="layui-inline">
 						<div class="layui-form-item">
 						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">下载文件</button>
 						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor2">历史日志</button>
 					</div>
-					</div>
+					</div>-->
 				</div>
 				<div class="layui-form-item">
 					<!-- 显示数据start -->
@@ -113,6 +112,7 @@
 			}).extend({                         // 模块别名
 				soulTable: 'soulTable'
 			});
+
 			layui.use(['element', 'layer', 'form', 'laydate','table'], function() {
 				var $ = layui.jquery,
 					element = layui.element,
@@ -122,81 +122,76 @@
 					laydate = layui.laydate;
 				table.render({
 					elem: '#myTable'
-					,url: '#'
-					,toolbar: true
+					,url: '/toOrder/getdata'
 					,height: 400
-					,totalRow: true
-					,contextmenu: {
-						// 表格内容右键菜单配置
-						body: [
-							{
-								name: '是否选中',
-								icon: 'layui-icon layui-icon-theme',
-								children: [
-									
-									{
-										name: '选中此条',
-										click: function(obj) {
-											obj.trElem.css('background', '#e67664');
-											//userData.push(JSON.stringify(obj.row.bregistered));
-											//alert(JSON.stringify(obj.row.bphone));
-											var data=obj.row.bphone;
-											var bool=true;
-											if(userData.length>0){
-												userData.forEach(function (result) {
-													if(data.indexOf(result)!=-1){
-														bool=false;
-													}
-												})
-											}else{
-												bool=false;
-												userData.push(data)
-											}
-											if(bool==true){
-												userData.push(data)
-									
-											}
-											layer.msg('选择成功！');
-										}
-									}
-									,
-									{
-										name: '取消选择',
-										click: function(obj) {
-											var data=obj.row.bphone;
-											obj.trElem.css('background', '#fff');
-											userData.forEach(function (result,index) {
-												if(data.indexOf(result)!=-1){
-													userData.splice(index,1);
-												}
-											})
-											layer.msg('已取消选择！');
-										}
-									}
-								]
-							}
-						],
-					}
 					,cols:  [
 						[
-							{field:'rid', title:'档案编号', width:100, fixed: 'left', unresize: true, sort: true}
-							,{field:'bname', title:'姓名', width:120}
-							,{field:'bcertificate', title:'身份证号码' ,width:200}
-							,{field:'bage', title:'年龄',width:80}
-							,{field:'birth', title:'出生日期', width:130, sort: true}
-							,{field:'bregistered', title:'地址',width:130, sort: true}
-							,{field:'bphone', title:'手机号码'}
+							,{field:'oid', title:'订单编号', width:120}
+							,{field:'waybillNumber', title:'运单号码' , width:120}
+							,{field:'referenceNumber', title:'参考号码', width:120}
+							,{field:'chineseName', title:'中文名', width:120}
+							,{field:'creationTime', title:'创建时间'}
 						]
 					],
 					limit:5
-					,page:true
 					,id:"tableData"
-					,where: { map: "all" }
-					,done: function () {
-						soulTable.render(this)
-					}
 				})
-				
+
+				$("#btnGo").on("click",function () {
+					var custpmre=$("#customer").val();
+					if(custpmre=="" || custpmre==null){
+						layer.msg("请选择客户");
+					}else{
+						var file_obj = document.getElementById('files').files[0];
+						console.log(file_obj);
+						if (typeof (file_obj) == "undefined") {
+							layer.msg("请选择需要导入的搜索词文件");
+							return;
+						}
+						var fd = new FormData();
+						fd.append('customer',custpmre);
+						fd.append("file",file_obj);
+						$.ajax({
+							url: '/toOrder/getexl',
+							type: 'post',
+							data: fd,
+							processData: false,  //tell jQuery not to process the data
+							contentType: false,  //tell jQuery not to set contentType
+							success: function (res) {
+								if(res.bool==true){
+									$("#ouid").val(res.res.ouid);
+									$("#names").val(res.res.name);
+									$("#row").val(res.res.row);
+									$("#err").val(res.res.error);
+									$("#date").val(res.res.date);
+									if(res.res.state==0){
+										$("#state").val('成功');
+									}else{
+										$("#state").val('失败');
+									}
+									table.reload("tableData");
+								}else{
+									layer.msg('上传失败');
+								}
+							}
+						})
+					}
+
+
+				});
+				//客户下拉框加载
+				$("#customer").ready(customer);
+				function customer(){
+					$("#customer option").remove();
+					$("#customer").append("<option value=''>选择或搜索</option>");
+					$.post("/lxrorder/getCustomer",function (result) {
+						var data=eval(result);
+						$.each(result, function (index,item) {
+							$("#customer").append("<option value='"+item.cid+"'>"+item.name+"</option>");
+						})
+						form.render();
+					})
+				}
 			});
 		</script>
 
