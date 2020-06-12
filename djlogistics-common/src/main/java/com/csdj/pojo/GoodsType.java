@@ -4,8 +4,15 @@ package com.csdj.pojo;
 public class GoodsType {
 
   private Integer gid;
-  private String gName;
+  private String gname;
 
+  public String getGname() {
+    return gname;
+  }
+
+  public void setGname(String gname) {
+    this.gname = gname;
+  }
 
   public Integer getGid() {
     return gid;
@@ -13,15 +20,6 @@ public class GoodsType {
 
   public void setGid(Integer gid) {
     this.gid = gid;
-  }
-
-
-  public String getGName() {
-    return gName;
-  }
-
-  public void setGName(String gName) {
-    this.gName = gName;
   }
 
 }

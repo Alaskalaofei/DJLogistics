@@ -18,7 +18,7 @@
 								袋号
 							</div>
 							<div class="layui-form-item" style="width: 160px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								<input type="text" name="plateNo" id="plateNo" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 								<div class="layui-inline">
@@ -26,7 +26,7 @@
 								清关袋号
 							</div>
 							<div class="layui-form-item" style="width: 160px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								<input type="text" name="customsClearanceBagNo" id="customsClearanceBagNo" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -34,11 +34,7 @@
 								装袋策略
 							</div>
 							<div class="layui-form-item" style="width: 160px;">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
+								<select name="baggingStrategy" id="baggingStrategy" lay-verify="required">
 								</select>
 							</div>
 						</div>
@@ -47,11 +43,8 @@
 								派件网点
 							</div>
 							<div class="layui-form-item" style="width: 160px;">
-								<select name="city" lay-verify="required">
+								<select name="deliveryOutlets" id="deliveryOutlets" lay-verify="required">
 									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
 								</select>
 							</div>
 						</div>
@@ -63,7 +56,9 @@
 								走货路线（可多选）
 							</div>
 							<div class="layui-form-item" id="aa" style="width: 680px;">
-
+								<select name="takeTheCargoRoute" id="takeTheCargoRoute" lay-verify="required">
+									<option value=""></option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -78,13 +73,13 @@
 									</ul>
 									<div class="layui-tab-content">
 										<div class="layui-tab-item layui-show">
-											<textarea name="desc" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+											<textarea name="countryCode" id="countryCode" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
 										</div>
 										<div class="layui-tab-item">
-											<textarea name="desc" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+											<textarea name="simplifiedName" id="simplifiedName" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
 										</div>
 										<div class="layui-tab-item">
-											<textarea name="desc" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
+											<textarea name="englishName" id="englishName" style="width: 670px;height: 200px;" placeholder="请输入内容" class="layui-textarea"></textarea>
 										</div>
 									</div>
 								</div>
@@ -98,13 +93,13 @@
 							</div>
 							<div class="layui-form-item">
 								<div class="layui-inline">
-									<input type="text" name="title" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" name="restrictedWeightPerTicket1" id="restrictedWeightPerTicket1" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 								<div class="layui-inline">
 									<span style="color: red;">~</span>
 								</div>
 								<div class="layui-inline">
-									<input type="text" name="title" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" name="restrictedWeightPerTicket2" id="restrictedWeightPerTicket2" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -114,13 +109,13 @@
 							</div>
 							<div class="layui-form-item">
 								<div class="layui-inline">
-									<input type="text" name="title" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" name="limitedValueOfSingleTicket1" id="limitedValueOfSingleTicket1" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 								<div class="layui-inline">
 									<span style="color: red;">~</span>
 								</div>
 								<div class="layui-inline">
-									<input type="text" name="title" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
+									<input type="text" name="limitedValueOfSingleTicket2" id="limitedValueOfSingleTicket2" style="width: 60px;" required lay-verify="required" autocomplete="off" class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -129,11 +124,8 @@
 								报关方式
 							</div>
 							<div class="layui-form-item" style="width: 150px;">
-								<select name="city" lay-verify="required">
+								<select name="customsDeclarationMethod" id="customsDeclarationMethod" lay-verify="required">
 									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
 								</select>
 							</div>
 						</div>
@@ -142,11 +134,8 @@
 								货物类型
 							</div>
 							<div class="layui-form-item" style="width: 150px;">
-								<select name="city" lay-verify="required">
+								<select name="goodsType" id="goodsType" lay-verify="required">
 									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
 								</select>
 							</div>
 						</div>
@@ -157,7 +146,7 @@
 								目的机场代码
 							</div>
 							<div class="layui-form-item" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								<input type="text" name="destinationAirportCode" id="destinationAirportCode" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -165,7 +154,7 @@
 								邮包互换局
 							</div>
 							<div class="layui-form-item" style="width: 200px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								<input type="text" name="parcelExchangeOffice" id="parcelExchangeOffice" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -173,13 +162,13 @@
 								备注
 							</div>
 							<div class="layui-form-item" style="width: 250px;">
-								<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+								<input type="text" name="remarks" id="remarks" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline" style="margin-top: -5px;">
-							<button type="button" class="layui-btn  layui-btn-sm" style="background-color: #286ED6;">保持并继续</button>
-							<button type="button" class="layui-btn  layui-btn-sm" style="background-color: #286ED6;">保存</button>
-							<button type="button" class="layui-btn  layui-btn-sm" style="background-color: #A7A9AD;">返回</button>
+							<button type="button" class="layui-btn  layui-btn-sm" lay-submit style="background-color: #286ED6;" id="save_exit">保持并退出</button>
+							<button type="button" class="layui-btn  layui-btn-sm" lay-submit style="background-color: #286ED6;" id="save">保存</button>
+							<button type="button" class="layui-btn  layui-btn-sm" style="background-color: #A7A9AD;" id="exit">返回</button>
 						</div>
 					</div>
 				</div>
@@ -194,30 +183,88 @@
 			var layer = layui.layer;
 			var element = layui.element;
 			var form = layui.form;
-			var demo1 = xmSelect.render({
-				el: '#aa',
-				language: 'zn',
-				data: [{
-						name: '张三',
-						value: 1
-					},
-					{
-						name: '李四',
-						value: 2
-					},
-					{
-						name: '王五',
-						value: 3
-					},
-				]
-			})
-			document.getElementById('demo1-getValue').onclick = function() {
-				//获取当前多选选中的值
-				var selectArr = demo1.getValue();
-				document.getElementById('demo1-value').innerHTML = JSON.stringify(selectArr, null, 2);
+
+			function addBagging(i){
+				$.ajax({
+					url:"/bagging/addBagging",
+					type:"post",
+					dataType:'text',
+					data:$("form").serialize(),
+					success:function (result) {
+						if(result>0){
+							alert("新增成功")
+						}else{
+							alert("新增失败")
+						}
+						if(i==1){
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);//关闭当前页
+						}
+					}
+				})
 			}
-			
-			
+
+			$("#save_exit").click(function () {
+				form.on('submit', function(data){
+					addBagging(1);
+					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+				});
+			})
+			$("#save").click(function () {
+				form.on('submit', function(data){
+					addBagging(0);
+					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+				});
+			})
+			$("#exit").click(function () {
+				var index = parent.layer.getFrameIndex(window.name);
+				parent.layer.close(index);//关闭当前页
+			})
+
+			//查询并渲染派件网点下拉框
+			$("#deliveryOutlets").load("/up/getOutlet",function(result){
+				$("#deliveryOutlets").append("<option value=''>请选择</option>");
+				$.each(eval("("+result+")"),function(index,item){
+					$("#deliveryOutlets").append("<option value='"+item.oid+"'>"+item.name+"</option>");
+				})
+				form.render();
+			})
+
+			//查询并渲染货物类型下拉框
+			$("#goodsType").load("/up/getGoodsType",function(result){
+				$("#goodsType").append("<option value=''>请选择</option>");
+				$.each(eval("("+result+")"),function(index,item){
+					$("#goodsType").append("<option value='"+item.gid+"'>"+item.gname+"</option>");
+				})
+				form.render();
+			})
+
+			//查询并渲染状态策略下拉框
+			$("#baggingStrategy").load("/bagging/getBS",function(result){
+				$("#baggingStrategy").append("<option value=''>请选择</option>");
+				$.each(eval("("+result+")"),function(index,item){
+					$("#baggingStrategy").append("<option value='"+item.bid+"'>"+item.baggingStrategy+"</option>");
+				})
+				form.render();
+			})
+
+			//查询并渲染走货路线下拉框
+			$("#takeTheCargoRoute").load("/up/getSpecificroute",function(result){
+				$("#takeTheCargoRoute").append("<option value=''>请选择</option>");
+				$.each(eval("("+result+")"),function(index,item){
+					$("#takeTheCargoRoute").append("<option value='"+item.sid+"'>"+item.routeName+"</option>");
+				})
+				form.render();
+			})
+
+			//查询并渲染报关方式下拉框
+			$("#customsDeclarationMethod").load("/up/getcdm",function(result){
+				$("#customsDeclarationMethod").append("<option value=''>请选择</option>");
+				$.each(eval("("+result+")"),function(index,item){
+					$("#customsDeclarationMethod").append("<option value='"+item.cid+"'>"+item.customsDeclarationMethod+"</option>");
+				})
+				form.render();
+			})
 		});
 	</script>
 </html>

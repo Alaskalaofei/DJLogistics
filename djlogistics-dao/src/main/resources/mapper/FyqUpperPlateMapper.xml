@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csdj.mapper.FyqUpperPlateMapper">
+    <!--上板数据映射-->
+    <resultMap id="upperPlate" type="UpperPlate">
+        <id column="uid" property="uid"></id>
+        <result column="plate_no" property="plateNo"></result>
+        <result column="scan_no" property="scanNo"></result>
+        <result column="board_strategy" property="boardStrategy"></result>
+        <result column="tboard_strategy_name" property="boardStrategyName"></result>
+        <result column="delivery_outlets" property="deliveryOutlets"></result>
+        <result column="delivery_outlets_name" property="deliveryOutletsName"></result>
+        <result column="take_the_cargo_route_name" property="takeTheCargoRouteName"></result>
+        <result column="destination" property="destination"></result>
+        <result column="customs_declaration_method" property="customsDeclarationMethod"></result>
+        <result column="destination_airport_code" property="destinationAirportCode"></result>
+        <result column="restricted_weight_per_ticket" property="restrictedWeightPerTicket"></result>
+        <result column="upper_plate_outlets" property="upperPlateOutlets"></result>
+        <result column="upper_plate_outlets_name" property="upperPlateOutletsName"></result>
+        <result column="build_board_date" property="buildBoardDate"></result>
+        <result column="upper_state" property="upperState"></result>
+        <result column="gname" property="gname"></result>
+        <result column="creator_by" property="creatorBy"></result>
+        <result column="creator_date" property="creatorDate"></result>
+        <result column="creator_name" property="creatorName"></result>
+        <result column="data_source" property="dataSource"></result>
+        <result column="goods_type" property="goodsType"></result>
+        <result column="remark" property="remark"></result>
+        <result column="take_the_cargo_route" property="takeTheCargoRoute"></result>
+        <result column="dname" property="dname"></result>
+        <result column="cdm_name" property="cdmName"></result>
+        <result column="ocount" property="ocount"></result>
+        <result column="bname" property="bname"></result>
+        <result column="aid" property="aid"></result>
+    </resultMap>
+    <!--订单数据映射-->
+    <resultMap id="order" type="Order">
+        <id column="oid" property="oid"></id>
+        <result column="state" property="state"></result>
+        <result column="pno" property="pno"></result>
+        <result column="waybill_number" property="waybillNumber"></result>
+        <result column="reference_number" property="referenceNumber"></result>
+        <result column="billing_status" property="billingStatus"></result>
+        <result column="order_bag_no" property="orderBagNo"></result>
+        <result column="order_date" property="orderDate"></result>
+        <result column="mailing_outlets" property="mailingOutlets"></result>
+        <result column="mailing_outlets_name" property="mailingOutletsName"></result>
+        <result column="mailing_date" property="mailingDate"></result>
+        <result column="customer_id" property="customerId"></result>
+        <result column="packing_type" property="packingType"></result>
+        <result column="goods_type" property="goodsType"></result>
+        <result column="chinese_name" property="chineseName"></result>
+        <result column="customs_declaration_method" property="customsDeclarationMethod"></result>
+        <result column="delivery_outlets" property="deliveryOutlets"></result>
+        <result column="order_data_source" property="orderDataSource"></result>
+        <result column="creation_time" property="creationTime"></result>
+        <result column="created_by" property="createdBy"></result>
+        <result column="specify_the_route" property="specifyTheRoute"></result>
+        <result column="take_the_cargo_route" property="takeTheCargoRoute"></result>
+        <result column="specify_the_route_name" property="specifyTheRouteName"></result>
+        <result column="take_the_cargo_route_name" property="takeTheCargoRouteName"></result>
+        <result column="packing_type_name" property="packingTypeName"></result>
+        <result column="goods_type_name" property="goodsTypeName"></result>
+        <result column="cname" property="cname"></result>
+        <result column="total_votes" property="totalVotes"></result>
+        <result column="total_pieces" property="totalPieces"></result>
+        <result column="total_actual_weight" property="totalActualWeight"></result>
+        <result column="total_packages" property="totalPackages"></result>
+    </resultMap>
+    <!--目的地映射信息-->
+    <resultMap id="Destination" type="Destination">
+        <id column="did" property="did"></id>
+        <result column="country_code" property="countryCode"></result>
+        <result column="simplified_name" property="simplifiedName"></result>
+        <result column="english_name" property="englishName"></result>
+    </resultMap>
+
+    <!--班次信息-->
+    <resultMap id="associatedShift" type="AssociatedShift">
+        <id column="aid" property="aid"></id>
+        <result column="delivery_order_no" property="deliveryOrderNo"></result>
+        <result column="handover_date" property="handoverDate"></result>
+        <result column="board_strategy" property="boardStrategy"></result>
+        <result column="number_of_votes" property="numberOfVotes"></result>
+        <result column="number" property="number"></result>
+        <result column="weight" property="weight"></result>
+        <result column="destination" property="destination"></result>
+        <result column="customs_declaration_method" property="customsDeclarationMethod"></result>
+        <result column="remarks" property="remarks"></result>
+        <result column="created_by" property="createdBy"></result>
+        <result column="dname" property="dname"></result>
+    </resultMap>
+
+    <!--查询上板信息-->
+    <select id="selectUpperPlate" resultMap="upperPlate">
+        SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname,
+        ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name,
+        b.tboard_strategy tboard_strategy_name,st.name creator_name,
+        (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount
+        FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s
+        WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid  AND u.destination=d.did AND u.goods_type=g.gid
+        AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id
+        <if test="plateNo!=null and plateNo!=''">
+            AND u.plate_no=#{plateNo}
+        </if>
+        <if test="orderNumber!=null">
+          AND u.plate_no=(select pno from `order` where oid=#{orderNumber})
+        </if>
+        <if test="buildBoardDate1!=null and buildBoardDate2!=null">
+            AND u.build_board_date&gt;=#{buildBoardDate1}  and u.build_board_date&lt;=#{buildBoardDate2}
+        </if>
+        <if test="upperPlateOutlets!=null">
+            AND u.upper_plate_outlets=#{upperPlateOutlets}
+        </if>
+        <if test="deliveryOutlets!=null">
+            and u.delivery_outlets=#{deliveryOutlets}
+        </if>
+        <if test="upperState!=null">
+            AND u.upper_state=#{upperState}
+        </if>
+        <if test="boardStrategy!=null">
+            and u.board_strategy=#{boardStrategy}
+        </if><if test="dataSource!=null">
+            AND u.data_source=#{dataSource}
+        </if>
+        <if test="customsDeclarationMethod!=null">
+            and u.customs_declaration_method=#{customsDeclarationMethod}
+        </if>
+    </select>
+    <!--查询上板策略-->
+    <select id="selectBS" resultType="BoardStrategy">
+        SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy`
+    </select>
+
+    <!--查询网点信息-->
+    <select id="selectOutlet" resultType="Outlet">
+        SELECT * FROM outlet
+    </select>
+
+    <!--查询报关方式-->
+    <select id="selectcdm" resultType="Customsdeclarationmethod">
+        SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method`
+    </select>
+
+    <!--查询货物类型-->
+    <select id="selectGoodsType" resultType="GoodsType">
+      SELECT * FROM goods_type
+    </select>
+
+    <!--查询路线-->
+    <select id="selectSpecificroute" resultType="Specificroute">
+        SELECT sid,`route_name` routeName FROM specificroute
+    </select>
+
+    <!--查询目的地信息-->
+    <select id="selectDestination" resultMap="Destination">
+        SELECT * FROM `destination` WHERE country_code=#{countryCode} and simplified_name=#{simplifiedName} and english_name=#{englishName}
+    </select>
+
+    <!--新增目的地信息-->
+    <insert id="addDestination" parameterType="Destination" useGeneratedKeys="true" keyProperty="did">
+        INSERT INTO destination(name,country_code,simplified_name,english_name,enable_or_not) VALUE(#{name},#{countryCode},#{simplifiedName},#{englishName},0)
+    </insert>
+
+    <!--新增上板信息-->
+    <insert id="addUP" parameterType="UpperPlate">
+        INSERT INTO `upper_plate`(`plate_no`,build_board_date,creator_date,creator_by,upper_plate_outlets,board_strategy,delivery_outlets,restricted_weight_per_ticket,take_the_cargo_route,destination,customs_declaration_method,goods_type,remark,data_source)
+        VALUE(#{plateNo},#{buildBoardDate},#{creatorDate},#{creatorBy},#{upperPlateOutlets},#{boardStrategy},#{deliveryOutlets},#{restrictedWeightPerTicket},#{takeTheCargoRoute},#{destination},#{customsDeclarationMethod},#{goodsType},#{remark},#{dataSource})
+    </insert>
+
+    <select id="getUP" resultMap="upperPlate">
+        SELECT * FROM `upper_plate` WHERE `plate_no`=#{plateNo}
+    </select>
+
+    <!--根据id查询目的地信息-->
+    <select id="selectDestinationByID" resultMap="Destination">
+        SELECT * FROM `destination` WHERE did=#{did}
+    </select>
+
+    <!--根据板号修改上板信息-->
+    <update id="updUP" parameterType="UpperPlate">
+        UPDATE `upper_plate` SET board_strategy=#{boardStrategy},delivery_outlets=#{deliveryOutlets},
+        restricted_weight_per_ticket=#{restrictedWeightPerTicket},take_the_cargo_route=#{takeTheCargoRoute},destination=#{destination}
+        ,customs_declaration_method=#{customsDeclarationMethod},remark=#{remark} where `plate_no`=#{plateNo}
+    </update>
+
+    <!--查询订单信息-->
+    <select id="getOrder" resultMap="order">
+        SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid
+    </select>
+    <!--查询全部上板信息-->
+    <select id="selectUPAll" resultMap="upperPlate">
+        SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b
+        WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid
+    </select>
+
+    <!--根据板号查询上板信息-->
+    <select id="getUPByPlateNo" resultMap="upperPlate">
+        SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name
+        FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s
+        WHERE  u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid
+        AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid
+        AND u.plate_no=#{plateNo}
+    </select>
+
+    <!--修改上板状态-->
+    <update id="updUPByplateNo">
+         UPDATE `upper_plate` SET upper_state=#{upperState} where plate_no=#{plateNo}
+    </update>
+
+    <!--修改订单板号-->
+    <update id="updOrderById">
+        UPDATE `order`SET pno=#{pno} where oid=#{oid}
+    </update>
+
+    <select id="getUpAid" resultMap="upperPlate">
+        SELECT * FROM `upper_plate`
+    </select>
+
+    <!--查询关联班次-->
+    <select id="getAS" resultMap="associatedShift">
+        SELECT a.*,d.name dname FROM `associated_shift` a,`destination` d WHERE a.destination=d.did
+    </select>
+
+    <update id="UpdAS">
+        UPDATE `upper_plate` SET aid=#{aid} where plate_no=#{plateNo}
+    </update>
+
+    <!--根据板号查询班次-->
+    <select id="getAid" resultType="int">
+        select aid from upper_plate where plate_no=#{plateNo}
+    </select>
+
+    <select id="getNNW" resultType="AssociatedShift">
+        SELECT SUM(total_votes) numberOfVotes,SUM(total_pieces) number,SUM(total_actual_weight)weight FROM `order` WHERE pno IN(
+        SELECT plate_no FROM `upper_plate` WHERE aid = #{aid})
+    </select>
+
+
+    <update id="updNNW">
+        UPDATE `associated_shift` SET `number_of_votes`=#{numberOfVotes},`number`=#{number},`weight`=#{weight} where aid=#{aid}
+    </update>
+</mapper>

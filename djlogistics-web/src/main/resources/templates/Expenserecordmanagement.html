@@ -2,10 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>订单预报</title>
+		<title>费用补录管理</title>
 		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
 		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
-		<link rel="stylesheet" href="../css/layuimini.css" media="all">
 		<style type="text/css">
 			#luxian {
 				position: absolute;
@@ -21,145 +20,37 @@
 			<form class="layui-form layui-form-pane" action="">
 				<div class="layui-form-item">
 					<div class="layui-inline">
-						<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor">提交</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0 ;width: 80px;background-color: #286ED6;" id="BL">补录</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;width: 80px;background-color: #286ED6;" id="XG">修改</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;width: 80px;background-color: red;" id="DEL">删除</button>
 					</div>
 				</div>
-				<!-- 导航end -->
-				<!-- 搜索start -->
 				<div class="layui-form-item">
-					<div class="layui-inline" style="width: 150px;">
-						<div class="layui-form-item">
-							<select name="city" lay-verify="required">
-								<option value="">运单号码</option>
-								<option value="">参考编号</option>
-								<option value="">订单号码</option>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>运单号码</label>
+						<div class="layui-input-inline">
+							<input type="text" name="processingStatus" id="processingStatus" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>客户名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="cname" id="cname" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>科目</label>
+						<div class="layui-input-inline">
+							<select name="subject" id="subjects" lay-search="">
+								<option value="">直接选择或搜索选择</option>
 							</select>
 						</div>
-						<div class="layui-form-item" style="margin-top:-11% !important;">
-							<textarea class="layui-textarea"></textarea>
-							<div class="layui-form-item">
-								<button type="button" class="layui-btn layui-btn-sm" style="width: 9.375rem; margin-top: 2px;"> 清空</button>
-							</div>
-						</div>
 					</div>
-					<div class="layui-inline" style="margin-top: -7% !important;">
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								录入时间
-							</div>
-							<div class="layui-form-item" style="width: 280px;">
-								<input type="text" class="layui-input" id="test16" placeholder="开始时间 到 结束时间">
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								补录相关
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								客户编码/名称
-							</div>
-							<div class="layui-form-item">
-								<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								数据来源
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								科目
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="layui-form-item" id="luxian">
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								对账员
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								销售员
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								提交状态
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item">
-								提交人（可多选）
-							</div>
-							<div class="layui-form-item">
-								<select name="city" lay-verify="required">
-									<option value=""></option>
-									<option value="">运单号码</option>
-									<option value="">参考编号</option>
-									<option value="">订单号码</option>
-								</select>
-							</div>
-						</div>
-						<div class="layui-inline">
-							<button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">查询</button>
-							<button type="reset" class="layui-btn layui-btn-primary">重置</button>
-						</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn" lay-filter="demo1" id="CX">查询</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
-		</div>
 		<!-- 搜索end -->
 		<!-- 显示数据start -->
 		<table class="layui-hide" id="test"></table>
@@ -168,14 +59,7 @@
 		</div>
 		<script src="../lib/layui-v2.5.4/layui.js"></script>
 		<script>
-			// 自定义模块
-			layui.config({
-				base: '../ext/', // 模块目录
-				version: 'v1.5.4'
-			}).extend({ // 模块别名
-				soulTable: 'soulTable'
-			});
-			layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table', 'soulTable'], function() {
+			layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table'], function() {
 				var element = layui.element;
 				var $ = layui.jquery;
 				var layer = layui.layer;
@@ -183,136 +67,152 @@
 				var layedit = layui.layedit;
 				var laydate = layui.laydate;
 				var table = layui.table;
-				var soulTable = layui.soulTable;
-				//日期
-				laydate.render({
-					elem: '#test16',
-					type: 'datetime',
-					range: '到',
-					format: 'yyyy-M-d H:m:s'
+
+				$.ajax({
+					url: "ps/subjectsselect",
+					type: "post",
+					dataType: "JSON",
+					async:false,
+					success: function (res) {
+						$(res).each(function () {
+							$("#subjects").append("<option value='" + this.sid + "' >" + this.subjectName + "</option>");
+						});
+						form.render('select'); //刷新select选择渲染
+					}
 				});
+
 
 				table.render({
 					elem: '#test',
-					url: '../api/demo1.json',
+					id:"test",
+					url: '/ps/supplementaryRecordingOfExpensesselect',
 					toolbar: true,
 					title: '用户数据表',
+					height:500,
 					totalRow: true,
-					contextmenu: {
-						// 表格内容右键菜单配置
-						body: [{
-								name: '选中',
-								click: function(obj) {
-				
-									$.post("/pxy/getReordById", {
-										'id': obj.row.rid
-									}, function(result) {
-										if (result) {
-											layer.msg("选择成功");
-				
-										} else {
-											layer.msg("选择失败");
-										}
-									})
-								}
-							},
-							{
-								name: '删除当前行数据',
-								click: function(obj) {
-									var data = obj.row;
-									layer.confirm('真的删除行么', {
-										title: '提示',
-										icon: 3
-									}, function(index) {
-										$.ajax({
-											url: "/pxy/rdelete",
-											type: "post",
-											dataType: "text",
-											data: {
-												"rid": data.rid
-											},
-											success: function(res) {
-												if (res == 'true') {
-													obj.del();
-													layer.msg("删除成功！");
-												}
-											}
-										});
-										layer.close(index);
-									});
-								}
-							}
-						],
-					},
 					cols: [
-						[{
-							field: 'id',
-							title: 'ID',
-							width: 80,
-							fixed: 'left',
-							unresize: true,
-							sort: true,
-							totalRowText: '合计'
-						}, {
-							field: 'username',
-							title: '用户名',
-							width: 120,
-							edit: 'text'
-						}, {
-							field: 'email',
-							title: '邮箱',
-							width: 150,
-							edit: 'text',
-							templet: function(res) {
-								return '<em>' + res.email + '</em>'
-							}
-						}, {
-							field: 'experience',
-							title: '积分',
-							width: 80,
-							sort: true,
-							totalRow: true
-						}, {
-							field: 'sex',
-							title: '性别',
-							width: 80,
-							edit: 'text',
-							sort: true
-						}, {
-							field: 'logins',
-							title: '登入次数',
-							width: 100,
-							sort: true,
-							totalRow: true
-						}, {
-							field: 'sign',
-							title: '签名'
-						}, {
-							field: 'city',
-							title: '城市',
-							width: 100
-						}, {
-							field: 'ip',
-							title: 'IP',
-							width: 120
-						}, {
-							field: 'joinTime',
-							title: '加入时间',
-							width: 120
-						}, {
-							fixed: 'right',
-							title: '操作',
-							toolbar: '#barDemo',
-							width: 150
-						}]
+						[ //表头
+							{type: 'radio', fixed: 'left'},
+							{field: 'sid', title: 'ID'},
+							{field: 'processingStatus', title: '运单号码', sort: true,templet: '<div>{{d.order.oid}}</div>',},
+							{field: 'code', title: '客户编码', templet: '<div>{{d.customers.code}}</div>'},
+							{field: 'names', title: '客户名称', templet: '<div>{{d.customers.name}}</div>'},
+							{field: 'processingOutlets', title: '科目编码',templet: '<div>{{d.subjects.subjectCode}}</div>'},
+							{field: 'name', title: '科目名称',  sort: true,templet: '<div>{{d.subjects.subjectName}}</div>'},
+							{field: 'amountOfMoney', title: '金额',  sort: true},
+							/*{field: 'currencyName', title: '币别', sort: true,templet: '<div>{{d.currency.currencyName}}</div>'},*/
+							{field: 'bstate', title: '运单状态',  sort: true},
+							{field: 'mailingDate', title: '寄件日期', sort: true,templet: '<div>{{d.order.mailingDate}}</div>'},
+							{field: 'pname', title: '包装类型',  sort: true},
+							{field: 'tname', title: '货物类型',  sort: true},
+							{field: 'rchargeweights', title: '收费重',  sort: true,templet: '<div>{{d.order.rchargeweights}}</div>'},
+							{field: 'dname', title: '目的地',  sort: true},
+							{field: 'customsdeclarationmethod', title: '报关方式', sort: true},
+							{field: 'routename', title: '指定路线', sort: true}
+						]
 					],
-					done: function() {
-						soulTable.render(this)
-					},
 					page: true,
 					limit: 2
 				});
 
+				$("#BL").on("click", function() {
+					layer.open({
+						type: 2,
+						content: 'Feecollection.html',
+						area: ['700px', '500px'],
+						title: '费用补录',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							//var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+							//iframe.child(data.id);   // 向子页面的全局函数child传参
+						},
+						end: function() { //弹出层销毁后的事件
+							table.reload('test', {
+								method: 'post'
+								, page: {
+									curr: 1 //重新从第 1 页开始
+								}
+							});
+						}
+					})
+				})
+
+				$("#DEL").on("click", function() {
+					var checkStatus = table.checkStatus('test');
+					var sid;
+					$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+						sid=o.sid;
+					});
+					if (sid==null) {
+						layer.msg('请选择需要更改的信息');
+						return false;
+					}else{
+						$.ajax({
+							url: "ps/delSROE",
+							type: "post",
+							dataType: "JSON",
+							data:{sid:sid},
+							success: function (res) {
+								if(res>0){
+									layer.msg("删除成功")
+									table.reload('test', {
+										method: 'post'
+										, page: {
+											curr: 1 //重新从第 1 页开始
+										}
+									});
+								}else{
+									layer.msg("删除失败")
+								}
+							}
+						});
+					}
+				})
+
+				$("#XG").on("click", function() {
+					var checkStatus = table.checkStatus('test');
+					var sid;
+					$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+						sid=o.sid;
+					});
+					if (sid==null) {
+						layer.msg('请选择需要更改的信息');
+						return false;
+					}else{
+					layer.open({
+						type: 2,
+						content: 'Feecollection2.html',
+						area: ['700px', '500px'],
+						title: '修改费用补录',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+							iframe.sid=sid;   // 向子页面的全局函数child传参
+						},
+						end: function() { //弹出层销毁后的事件
+							table.reload('test', {
+								method: 'post'
+								, page: {
+									curr: 1 //重新从第 1 页开始
+								}
+							});
+						}
+					})}
+				})
+
+				$("#CX").click(function () {
+					//表格重载
+					table.reload('test', {
+						method: 'post',
+						where: {
+							"processingStatus": $("#processingStatus").val(),
+							"subject": $("#subject").val(),
+							"cname": $("#cname").val()
+						} //设定异步数据接口的额外参数
+						, page: {
+							curr: 1 //重新从第 1 页开始
+						}
+					});
+				})
+				
 			});
 		</script>
 	</body>

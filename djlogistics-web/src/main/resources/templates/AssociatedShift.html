@@ -27,21 +27,19 @@
 									<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 80px;">查询</button>
 							</div>
 						</div>
-						<div class="layui-inline">
-							<div class="layui-form-item" style="height: 20px;">
-							</div>
-							<div class="layui-form-item">
-								上板策略：qwe
-							</div>
-						</div>
 					</div>
 					<table class="layui-hide" id="myTable"></table>
+				</div>
+				<div style="margin-left: 84%">
+					<br/>
+					<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 80px;" id="WC">完成</button>
 				</div>
 			</form>
 		</div>
 	</body>
 	<script src="../lib/layui-v2.5.4/layui.js"></script>
 	<script>
+		var plateNo;
 		layui.use(['layer', 'form', 'jquery','laydate','table'], function() {
 			var $ = layui.jquery;
 			var layer = layui.layer;
@@ -54,43 +52,71 @@
 				range: '到',
 				format: 'yyyy年M月d日H时m分s秒'
 			});
+
+			$("#WC").click(function () {
+				var checkStatus = table.checkStatus('myTable');
+				var aid;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					aid=o.aid;
+				});
+				if (aid==null) {
+					layer.msg('请选择班次信息');
+					return false;
+				}else{
+					$.ajax({
+						url:"/up/UpdAS",
+						type:"post",
+						dataType:"text",
+						data:{'plateNo':plateNo,aid:aid},
+						success:function (result) {
+							if(result>0){
+								alert('关联成功');
+							}else{
+								alert('关联失败');
+							}
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);//关闭当前页
+						}
+					})
+				}
+			})
+
+
 			table.render({
 				elem: '#myTable',
-				url: '/demo/table/user/',
-				cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增,
-				height:330,
+				id:"myTable",
+				url: '/up/getAS/',
+				height:250,
 				width:680,
 				toolbar: true,
 				defaultToolbar: ['filter', 'print', 'exports'],
 				cols: [
-					[{
-							field: 'id',
-							title: '扫描时间'
+					[{type:'radio'},{
+							field: 'aid',
+							title: 'ID'
 						}, {
-							field: 'username',
-							title: '类型'
+							field: 'deliveryOrderNo',
+							title: '交接单号'
 						}, {
-							field: 'sex',
-							title: '扫描单号',
+							field: 'handoverDate',
+							title: '交接日期',
 						}, {
-							field: 'city',
-							title: '转单号码'
+							field: 'boardStrategy',
+							title: '票数'
 						}, {
-							field: 'sign',
-							title: '运单号码',
+							field: 'number',
+							title: '件数',
 						} 
 						, {
-							field: 'experience',
-							title: '客户',
+							field: 'weight',
+							title: '重量',
 						}, {
-							field: 'score',
-							title: '指定路线',
-						}, {
-							field: 'classify',
-							title: '运单件数'
+							field: 'dname',
+							title: '目的地',
 						}
 					]
-				]
+				],
+				page:true
 			});
 		});
 	</script>

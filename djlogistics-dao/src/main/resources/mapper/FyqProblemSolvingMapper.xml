@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csdj.mapper.FyqProblemSolvingMapper">
+    <resultMap type="RegistrationOfProblemsBeforePort" id="registrationOfProblemsBeforePorts">
+        <result column="rid" property="rid" />
+        <result column="processing_status" property="processingStatus" />
+        <result column="waybill_number" property="waybillNumber" />
+        <result column="transfer_no" property="transferNo" />
+        <result column="problem_status" property="problemStatus" />
+        <result column="problem_description" property="problemDescription" />
+        <result column="processing_outlets" property="processingOutlets" />
+        <result column="problem_notification_person" property="problemNotificationPerson" />
+        <result column="as_of_processing_date" property="asOfProcessingDate" />
+        <result column="registration_outlets" property="registrationOutlets" />
+        <result column="registrant" property="registrant" />
+
+        <association property="order" javaType="Order">
+            <result column="oid" property="oid" />
+        </association>
+
+        <association property="problem" javaType="ProblemStatus">
+            <id column="pid" property="pid"/>
+            <result column="question_name" property="questionName" />
+        </association>
+
+        <association property="outlet" javaType="Outlet">
+            <id column="oid" property="oid"/>
+            <result column="uname" property="name" />
+        </association>
+
+        <association property="customer" javaType="Customer">
+            <id column="cid" property="cid"/>
+            <result column="cname" property="name" />
+        </association>
+
+        <association property="staff" javaType="Staff">
+            <id column="sid" property="sid"/>
+            <result column="sname" property="name" />
+        </association>
+
+    </resultMap>
+
+    <resultMap type="SupplementaryRecordingOfExpenses" id="supplementaryRecordingOfExpensess">
+        <result column="sid" property="sid" />
+        <result column="processing_status" property="processingStatus" />
+        <result column="transfer_no" property="transferNo" />
+        <result column="mailing_date" property="mailingDate" />
+        <result column="subject" property="subject" />
+        <result column="customer" property="customer" />
+        <result column="amount_of_money" property="amountOfMoney" />
+        <result column="currency" property="currency" />
+        <result column="mailing_outlets" property="mailingOutlets" />
+        <result column="bill_notes" property="billNotes" />
+        <result column="internal_remarks" property="internalRemarks" />
+        <result column="bstate" property="bstate" />
+        <result column="pname" property="pname" />
+        <result column="tname" property="tname" />
+        <result column="dname" property="dname" />
+        <result column="customsdeclarationmethod" property="customsdeclarationmethod" />
+        <result column="route_name" property="routename" />
+        <association property="order" javaType="Order">
+            <result column="oid" property="oid" />
+            <result column="state" property="state" />
+            <result column="waybill_number" property="waybillNumber" />
+            <result column="reference_number" property="referenceNumber" />
+            <result column="billing_status" property="billingStatus" />
+            <result column="order_bag_no" property="orderBagNo" />
+            <result column="order_date" property="orderDate" />
+            <result column="mailing_outlets" property="mailingOutlets" />
+            <result column="mailing_date" property="mailingDate" />
+            <result column="customer_id" property="customerId" />
+            <result column="packing_type" property="packingType" />
+            <result column="goods_type" property="goodsType" />
+            <result column="chinese_name" property="chineseName" />
+            <result column="customs_declaration_method" property="customsDeclarationMethod" />
+            <result column="delivery_outlets" property="deliveryOutlets" />
+            <result column="order_data_source" property="orderDataSource" />
+            <result column="creation_time" property="creationTime" />
+            <result column="created_by" property="createdBy" />
+            <result column="did" property="did" />
+            <result column="rchargeactualweight" property="rchargeactualweight" />
+            <result column="rchargeweight" property="rchargeweight" />
+            <result column="rchargeweights" property="rchargeweights" />
+            <result column="receiveazipcode" property="receiveazipcode" />
+            <result column="receiptcity" property="receiptcity" />
+            <result column="rvaluedeclared" property="rvaluedeclared" />
+            <result column="rpaymentmethod" property="rpaymentmethod" />
+            <result column="rtothepayment" property="rtothepayment" />
+            <result column="rtaxpayment" property="rtaxpayment" />
+            <result column="ragencyfund" property="ragencyfund" />
+            <result column="receiptnote" property="receiptnote" />
+            <result column="sid" property="sid" />
+            <result column="rnumberofcases" property="rnumberofcases" />
+        </association>
+
+        <association property="subjects" javaType="Subject">
+            <id column="sid" property="sid"/>
+            <result column="subject_code" property="subjectCode" />
+            <result column="subject_name" property="subjectName" />
+        </association>
+
+        <association property="outlet" javaType="Outlet">
+            <id column="oid" property="oid"/>
+            <result column="tname" property="name" />
+        </association>
+
+        <association property="customers" javaType="Customer">
+            <id column="cid" property="cid"/>
+            <result column="code" property="code" />
+            <result column="cname" property="name" />
+        </association>
+
+        <association property="currencys" javaType="Currency">
+            <id column="cid" property="cid"/>
+            <result column="currency_name" property="currencyName" />
+        </association>
+    </resultMap>
+    <select id="ropucss" resultMap="registrationOfProblemsBeforePorts">
+    SELECT r.*,o.oid,p.question_name,u.name AS uname,c.name AS cname,s.name AS sname FROM `registration_of_problems_before_port`  r,`order` o,`problem_status` p,`outlet` u,`customer` c,`staff` s
+    WHERE  r.waybill_number=o.oid AND r.problem_status=p.pid AND r.processing_outlets=u.oid AND r.problem_notification_person=c.cid AND r.registrant=s.sid
+    <if test="waybillNumber!=null and waybillNumber!=''">
+        AND r.waybill_number=#{waybillNumber}
+    </if>
+    <if test="problemNotificationPerson!=null and problemNotificationPerson!=''">
+        AND r.problem_notification_person=#{problemNotificationPerson}
+    </if>
+    <if test="problemStatus!=null and problemStatus!=''">
+        AND r.problem_status=#{problemStatus}
+    </if>
+    <if test="processingOutlets!=null and processingOutlets!=''">
+        AND r.processing_outlets=#{processingOutlets}
+    </if>
+    </select>
+
+    <select id="supplementaryRecordingOfExpensesselect" resultMap="supplementaryRecordingOfExpensess">
+    SELECT s.*,o.*,u.*,c.code,c.name AS cname,r.*,t.name AS tname,b.bstate,p.pname,f.tname,d.name AS dname,e.`customs_declaration_method` AS customsdeclarationmethod,a.`route_name` FROM `supplementary_recording_of_expenses` s,`order` o,`subject` u,`customer` c,
+    `currency` r,`outlet` t,`bagofstate` b,`packagingtype` p,`typeofgoods` f,`destination` d,`customs_declaration_method` e,`specificroute` a
+    WHERE s.processing_status=o.oid AND s.subject=u.sid AND s.customer=c.cid AND s.currency=r.cid AND s.mailing_outlets=t.oid
+    AND o.state=b.bid AND o.packing_type=p.pid AND o.goods_type=f.tid AND o.did=d.`did` AND o.customs_declaration_method=e.`cid` AND o.specify_the_route=a.id
+    <if test="processingStatus!=null and processingStatus!=''">
+        AND s.processing_status=#{processingStatus}
+    </if>
+    <if test="subject!=null and subject!=''">
+        AND s.subject=#{subject}
+    </if>
+    <if test="cname!=null and cname!=''">
+        AND c.name=#{cname}
+    </if>
+    </select>
+
+    <select id="orderselect" resultType="Order">
+    SELECT * FROM `order`
+    </select>
+
+    <resultMap type="ProblemStatus" id="ProblemStatuss">
+        <result column="pid" property="pid" />
+        <result column="question_name" property="questionName" />
+    </resultMap>
+
+    <select id="problemStatusselect" resultMap="ProblemStatuss">
+    SELECT * FROM `problem_status`
+    </select>
+
+    <select id="outletselect" resultType="Outlet">
+    SELECT * FROM `outlet`
+    </select>
+
+    <select id="customerselect" resultType="Customer">
+    SELECT * FROM `customer`
+    </select>
+
+    <resultMap type="Subject" id="subjects">
+        <id column="sid" property="sid"/>
+        <result column="subject_code" property="subjectCode" />
+        <result column="subject_name" property="subjectName" />
+    </resultMap>
+
+    <select id="subjectsselect" resultMap="subjects">
+        SELECT * FROM `subject`
+    </select>
+
+
+    <select id="selectCurrency" resultType="Currency">
+        SELECT cid,currency_name currencyName FROM `currency`
+    </select>
+
+    <insert id="addSROE">
+        INSERT INTO `supplementary_recording_of_expenses`(`processing_status`,`mailing_date`,
+        `subject`,`customer`,`amount_of_money`,`currency`,`mailing_outlets`,`bill_notes`,`internal_remarks`)
+        VALUE(#{processingStatus},#{mailingDate},#{subject},#{customer},
+        #{amountOfMoney},#{currency},#{mailingOutlets},#{billNotes},#{internalRemarks})
+    </insert>
+
+    <select id="getSROE" resultMap="supplementaryRecordingOfExpensess">
+         SELECT s.*,o.*,u.*,c.code,c.name AS cname,r.*,t.name AS tname,b.bstate,p.pname,f.tname,d.name AS dname,e.`customs_declaration_method` AS customsdeclarationmethod,a.`route_name` FROM `supplementary_recording_of_expenses` s,`order` o,`subject` u,`customer` c,
+        `currency` r,`outlet` t,`bagofstate` b,`packagingtype` p,`typeofgoods` f,`destination` d,`customs_declaration_method` e,`specificroute` a
+        WHERE s.processing_status=o.oid AND s.subject=u.sid AND s.customer=c.cid AND s.currency=r.cid AND s.mailing_outlets=t.oid
+        AND o.state=b.bid AND o.packing_type=p.pid AND o.goods_type=f.tid AND o.did=d.`did` AND o.customs_declaration_method=e.`cid` AND o.specify_the_route=a.id
+        and s.sid=#{sid}
+    </select>
+
+    <update id="updSROE">
+        UPDATE `supplementary_recording_of_expenses` SET
+        `mailing_date`=#{mailingDate},
+        `subject`=#{subject},
+        customer=#{customer},
+        amount_of_money=#{amountOfMoney},
+        currency=#{currency},
+        mailing_outlets=#{mailingOutlets},
+        bill_notes=#{billNotes},
+        internal_remarks=#{internalRemarks}
+        WHERE sid=#{sid}
+    </update>
+
+    <delete id="delSROE">
+        delete from supplementary_recording_of_expenses where sid=#{sid}
+    </delete>
+
+</mapper>

@@ -1,0 +1,676 @@
+2020-06-07 00:06:10,926 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:06:10,944 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:06:10,946 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:06:10,948 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:06:10,950 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:06:10,950 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:06:10,951 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:06:10,952 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:06:10,954 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:06:11,536 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:06:11,536 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:06:11,537 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:06:11,538 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:06:11,540 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:06:11,542 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:06:14,434 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:06:14,435 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:06:14,435 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:09:31,065 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:09:31,066 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:09:31,067 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:09:31,083 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:09:31,085 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:09:31,087 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:09:31,087 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:09:31,088 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:09:31,089 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:09:32,150 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:09:32,151 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:09:32,153 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:09:32,154 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:09:32,155 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:09:32,157 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:09:34,405 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:09:34,406 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:09:34,407 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:03,310 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:11:03,312 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:03,313 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:11:03,331 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:11:03,332 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:03,333 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:03,334 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:11:03,335 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:11:03,337 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:11:03,917 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:11:03,918 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:03,918 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:03,919 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:11:03,919 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:11:03,921 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:11:07,132 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:11:07,133 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:11:07,133 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:28,511 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:11:28,511 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:28,512 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:11:28,530 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:11:28,530 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:28,531 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:28,534 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:11:28,535 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:11:28,537 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:11:29,340 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:11:29,341 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:11:29,341 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:11:29,343 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:11:29,344 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:11:29,346 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:11:31,823 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:11:31,824 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:11:31,825 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:12:10,216 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3752 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:12:10,216 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:12:10,216 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:12:11,079 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.928 seconds (JVM running for 7651.018)
+2020-06-07 00:12:27,007 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 24360 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:12:27,008 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:12:27,008 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:12:30,407 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 4.176 seconds (JVM running for 6.248)
+2020-06-07 00:14:04,131 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 24360 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:14:04,132 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:14:04,132 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:14:04,893 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.806 seconds (JVM running for 100.733)
+2020-06-07 00:14:07,533 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:14:07,551 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:07,565 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:14:07,572 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:14:07,572 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:07,574 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:14:07,579 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:14:07,580 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:14:09,163 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:14:09,164 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:09,165 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:14:09,166 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:14:09,167 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:14:09,169 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:14:11,877 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:14:11,879 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:14:11,881 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:14:16,525 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `order` o, goods_type g, outlet ou WHERE o.goods_type = g.gid AND o.mailing_outlets = ou.oid 
+2020-06-07 00:14:16,525 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:16,526 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:14:16,527 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid LIMIT ? 
+2020-06-07 00:14:16,528 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:14:16,530 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:14:33,509 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:14:33,509 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:33,510 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:14:33,539 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:14:33,540 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:14:33,541 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:14:33,542 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:14:33,543 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:15:16,456 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:15:16,457 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:15:16,457 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:15:19,943 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 4.069 seconds (JVM running for 6.163)
+2020-06-07 00:15:35,399 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:15:35,418 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:15:35,432 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:15:35,440 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:15:35,441 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:15:35,443 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:15:35,447 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:15:35,448 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:15:35,452 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:15:36,160 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:15:36,161 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:15:36,162 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:15:36,163 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:15:36,164 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:15:36,166 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:15:39,118 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:15:39,119 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String)
+2020-06-07 00:15:39,126 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:33,764 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:17:33,765 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:17:33,765 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:33,766 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:17:33,766 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:17:33,770 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:17:36,145 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:17:36,146 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:17:36,146 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:39,067 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:17:39,067 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:17:39,068 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:39,069 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:17:39,070 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:17:39,075 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:17:42,030 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:17:42,031 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String)
+2020-06-07 00:17:42,031 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:44,349 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:17:44,350 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:17:44,351 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:17:44,351 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:17:44,352 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:17:44,354 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:17:46,871 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:17:46,872 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 00:17:46,872 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:19:11,941 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:19:11,943 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:19:11,946 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:19:11,964 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:19:11,965 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:19:11,966 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:19:11,967 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:19:11,968 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 00:19:11,970 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:19:14,251 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 00:19:14,252 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:19:14,253 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:19:14,254 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 00:19:14,255 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 00:19:14,256 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 00:19:16,788 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 00:19:16,788 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String)
+2020-06-07 00:19:16,789 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:19:18,410 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `order` o, goods_type g, outlet ou WHERE o.goods_type = g.gid AND o.mailing_outlets = ou.oid 
+2020-06-07 00:19:18,411 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:19:18,411 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:19:18,412 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid LIMIT ? 
+2020-06-07 00:19:18,412 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:19:18,414 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:32:34,858 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 00:32:34,858 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:32:34,858 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 00:32:34,858 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:32:34,859 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:32:34,859 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:32:34,860 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:32:34,860 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:32:34,861 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:32:34,868 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 00:32:34,869 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:32:34,869 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:32:34,873 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:32:34,874 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:32:34,875 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:32:34,876 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:32:34,877 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:32:34,879 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:36:24,301 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:36:24,303 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:36:24,305 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:24,306 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 00:36:24,306 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), 3(Integer)
+2020-06-07 00:36:24,318 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:25,553 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:36:25,554 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:36:25,555 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:25,555 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:36:25,556 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:36:25,560 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:36:31,107 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:36:31,108 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:36:31,110 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:31,111 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 00:36:31,112 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), 3(Integer)
+2020-06-07 00:36:31,114 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:39,303 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:36:39,303 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:36:39,304 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:39,304 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:36:39,305 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:36:39,306 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:36:40,313 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:36:40,314 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:36:40,314 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:36:40,315 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 00:36:40,316 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), 3(Integer)
+2020-06-07 00:36:40,318 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:37:29,557 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:37:29,558 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:37:29,559 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:37:29,559 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:37:29,560 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:37:29,561 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:37:31,716 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:37:31,717 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:37:31,725 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:37:31,727 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 00:37:31,727 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), 3(Integer)
+2020-06-07 00:37:31,728 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:37:33,076 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:37:33,076 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:37:33,077 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:37:33,077 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:37:33,078 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:37:33,079 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:43:33,790 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 00:43:33,790 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 00:43:33,790 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 00:43:33,791 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:43:33,791 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:43:33,791 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:43:33,792 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:43:33,792 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 00:43:33,792 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:43:33,801 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 00:43:33,801 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:43:33,802 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:43:33,810 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 00:43:33,811 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 00:43:33,811 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 00:43:33,812 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 00:43:33,814 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 00:43:33,816 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 00:55:54,494 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:55:54,494 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:55:54,494 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:58:05,902 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:58:05,903 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:58:05,903 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:58:06,644 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.788 seconds (JVM running for 2572.864)
+2020-06-07 00:58:11,660 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:58:11,660 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:58:11,661 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:58:37,860 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:58:37,860 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:58:37,860 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:58:38,753 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.936 seconds (JVM running for 2604.973)
+2020-06-07 00:59:35,381 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 22464 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 00:59:35,381 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 00:59:35,381 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 00:59:36,326 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 1.006 seconds (JVM running for 2662.545)
+2020-06-07 01:00:33,805 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3484 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 01:00:33,806 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 01:00:33,806 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 01:00:37,845 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 4.699 seconds (JVM running for 6.789)
+2020-06-07 01:00:43,860 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:00:43,860 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:00:43,860 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:00:43,882 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:00:43,882 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:00:43,882 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:00:43,899 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:00:43,899 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:00:43,900 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:00:43,918 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:00:43,919 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:00:43,922 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:00:43,930 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:00:43,931 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:00:43,934 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:00:43,935 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:00:43,937 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:00:43,939 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:01:05,208 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:01:05,208 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:01:05,209 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:01:05,209 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:01:05,209 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:01:05,209 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:01:05,209 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:01:05,210 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:01:05,215 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:01:05,217 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:01:05,219 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:01:05,219 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:01:05,238 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:01:05,238 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:01:05,239 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:01:05,240 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:01:05,241 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:01:05,244 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:10,458 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:03:10,459 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:10,461 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:03:10,462 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:10,462 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:10,462 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:03:10,463 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:10,463 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:03:10,464 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:10,468 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:03:10,469 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:10,471 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:10,484 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:03:10,485 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:10,486 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:03:10,487 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:03:10,487 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:03:10,490 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:20,761 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:03:20,761 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:03:20,761 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:03:20,762 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:20,762 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:20,762 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:20,763 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:03:20,763 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:20,763 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:20,772 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:03:20,773 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:20,774 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:03:20,784 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:03:20,784 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:03:20,785 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:03:20,786 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:03:20,787 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:03:20,793 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:01,644 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:01,644 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:01,645 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:04:01,645 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:01,645 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:04:01,646 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:01,646 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:01,646 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:04:01,646 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:01,656 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:01,658 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:01,659 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:01,673 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:04:01,673 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:01,674 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:04:01,676 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:04:01,676 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:04:01,678 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:03,528 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: UPDATE `upper_plate` SET upper_state=? where plate_no=? 
+2020-06-07 01:04:03,529 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), CX10086(String)
+2020-06-07 01:04:03,536 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2020-06-07 01:04:06,516 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:06,517 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:06,520 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:06,521 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:04:06,521 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:04:06,521 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:06,521 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:06,523 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:04:06,524 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:06,533 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:06,533 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:06,536 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:06,552 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:04:06,553 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:06,557 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:04:06,559 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:04:06,560 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:04:06,572 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:21,485 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:21,486 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:04:21,486 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:21,486 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:21,486 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:04:21,487 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:04:21,487 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:21,487 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:21,487 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:21,493 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:04:21,494 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:21,495 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:21,504 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:04:21,505 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:21,505 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:04:21,506 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:04:21,508 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:04:21,509 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:04:30,937 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:04:30,937 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:30,943 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:04:30,951 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:04:30,951 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:04:30,952 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:04:30,952 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:04:30,954 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:04:30,955 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:07:07,435 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `order` o, goods_type g, outlet ou WHERE o.goods_type = g.gid AND o.mailing_outlets = ou.oid 
+2020-06-07 01:07:07,435 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:07:07,437 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:07:07,439 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid LIMIT ? 
+2020-06-07 01:07:07,440 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:07:07,444 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:07:11,976 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 01:07:11,977 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:07:11,978 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:07:11,978 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 01:07:11,979 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 01:07:11,980 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 01:07:16,170 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 01:07:16,172 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 01:07:16,175 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:07:53,158 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:07:53,159 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:07:53,160 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:07:53,174 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:07:53,174 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:07:53,175 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:07:53,176 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:07:53,176 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:07:53,177 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:07:56,146 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 01:07:56,146 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:07:56,147 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:07:56,148 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 01:07:56,148 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 01:07:56,149 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 01:09:24,965 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:09:24,966 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:09:24,967 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:09:24,967 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 01:09:24,968 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer), 2(Integer)
+2020-06-07 01:09:24,970 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:09:25,945 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:09:25,945 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:09:25,946 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:09:25,946 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:09:25,948 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:09:25,949 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:09:27,577 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:09:27,578 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:09:27,579 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:09:27,580 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 01:09:27,581 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer), 2(Integer)
+2020-06-07 01:09:27,581 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:09:28,826 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:09:28,827 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:09:28,834 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:09:28,835 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:09:28,836 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:09:28,836 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:11:56,043 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3484 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 01:11:56,043 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 01:11:56,043 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 01:11:56,838 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.835 seconds (JVM running for 685.783)
+2020-06-07 01:13:07,121 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3484 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 01:13:07,121 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 01:13:07,121 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 01:13:14,562 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3484 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 01:13:14,562 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 01:13:14,562 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 01:13:15,499 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 0.987 seconds (JVM running for 764.444)
+2020-06-07 01:14:22,851 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 3484 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 01:14:22,852 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 01:14:22,852 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 01:14:23,868 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 1.123 seconds (JVM running for 832.812)
+2020-06-07 01:16:51,087 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:16:51,089 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:16:51,091 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:16:51,108 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:16:51,115 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:16:51,118 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:16:51,121 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:16:51,122 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:16:51,124 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:16:52,249 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `order` o, goods_type g, outlet ou WHERE o.goods_type = g.gid AND o.mailing_outlets = ou.oid 
+2020-06-07 01:16:52,250 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:16:52,251 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:16:52,252 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid LIMIT ? 
+2020-06-07 01:16:52,252 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:16:52,254 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:16:56,688 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 01:16:56,689 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:16:56,690 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:16:56,692 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 01:16:56,693 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 01:16:56,696 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 01:17:01,200 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 01:17:01,200 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String)
+2020-06-07 01:17:01,211 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:17:35,552 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:17:35,552 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:17:35,552 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:17:35,580 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:17:35,581 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:17:35,582 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:17:35,583 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:17:35,584 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:17:35,585 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:18:02,086 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:18:02,087 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:02,088 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:18:02,117 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:18:02,118 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:02,118 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:18:02,120 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:18:02,121 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:18:02,122 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:18:05,663 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `order` o, goods_type g, outlet ou WHERE o.goods_type = g.gid AND o.mailing_outlets = ou.oid 
+2020-06-07 01:18:05,666 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:05,670 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:18:05,672 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT o.*,g.gname goods_type_name,ou.name mailing_outlets_name FROM `order` o,goods_type g,outlet ou WHERE o.goods_type=g.gid AND o.mailing_outlets=ou.oid LIMIT ? 
+2020-06-07 01:18:05,673 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:18:05,676 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:18:09,016 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM `upper_plate` u, outlet o, board_strategy b WHERE u.upper_plate_outlets = o.oid AND u.board_strategy = b.bid 
+2020-06-07 01:18:09,017 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:09,017 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:18:09,018 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,o.name upper_plate_outlets_name,b.tboard_strategy tboard_strategy_name FROM `upper_plate` u,outlet o,board_strategy b WHERE u.upper_plate_outlets=o.oid AND u.board_strategy= b.bid LIMIT ? 
+2020-06-07 01:18:09,019 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2020-06-07 01:18:09,020 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 01:18:11,771 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,b.tboard_strategy bname,o.name upper_plate_outlets_name,d.name dname,c.customs_declaration_method cdm_name,g.gname,s.route_name take_the_cargo_route_name FROM `upper_plate` u,board_strategy b,`outlet` o,destination d,customs_declaration_method c,goods_type g,specificroute s WHERE u.board_strategy=b.bid AND u.upper_plate_outlets=o.oid AND u.destination=d.did AND u.customs_declaration_method=c.cid AND u.goods_type=g.gid AND u.take_the_cargo_route=s.sid AND u.plate_no=? 
+2020-06-07 01:18:11,771 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String)
+2020-06-07 01:18:11,783 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:18:14,331 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: UPDATE `order`SET pno=? where oid=? 
+2020-06-07 01:18:14,331 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10002(String), 10001(String)
+2020-06-07 01:18:14,335 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2020-06-07 01:18:27,023 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:18:27,024 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:18:27,023 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:18:27,024 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:27,024 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:27,024 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:27,025 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:18:27,026 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:18:27,026 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:18:27,032 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:18:27,033 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:27,034 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:18:27,040 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:18:27,040 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:18:27,041 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:18:27,041 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:18:27,042 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:18:27,047 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:19:32,199 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:19:32,200 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:32,202 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:19:32,214 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:19:32,214 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:32,215 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:19:32,224 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM goods_type 
+2020-06-07 01:19:32,225 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:32,226 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:19:32,237 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT sid,`route_name` routeName FROM specificroute 
+2020-06-07 01:19:32,237 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:32,238 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:19:32,251 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:19:32,251 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:32,252 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:19:32,262 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM `upper_plate` WHERE `plate_no`=? 
+2020-06-07 01:19:32,262 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: CX10086(String)
+2020-06-07 01:19:32,263 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:19:32,264 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM `destination` WHERE did=? 
+2020-06-07 01:19:32,265 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1(Integer)
+2020-06-07 01:19:32,265 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:19:38,016 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:19:38,017 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:19:38,018 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:19:38,018 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:19:38,019 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:19:38,020 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:24:19,041 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:24:19,042 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:24:19,042 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:24:19,043 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:24:19,044 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:24:19,069 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:24:42,955 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:24:42,956 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:24:42,957 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:24:42,959 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:24:42,960 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:24:42,967 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:24:45,220 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:24:45,222 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:24:45,222 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:24:45,222 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ?, ? 
+2020-06-07 01:24:45,223 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer), 3(Integer)
+2020-06-07 01:24:45,225 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:24:46,522 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:24:46,522 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:24:46,523 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:24:46,524 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:24:46,524 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:24:46,525 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:25:00,190 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:25:00,190 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:25:00,191 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:25:00,192 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:25:00,192 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 6(Integer)
+2020-06-07 01:25:00,194 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2020-06-07 01:27:08,684 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:27:08,684 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:08,685 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:27:08,698 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:27:08,699 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:08,699 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:27:08,700 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:27:08,700 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 01:27:08,702 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:27:10,012 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:27:10,013 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT cid,customs_declaration_method customsDeclarationMethod FROM `customs_declaration_method` 
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 01:27:10,014 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:27:10,020 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT * FROM outlet 
+2020-06-07 01:27:10,020 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:10,021 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 01:27:10,028 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 01:27:10,029 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 01:27:10,029 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 01:27:10,030 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 01:27:10,030 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 3(Integer)
+2020-06-07 01:27:10,031 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2020-06-07 17:18:28,224 INFO (StartupInfoLogger.java:55)- Starting DjlogisticsWebApplication on LAPTOP-AJI0RPAF with PID 12972 (E:\expressage\djlogistics-web\target\classes started by FYQ in E:\expressage)
+2020-06-07 17:18:28,237 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+2020-06-07 17:18:28,238 INFO (SpringApplication.java:651)- No active profile set, falling back to default profiles: default
+2020-06-07 17:18:33,076 INFO (StartupInfoLogger.java:61)- Started DjlogisticsWebApplication in 5.78 seconds (JVM running for 8.838)
+2020-06-07 17:21:22,364 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT bid,tboard_strategy tboardStrategy FROM `board_strategy` 
+2020-06-07 17:21:22,386 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 17:21:22,409 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2020-06-07 17:21:22,412 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT count(0) FROM outlet ou, outlet ou2, board_strategy b, destination d, customs_declaration_method cdm, staff st, goods_type g, upper_plate u, `specificroute` s WHERE u.upper_plate_outlets = ou.oid AND u.board_strategy = b.bid AND u.delivery_outlets = ou2.oid AND u.destination = d.did AND u.goods_type = g.gid AND u.customs_declaration_method = cdm.cid AND u.creator_by = st.sid AND u.take_the_cargo_route = s.id 
+2020-06-07 17:21:22,414 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2020-06-07 17:21:22,440 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2020-06-07 17:21:22,445 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: SELECT u.*,cdm.customs_declaration_method cdm_name ,d.name dname,ou.name upper_plate_outlets_name,g.gname, ou2.name delivery_outlets_name,b.tboard_strategy bname,s.route_name take_the_cargo_route_name, cdm.customs_declaration_method cdm_name, b.tboard_strategy tboard_strategy_name,st.name creator_name, (SELECT COUNT(1) FROM `order` o WHERE o.pno=u.plate_no) ocount FROM outlet ou,outlet ou2,board_strategy b,destination d,customs_declaration_method cdm,staff st,goods_type g,upper_plate u,`specificroute` s WHERE u.upper_plate_outlets=ou.oid AND u.board_strategy=b.bid AND u.delivery_outlets=ou2.oid AND u.destination=d.did AND u.goods_type=g.gid AND u.customs_declaration_method=cdm.cid AND u.creator_by=st.sid AND u.take_the_cargo_route=s.id LIMIT ? 
+2020-06-07 17:21:22,447 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2020-06-07 17:21:22,454 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2

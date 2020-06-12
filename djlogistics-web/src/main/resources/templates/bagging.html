@@ -14,12 +14,12 @@
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<div class="layui-input-block">
-									<span id="client1"><input lay-ignore id="client2" type="checkbox" name="like1[write]" lay-skin="primary"><span style="font-size: 26px;line-height: 80px;"><span style="margin-left: 10px;">总运单号</span></span></span>
-									<button type="button" class="layui-btn layui-btn-normal layui-btn-xs layui-disabled" disabled="disabled" id="a"><span>选择总运单</span></button>
+									<span id="client1"><span style="font-size: 26px;line-height: 80px;"><span style="margin-left: 10px;">订单号码</span></span></span>
+									<button type="button" class="layui-btn layui-btn-normal layui-btn-xs" id="selectOrder"><span>选择订单</span></button>
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;" name="title" id="id" required lay-verify="required" disabled="disabled" autocomplete="off"
+									<input type="text" style="width: 260px;height: 50px;" id="oid" name="oid" required lay-verify="required" readonly="readonly" autocomplete="off"
 									 class="layui-input">
 								</div>
 							</div>
@@ -27,11 +27,11 @@
 						<div class="layui-inline" style="margin-left: -50px;">
 							<div class="layui-input-block">
 								<span style="font-size: 26px;line-height: 80px;">袋号</span>
-								<button type="button" class="layui-btn layui-btn-normal layui-btn-xs">批量装袋</button>
+								<button type="button" class="layui-btn layui-btn-normal layui-btn-xs" id="SelectBagNo">选择袋号</button>
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;" name="title" id="id" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+									<input type="text" style="width: 260px;height: 50px;" name="plateNo" id="plateNo" required lay-verify="required" readonly="readonly" autocomplete="off"
 									 class="layui-input">
 								</div>
 							</div>
@@ -41,23 +41,23 @@
 					<div class="layui-form-item" style="margin-top: -60px;">
 						<div class="layui-inline">
 							<div class="layui-input-block">
-								<sapn style="font-size: 26px;line-height: 80px;">扫描单号</sapn>
+								<sapn style="font-size: 26px;line-height: 80px;">货物类型</sapn>
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input  type="text" style="width: 260px;height: 50px;" name="title" id="id" required lay-verify="required"  autocomplete="off"
+									<input  type="text" readonly="readonly" style="width: 260px;height: 50px;" name="goodsTypeName" id="goodsTypeName" required lay-verify="required"  autocomplete="off"
 									 class="layui-input">
 								</div>
 							</div>
 						</div>
 						<div class="layui-inline" style="margin-left: -50px;">
 							<div class="layui-input-block" > 
-								<sapn id="client3"  style="font-size: 26px;line-height: 80px;"><input id="client4" lay-ignore type="checkbox" name="like1[write]" lay-skin="primary" style="font-size: 26px;"><span style="margin-left: 10px;">转单号码</span></sapn>
+								<sapn id="client3"  style="font-size: 26px;line-height: 80px;"><span style="margin-left: 10px;">寄件网点</span></sapn>
 							</div>
 							<div class="layui-input-block">
 								<div class="layui-input-inline">
-									<input type="text" style="width: 260px;height: 50px;" name="title" id="client5" required lay-verify="required" disabled="disabled" autocomplete="off"
-									 class="layui-input layui-disabled">
+									<input type="text"  readonly="readonly" style="width: 260px;height: 50px;" name="mailingOutletsName" id="mailingOutletsName" required lay-verify="required" autocomplete="off"
+									 class="layui-input">
 								</div>
 							</div>
 						</div>
@@ -67,40 +67,38 @@
 					<p style="background-color: #F5F5F5; width: 500px; line-height: 25px;"><span style="background-color: #00c1de;">&nbsp;</span><span style="margin-left: 20px;">袋号规则</span></p>
 					<div>
 						<p style="line-height: 35px;">装袋策略</p>
-						    <select lay-ignore style="width: 260px;height:26px;border: 1px solid #d1d1d1;">
-						    	<option></option>
-						    </select>
-							<button type="button" class="layui-btn layui-btn-normal layui-btn-sm"">新板号</button>
-						    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm"">装袋设置</button>						
+						<input readonly="readonly" type="text" name="boardStrategy" id="boardStrategy" style="width: 180px;border: 1px solid #d1d1d1;height: 30px;">
+						<button type="button" class="layui-btn layui-btn-normal layui-btn-sm">新板号</button>
+						    <button type="button" class="layui-btn layui-btn-normal layui-btn-sm">装袋设置</button>
 					</div>
 					<div>
 						<p style="line-height: 35px;">
 							<span>派件网点<span>
-							<span style="margin-left: 125px;">目的地<span>
-							<span style="margin-left: 88px;">报关方式<span>
-							<span style="margin-left: 25px;">货物类型<span>
+							<span style="margin-left: 125px;">目的地</span>
+							<span style="margin-left: 88px;">报关方式</span>
+							<span style="margin-left: 25px;">货物类型</span>
 						</p>
-						<input type="text" style="width: 175px;height:26px;border: 1px solid #d1d1d1;" />
-						<input type="text" style="width: 128px;height:26px;border: 1px solid #d1d1d1;" />
-						<input type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
-						<input type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
+						<input type="text" readonly="readonly" id="deliveryOutlets"  name="deliveryOutlets" style="width: 175px;height:26px;border: 1px solid #d1d1d1;" />
+						<input type="text" readonly="readonly" id="destination"  name="destination" style="width: 128px;height:26px;border: 1px solid #d1d1d1;" />
+						<input type="text" readonly="readonly"id="cdm"  name="cdm"  style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
+						<input type="text" readonly="readonly" id="gname"  name="gname" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
 					</div>
 					<div>
 						<p style="line-height: 35px;">
-							<span>走货路线<span>
-							<span style="margin-left: 308px;">单票申报价值<span>
-							<span>整袋限制重量<span>
+							<span>走货路线</span>
+							<span style="margin-left: 308px;">单票申报价值</span>
+							<span>整袋限制重量</span>
 						</p>
-						<input type="text" style="width: 360px;height:26px;border: 1px solid #d1d1d1;" />
-						<input type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
-						<input type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
+						<input id="takeTheCargoRoute"  name="takeTheCargoRoute" readonly="readonly" type="text" style="width: 360px;height:26px;border: 1px solid #d1d1d1;" />
+						<input id="limitedValueOfSingleTicket"  name="limitedValueOfSingleTicket" readonly="readonly" type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
+						<input id="restrictedWeightPerTicket"  name="restrictedWeightPerTicket" readonly="readonly" type="text" style="width: 85px;height:26px;border: 1px solid #d1d1d1;" />
 					</div>
 				</div>
 				</div>
 				<div style="margin-left: 10px;margin-right: 10px;">
 					<table class="layui-hide"  id="test"></table>
-					<button type="button" class="layui-btn layui-btn-normal layui-btn-sm">装袋完成</button>
-				<a href="javascript:void(0)" data-iframe-tab="page/bagging_management.html" data-title="装袋管理" data-icon="fa fa-hourglass-end">
+					<button type="button" class="layui-btn layui-btn-normal layui-btn-sm" id="updOrder">装袋完成</button>
+				<a href="javascript:void(0)" data-iframe-tab="bagging_management.html" data-title="装袋管理" data-icon="fa fa-hourglass-end">
 					<button type="button" class="layui-btn layui-btn-normal layui-btn-sm">装袋管理</button>
 				</a>
 				</div>
@@ -109,102 +107,142 @@
 	<script src="../lib/layui-v2.5.4/layui.js"></script>
 	<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 	<script>
-		var abc;
+		var oid;
+		var goodsTypeName;
+		var mailingOutletsName;
+		var plateNo;
 		layui.use(['layer', 'form', 'jquery', 'table','element','layuimini'], function() {
 					var $ = layui.jquery,
 		            element = layui.element,
 		            layer = layui.layer,
 		            form = layui.form,
 					table = layui.table;
-			table.render({
-				elem: '#test',
-				url: '/demo/table/user/',
-				cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增,
-				defaultToolbar: ['filter', 'print', 'exports'],
-				cols: [
-					[{
-							field: 'id',
-							title: '扫描时间'
-						}, {
-							field: 'username',
-							title: '类型'
-						}, {
-							field: 'sex',
-							title: '扫描单号',
-						}, {
-							field: 'city',
-							title: '转单号码'
-						}, {
-							field: 'sign',
-							title: '运单号码',
-						} 
-						, {
-							field: 'experience',
-							title: '客户',
-						}, {
-							field: 'score',
-							title: '指定路线',
-						}, {
-							field: 'classify',
-							title: '运单件数'
-						}, {
-							field: 'wealth',
-							title: '出货重',
-						}, {
-							field: 'wealth',
-							title: '目的地',
-						}, {
-							field: 'wealth',
-							title: '走货路线',
-						}, {
-							field: 'wealth',
-							title: '报关类型',
-						}, {
-							field: 'wealth',
-							title: '货物类型'
+
+
+			$("#updOrder").click(function () {
+				if(oid==null){
+					layer.msg("请选择订单")
+				}else if(plateNo==null){
+					layer.msg("请选择袋号")
+				}else{
+					$.ajax({
+						url:"/up/updOrderById",
+						type:"post",
+						dataType:"text",
+						data:{"pno":plateNo,"oid":oid},
+						success:function (result) {
+							if(result>0){
+								layer.msg("装袋成功")
+							}else{
+								layer.msg("装袋失败")
+							}
 						}
-					]
-				]
-			});
-			
-			$("#a").click(function() {
+					})
+				}
+			})
+			$("#selectOrder").click(function() {
 				layer.open({
 					type: 2,
-					content: "eject.html",
+					content: "selectOrder.html",
 					area: ['800px', '500px'],
-					title: '选择总运单',
+					title: '选择订单',
 					end: function(layero, index) {
-						$("#id").val(abc);
+						if(oid!=null){
+							$("#oid").val(oid);
+							$("#goodsTypeName").val(goodsTypeName);
+							$("#mailingOutletsName").val(mailingOutletsName);
+						}
 					}
 				});
 			})
-			var wu1 = function() {
-				if ($("#client2").is(':checked')) {
-					$("#a").removeClass("layui-disabled")
-					$("#a").prop('disabled', false);
-					form.render();
-				} else {
-					$("#a").addClass("layui-disabled");
-					$("#a").prop('disabled', true);
-					$("#id").val("");
-					form.render();
-				}
-			}
-			var wu2 = function() {
-				if ($("#client4").is(':checked')) {
-					$("#client5").removeClass("layui-disabled")
-					$("#client5").prop('disabled', false);
-					form.render();
-				} else {
-					$("#client5").addClass("layui-disabled");
-					$("#client5").prop('disabled', true);
-					$("#client5").val("");
-					form.render();
-				}
-			}
 
-			$("#client1").click(wu1);
-			$("#client3").click(wu2)
+			$("#SelectBagNo").click(function() {
+				layer.open({
+					type: 2,
+					content: "SelectBagNo.html",
+					area: ['800px', '500px'],
+					title: '选择袋号',
+					end: function(layero, index) {
+						if(plateNo!=null){
+							$.ajax({
+								url:"/bagging/getBagginByPlateNo",
+								type:"post",
+								dataType:"json",
+								data:{plateNo:plateNo},
+								success:function(result){
+									$("#boardStrategy").val(result.baggingStrategyName);
+									$("#deliveryOutlets").val(result.deliveryOutletsName);
+									$("#destination").val(result.destinationName);
+									$("#cdm").val(result.cdmName);
+									$("#gname").val(result.gname);
+									$("#takeTheCargoRoute").val(result.takeTheCargoRouteName);
+									$("#limitedValueOfSingleTicket").val(result.limitedValueOfSingleTicket);
+									$("#restrictedWeightPerTicket").val(result.restrictedWeightPerTicket);
+								}
+							})
+							$("#plateNo").val(plateNo);
+						}
+					}
+				});
+			})
+
+			table.render({
+				elem: '#test',
+				url: '/bagging/getBaggingAll/',
+				height:300,
+				toolbar: true,
+				defaultToolbar: ['filter', 'print', 'exports'],
+				cols: [
+					[{
+							field: 'plateNo',
+							title: '袋号'
+						}, {
+						field: 'saggingState',
+						title: '装袋状态',
+						templet:function(result){
+							if(result.saggingState==0){
+								return '待装袋';
+							}else if(result.saggingState==1){
+								return '已装袋';
+							}else if(result.saggingState==2){
+								return '已装袋';
+							}else if(result.saggingState==3){
+								return '已装袋';
+							}
+						}
+					},{
+							field: 'baggingStrategyName',
+							title: '装袋策略'
+						}, {
+							field: 'deliveryOutletsName',
+							title: '派件网点',
+						}, {
+							field: 'destinationName',
+							title: '目的地'
+						}, {
+							field: 'cdmName',
+							title: '报关方式',
+						} 
+						, {
+							field: 'restrictedWeightPerTicket',
+							title: '单票限制重量',
+						}, {
+							field: 'gname',
+							title: '货物类型',
+						}, {
+						field: 'creatorDate',
+						title: '创建时间',
+					}, {
+						field: 'sname',
+						title: '创建人'
+					}
+					]
+				],
+				page:true
+				,limit: 3
+				, limits:[3,4,5],
+				id:'test'
+			});
 		});
 	</script>
 </html>
