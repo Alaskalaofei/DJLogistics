@@ -7,20 +7,53 @@ public class Transshipment {
   private Integer tid;
   private String transhipmentNo;
   private Date transshipmentDate;
+  private Integer totalVotes;
+  private Integer totalPieces;
+  private double totalActualWeight;
   private Integer dispatchOutlets;
   private Integer reachPieceOutlets;
   private Integer transitStatusId;
   private Integer dispatchError;
   private Integer totalVotesArrived;
   private Integer totalPiecesArrived;
-  private Integer totalVotesNot_Arrived;
-  private Integer lessThanTotal_Pieces;
+  private Integer totalVotesNotArrived;
+  private Integer lessThanTotalPieces;
   private Integer arrivalException;
   private Date sendOutDate;
   private Integer sender;
   private Date creationTime;
   private Integer createdBy;
   private String remarks;
+  private Integer deliveredGoods;
+
+  private Outlet deliveryoutlets;//发件网点
+  private Outlet arrivaloutlet;//到件网点
+
+  private TransitStatus transitStatus;//状态
+
+  public Outlet getDeliveryoutlets() {
+    return deliveryoutlets;
+  }
+
+  public void setDeliveryoutlets(Outlet deliveryoutlets) {
+    this.deliveryoutlets = deliveryoutlets;
+  }
+
+  public Outlet getArrivaloutlet() {
+    return arrivaloutlet;
+  }
+
+  public void setArrivaloutlet(Outlet arrivaloutlet) {
+    this.arrivaloutlet = arrivaloutlet;
+  }
+
+  public TransitStatus getTransitStatus() {
+    return transitStatus;
+  }
+
+  public void setTransitStatus(TransitStatus transitStatus) {
+    this.transitStatus = transitStatus;
+  }
 
   public Integer getTid() {
     return tid;
@@ -30,6 +63,7 @@ public class Transshipment {
     this.tid = tid;
   }
 
+
   public String getTranshipmentNo() {
     return transhipmentNo;
   }
@@ -37,6 +71,7 @@ public class Transshipment {
   public void setTranshipmentNo(String transhipmentNo) {
     this.transhipmentNo = transhipmentNo;
   }
+
 
   public Date getTransshipmentDate() {
     return transshipmentDate;
@@ -46,6 +81,34 @@ public class Transshipment {
     this.transshipmentDate = transshipmentDate;
   }
 
+
+  public Integer getTotalVotes() {
+    return totalVotes;
+  }
+
+  public void setTotalVotes(Integer totalVotes) {
+    this.totalVotes = totalVotes;
+  }
+
+
+  public Integer getTotalPieces() {
+    return totalPieces;
+  }
+
+  public void setTotalPieces(Integer totalPieces) {
+    this.totalPieces = totalPieces;
+  }
+
+
+  public double getTotalActualWeight() {
+    return totalActualWeight;
+  }
+
+  public void setTotalActualWeight(double totalActualWeight) {
+    this.totalActualWeight = totalActualWeight;
+  }
+
+
   public Integer getDispatchOutlets() {
     return dispatchOutlets;
   }
@@ -53,6 +116,7 @@ public class Transshipment {
   public void setDispatchOutlets(Integer dispatchOutlets) {
     this.dispatchOutlets = dispatchOutlets;
   }
+
 
   public Integer getReachPieceOutlets() {
     return reachPieceOutlets;
@@ -62,6 +126,7 @@ public class Transshipment {
     this.reachPieceOutlets = reachPieceOutlets;
   }
 
+
   public Integer getTransitStatusId() {
     return transitStatusId;
   }
@@ -69,6 +134,7 @@ public class Transshipment {
   public void setTransitStatusId(Integer transitStatusId) {
     this.transitStatusId = transitStatusId;
   }
+
 
   public Integer getDispatchError() {
     return dispatchError;
@@ -78,6 +144,7 @@ public class Transshipment {
     this.dispatchError = dispatchError;
   }
 
+
   public Integer getTotalVotesArrived() {
     return totalVotesArrived;
   }
@@ -85,6 +152,7 @@ public class Transshipment {
   public void setTotalVotesArrived(Integer totalVotesArrived) {
     this.totalVotesArrived = totalVotesArrived;
   }
+
 
   public Integer getTotalPiecesArrived() {
     return totalPiecesArrived;
@@ -94,21 +162,24 @@ public class Transshipment {
     this.totalPiecesArrived = totalPiecesArrived;
   }
 
-  public Integer getTotalVotesNot_Arrived() {
-    return totalVotesNot_Arrived;
+
+  public Integer getTotalVotesNotArrived() {
+    return totalVotesNotArrived;
   }
 
-  public void setTotalVotesNot_Arrived(Integer totalVotesNot_Arrived) {
-    this.totalVotesNot_Arrived = totalVotesNot_Arrived;
+  public void setTotalVotesNotArrived(Integer totalVotesNotArrived) {
+    this.totalVotesNotArrived = totalVotesNotArrived;
   }
 
-  public Integer getLessThanTotal_Pieces() {
-    return lessThanTotal_Pieces;
+
+  public Integer getLessThanTotalPieces() {
+    return lessThanTotalPieces;
   }
 
-  public void setLessThanTotal_Pieces(Integer lessThanTotal_Pieces) {
-    this.lessThanTotal_Pieces = lessThanTotal_Pieces;
+  public void setLessThanTotalPieces(Integer lessThanTotalPieces) {
+    this.lessThanTotalPieces = lessThanTotalPieces;
   }
+
 
   public Integer getArrivalException() {
     return arrivalException;
@@ -118,6 +189,7 @@ public class Transshipment {
     this.arrivalException = arrivalException;
   }
 
+
   public Date getSendOutDate() {
     return sendOutDate;
   }
@@ -125,6 +197,7 @@ public class Transshipment {
   public void setSendOutDate(Date sendOutDate) {
     this.sendOutDate = sendOutDate;
   }
+
 
   public Integer getSender() {
     return sender;
@@ -134,6 +207,7 @@ public class Transshipment {
     this.sender = sender;
   }
 
+
   public Date getCreationTime() {
     return creationTime;
   }
@@ -141,6 +215,7 @@ public class Transshipment {
   public void setCreationTime(Date creationTime) {
     this.creationTime = creationTime;
   }
+
 
   public Integer getCreatedBy() {
     return createdBy;
@@ -150,6 +225,7 @@ public class Transshipment {
     this.createdBy = createdBy;
   }
 
+
   public String getRemarks() {
     return remarks;
   }
@@ -157,4 +233,14 @@ public class Transshipment {
   public void setRemarks(String remarks) {
     this.remarks = remarks;
   }
+
+
+  public Integer getDeliveredGoods() {
+    return deliveredGoods;
+  }
+
+  public void setDeliveredGoods(Integer deliveredGoods) {
+    this.deliveredGoods = deliveredGoods;
+  }
+
 }
