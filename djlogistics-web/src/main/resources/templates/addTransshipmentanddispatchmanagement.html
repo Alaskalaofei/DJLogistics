@@ -3,8 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>新增转运单</title>
-		<script src="../lib/layui-v2.5.4/layui.js"></script>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
+		<script src="lib/layui-v2.5.4/layui.js"></script>
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/layuimini.css" media="all">
+		<script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	</head>
 	<style type="text/css">
 		span{
@@ -16,30 +19,112 @@
 	    <form class="layui-form">
 	        <div class="layui-form-item">
 	            <div class="layui-inline">
-	                <label class="layui-input-inline"><span>*</span>转运单号<input class="layui-input" type="text" autocomplete="off" /></label><div></div>
+	                <label class="layui-input-inline"><span>*</span>转运单号<input id="transhipmentNo" name="transhipmentNo" class="layui-input" type="text" autocomplete="off" /></label><div></div>
 	            </div>
 	            <div class="layui-inline">
-	                <label class="layui-input-inline"><span>*</span>到件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
+	                <label class="layui-input-inline"><span>*</span>到件网点<select id="djselectOutlet" name="djselectOutlet"></select></label><div></div>
 	            </div>
 	        </div>
 	        <div class="layui-form-item">
 	            <p>
 	                备注
 	            </p>
-	            <input class="layui-input" type="text" autocomplete="off" />
+	            <input name="remarks" id="remarks" class="layui-input" type="text" autocomplete="off" />
 	        </div>
 	        <div class="layui-form-item">
-	            <input name="checkbox" title="走货路线必须归属为到件网点" type="checkbox" />
+	            <input name="deliveredGoods" id="deliveredGoods" title="走货路线必须归属为到件网点" type="checkbox" />
 	        </div>
 	        <div class="layui-form-item">
 	            <div class="layui-input-block" style="text-align: right;">
-	                <a class="layui-btn">确定</a>
-	                 
+	                <input type="button" class="layui-btn layui-icon layui-icon-export" onclick="mwtransshipment()" id="btn_add" value="确定"/>
 	            </div>
 	        </div>
 	    </form>
 	</div>
 	</body>
+
+	<script>
+		layui.use(['element', 'form', 'jquery', 'table', 'element', 'layuimini', 'laydate'], function() {
+			var $ = layui.jquery,
+					element = layui.element,
+					layer = layui.layer,
+					form = layui.form,
+					table = layui.table,
+					laydate = layui.laydate;
+
+
+			/**
+			 * 到件网点
+			 */
+			$("#djselectOutlet").load("/selectOutlet",function(result){
+				var role=eval("("+result+")");
+				$("#djselectOutlet").append("<option value='null'>请选择</option>")
+				$(role).each(function(){
+					$("#djselectOutlet").append("<option value="+this.oid+">"+this.name+"</option>")
+				})
+				form.render('select');
+			});
+
+		});
+	</script>
+	<script type="text/javascript">
+		layui.use('layer',function () {
+			var layer=layui.layer;
+
+		})
+		function mwtransshipment() {
+
+			var deliveredGoods=0;
+
+			if( document.getElementById("deliveredGoods").checked)
+			{
+				deliveredGoods=1;
+			}
+
+				if($("#transhipmentNo").val()==null || $("#transhipmentNo").val()=='')
+				{
+					layer.alert("运单号不能为空");
+				}
+				else if($("#djselectOutlet").val()=='null')
+				{
+					layer.alert("请选择到件网点");
+				}else
+					{
+						$.ajax({
+							url: "/notandyestransshipmentNO",
+							data: {"transhipmentNo":$("#transhipmentNo").val()},
+							type: "post",
+							dataType: "text",
+							success: function(result) {
+								if (result=="yes"){
+
+									$.ajax({
+										url: "/Newtransshipmentdata",
+										data: {"transhipmentNo":$("#transhipmentNo").val(),"djselectOutlet":$("#djselectOutlet").val(),"remarks":$("#remarks").val(),"deliveredGoods":deliveredGoods},
+										type: "post",
+										dataType: "text",
+										success: function(result) {
+											if (result=="yes"){
+												layer.alert("保存成功");
+												var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+												parent.layer.close(index); //再执行关闭
+											}else{
+												layer.alert("保存失败");
+											}
+										}
+									})
+
+								}else{
+									layer.alert("此转运单重复");
+								}
+							}
+						})
+
+
+					}
+		}
+	</script>
+
 	<script>
 		
 			layui.use(['element', 'form'], function() {
