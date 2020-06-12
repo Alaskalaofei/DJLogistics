@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/djlogistics?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/logistics?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password:
     driverClassName: com.mysql.jdbc.Driver

@@ -13,7 +13,7 @@
 					<div class="layui-inline">
 						<label class="layui-form-label"><span style="color: red;">*</span>收货袋号</label>
 						<div class="layui-input-block">
-							<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+							<input type="text" name="tcode" required lay-verify="required" autocomplete="off" class="layui-input">
 						</div>
 					</div>
 				</div>
@@ -21,45 +21,36 @@
 					<div class="layui-inline">
 						<label class="layui-form-label"><span style="color: red;">*</span>客户</label>
 						<div class="layui-input-inline">
-							<select name="modules" lay-verify="required" lay-search="">
+							<select name="cid" lay-verify="required" lay-search="" id="cids">
 								<option value="">直接选择或搜索选择</option>
-								<option value="1">layer</option>
-								<option value="2">form</option>
-								<option value="3">layim</option>
-								<option value="4">element</option>
-								<option value="5">laytpl</option>
-								<option value="6">upload</option>
-								<option value="7">laydate</option>
 							</select>
 						</div>
 					</div>
 					<div class="layui-inline">
 						<label class="layui-form-label"><span style="color: red;">*</span>指定路线</label>
-						<div class="layui-input-inline">
-							<select name="modules" lay-verify="required" lay-search="">
-								<option value="">直接选择或搜索选择</option>
-								<option value="1">layer</option>
-								<option value="2">form</option>
-								<option value="3">layim</option>
-								<option value="4">element</option>
-								<option value="5">laytpl</option>
-								<option value="6">upload</option>
-								<option value="7">laydate</option>
-							</select>
+						<div class="layui-input-block">
+							<div class="layui-input-inline">
+								<select name="sid" lay-verify="required" lay-search="" id="sids">
+									<option value="">直接选择或搜索选择</option>
+								</select>
+							</div>
 						</div>
 					</div>
 					<div class="layui-inline">
 						<label class="layui-form-label"><span style="color: red;">*</span>货物类型</label>
+						<div class="layui-input-block">
+							<div class="layui-input-inline">
+								<select name="tid2" lay-verify="required" lay-search="" id="tids">
+									<option value="">直接选择或搜索选择</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>收货网点</label>
 						<div class="layui-input-inline">
-							<select name="modules" lay-verify="required" lay-search="">
+							<select name="treceivingsite" lay-verify="required" lay-search="" id="treceivingsites">
 								<option value="">直接选择或搜索选择</option>
-								<option value="1">layer</option>
-								<option value="2">form</option>
-								<option value="3">layim</option>
-								<option value="4">element</option>
-								<option value="5">laytpl</option>
-								<option value="6">upload</option>
-								<option value="7">laydate</option>
 							</select>
 						</div>
 					</div>
@@ -73,45 +64,43 @@
 							<label class="layui-form-label-block"><span style="color: red;margin-left: 55px;">*</span>收货重</label>
 						</div>
 						<div class="layui-input-block">
-							<input type="text" name="title" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
+							<input type="text" name="thetotalnumberofbags" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
 							 class="layui-input-block">
-							<input type="text" name="title" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
+							<input type="text" name="total" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
 							 class="layui-input-block">
-							<input type="text" name="title" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
+							<input type="text" name="predictionofheavy" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
 							 class="layui-input-block">
-							<input type="text" name="title" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
+							<input type="text" name="thegoodsweight" style="width: 100px;margin: 0;" required lay-verify="required" autocomplete="off"
 							 class="layui-input-block">
 						</div>
 					</div>
-					<div class="layui-inline">
-						<label class="layui-form-label"><span style="color: red;">*</span>取件号</label>
-						<div class="layui-input-inline">
-							<select name="modules" lay-verify="required" lay-search="">
-								<option value="">直接选择或搜索选择</option>
-								<option value="1">layer</option>
-								<option value="2">form</option>
-								<option value="3">layim</option>
-								<option value="4">element</option>
-								<option value="5">laytpl</option>
-								<option value="6">upload</option>
-								<option value="7">laydate</option>
-							</select>
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<label class="layui-form-label"><span style="color: red;">*</span>取件员</label>
+							<div class="layui-input-block">
+								<input type="text" name="totakepart" id="totakeparts" required lay-verify="required" autocomplete="off" class="layui-input">
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">备注</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+						<input type="text" name="tremark" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
 					</div>
 				</div>
-				
+				<div class="layui-inline" style="margin-left: 500px;margin-top: 100px;">
+					<div class="layui-input-block">
+						<button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
 			</fieldset>
 		</form>
 	</body>
 	<script src="../lib/layui-v2.5.4/layui.js"></script>
 	<script>
-		layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table', 'soulTable'], function() {
+		layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table'], function() {
 			var element = layui.element;
 			var $ = layui.jquery;
 			var layer = layui.layer;
@@ -119,8 +108,84 @@
 			var layedit = layui.layedit;
 			var laydate = layui.laydate;
 			var table = layui.table;
-			var soulTable = layui.soulTable;
 
+			$.ajax({
+				url: "/pxy/customerselect",
+				type: "post",
+				dataType: "JSON",
+				async:false,
+				success: function (res) {
+					//var reslt=eval("("+res+")");
+					$(res).each(function () {
+						$("#cids").append("<option value='" + this.cid + "' >" + this.name + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
+			});
+
+			$.ajax({
+				url: "/pxy/specificrouteselect",
+				type: "post",
+				dataType: "JSON",
+				success: function (res) {
+					//var reslt=eval("("+res+")");
+					$(res).each(function () {
+						$("#sids").append("<option value='" + this.id + "' >" + this.routeName + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
+			});
+
+			$.ajax({
+				url: "/pxy/typeofgoodsselect",
+				type: "post",
+				dataType: "JSON",
+				success: function (res) {
+					//var reslt=eval("("+res+")");
+					$(res).each(function () {
+						$("#tids").append("<option value='" + this.tid + "' >" + this.tname + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
+			});
+
+			$.ajax({
+				url: "/pxy/outletselect",
+				type: "post",
+				dataType: "JSON",
+				success: function (res) {
+					//var reslt=eval("("+res+")");
+					$(res).each(function () {
+						$("#treceivingsites").append("<option value='" + this.oid + "' >" + this.name + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
+			});
+
+
+			//监听表单提交
+			form.on('submit(demo1)', function(data){
+				console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+				var url=$("#url").val();
+				$.ajax({
+					url:"/pxy/thewholebagofreceivinginsert",
+					type:"post",
+					dataType:"text",
+					data:data.field,
+					success:function(res){
+						if(res=='yes'){
+							layer.msg("提交成功！",{time:1000},function(){
+								//当你在iframe页面关闭自身时
+								var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+								parent.layer.close(index); //再执行关闭
+							});
+						}else{
+							layer.msg("提交失败！");
+						}
+					}
+				});
+				return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+			});
 
 		});
 	</script>

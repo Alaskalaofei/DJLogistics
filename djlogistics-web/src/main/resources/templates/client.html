@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+	</head>
+	<body>
+		<table class="layui-hide" id="test"></table>
+	</body>
+	<script src="../lib/layui-v2.5.4/layui.js"></script>
+	<script>
+	layui.use('table', function(){
+	  layuiTable = layui.table;
+
+		table.render({
+			elem: '#test',
+			url: '../api/table.json',
+			toolbar: true,
+			title: '用户数据表',
+			totalRow: true,
+			cols: [
+				[{
+					field: 'id',
+					title: '编号',
+					width: 400,
+					fixed: 'left',
+					unresize: true,
+					sort: true,
+					totalRowText: '合计'
+				}, {
+					field: 'username',
+					title: '用户',
+					width: 450,
+				}]
+			],
+			page: true,
+			limit: 2
+		});
+
+	});
+	</script>
+</html>

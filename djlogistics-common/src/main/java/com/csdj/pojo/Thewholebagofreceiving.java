@@ -1,13 +1,20 @@
 package com.csdj.pojo;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Thewholebagofreceiving {
 
-  private Integer tid;
   private String tcode;
   private Integer bid;
-  private java.sql.Date dateoftakingthedelivery;
-  private String treceivingsite;
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date dateoftakingthedelivery;
+  private Integer treceivingsite;
   private Integer cid;
   private Integer sid;
   private Integer tid2;
@@ -18,19 +25,60 @@ public class Thewholebagofreceiving {
   private String totakepart;
   private String tremark;
   private Integer tcreator;
-  private java.sql.Date creationtime;
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date creationtime;
   private Integer modifier;
-  private java.sql.Date tmodificationtime;
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date tmodificationtime;
 
+  private Bagofstate bagofstate;
 
-  public Integer getTid() {
-    return tid;
+  public Outlet getOutlet() {
+    return outlet;
   }
 
-  public void setTid(Integer tid) {
-    this.tid = tid;
+  public void setOutlet(Outlet outlet) {
+    this.outlet = outlet;
   }
 
+  private Customer customer;
+  private Specificroute specificroute;
+  private Typeofgoods typeofgoods;
+  private Outlet outlet;
+
+  public Bagofstate getBagofstate() {
+    return bagofstate;
+  }
+
+  public void setBagofstate(Bagofstate bagofstate) {
+    this.bagofstate = bagofstate;
+  }
+
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  public Specificroute getSpecificroute() {
+    return specificroute;
+  }
+
+  public void setSpecificroute(Specificroute specificroute) {
+    this.specificroute = specificroute;
+  }
+
+  public Typeofgoods getTypeofgoods() {
+    return typeofgoods;
+  }
+
+  public void setTypeofgoods(Typeofgoods typeofgoods) {
+    this.typeofgoods = typeofgoods;
+  }
 
   public String getTcode() {
     return tcode;
@@ -40,6 +88,13 @@ public class Thewholebagofreceiving {
     this.tcode = tcode;
   }
 
+  public Integer getTreceivingsite() {
+    return treceivingsite;
+  }
+
+  public void setTreceivingsite(Integer treceivingsite) {
+    this.treceivingsite = treceivingsite;
+  }
 
   public Integer getBid() {
     return bid;
@@ -50,22 +105,16 @@ public class Thewholebagofreceiving {
   }
 
 
-  public java.sql.Date getDateoftakingthedelivery() {
+  public Date getDateoftakingthedelivery() {
     return dateoftakingthedelivery;
   }
 
-  public void setDateoftakingthedelivery(java.sql.Date dateoftakingthedelivery) {
+  public void setDateoftakingthedelivery(Date dateoftakingthedelivery) {
     this.dateoftakingthedelivery = dateoftakingthedelivery;
   }
 
 
-  public String getTreceivingsite() {
-    return treceivingsite;
-  }
 
-  public void setTreceivingsite(String treceivingsite) {
-    this.treceivingsite = treceivingsite;
-  }
 
 
   public Integer getCid() {
@@ -158,11 +207,11 @@ public class Thewholebagofreceiving {
   }
 
 
-  public java.sql.Date getCreationtime() {
+  public Date getCreationtime() {
     return creationtime;
   }
 
-  public void setCreationtime(java.sql.Date creationtime) {
+  public void setCreationtime(Date creationtime) {
     this.creationtime = creationtime;
   }
 
@@ -176,11 +225,11 @@ public class Thewholebagofreceiving {
   }
 
 
-  public java.sql.Date getTmodificationtime() {
+  public Date getTmodificationtime() {
     return tmodificationtime;
   }
 
-  public void setTmodificationtime(java.sql.Date tmodificationtime) {
+  public void setTmodificationtime(Date tmodificationtime) {
     this.tmodificationtime = tmodificationtime;
   }
 

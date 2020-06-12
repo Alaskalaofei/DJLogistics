@@ -1,6 +1,12 @@
 package com.csdj.pojo;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Receiptrecordsheet {
 
   private Integer rid;
@@ -22,13 +28,79 @@ public class Receiptrecordsheet {
   private String rtaxpayment;
   private double ragencyfund;
   private String receiptnote;
-  private java.sql.Date rdateofsending;
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private Date rdateofsending;
   private Integer cid;
   private Integer sid;
   private Integer did;
   private Integer pid;
   private Integer tid;
+  private Integer uid;
 
+  public Integer getUid() {
+    return uid;
+  }
+
+  public void setUid(Integer uid) {
+    this.uid = uid;
+  }
+
+  private Customer customer;
+  private Specificroute specificroute;
+
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
+  }
+
+  public Specificroute getSpecificroute() {
+    return specificroute;
+  }
+
+  public void setSpecificroute(Specificroute specificroute) {
+    this.specificroute = specificroute;
+  }
+
+  public Destination getDestination() {
+    return destination;
+  }
+
+  public void setDestination(Destination destination) {
+    this.destination = destination;
+  }
+
+  public Typeofgoods getTypeofgoods() {
+    return typeofgoods;
+  }
+
+  public void setTypeofgoods(Typeofgoods typeofgoods) {
+    this.typeofgoods = typeofgoods;
+  }
+
+  public Packagingtype getPackagingtype() {
+    return packagingtype;
+  }
+
+  public void setPackagingtype(Packagingtype packagingtype) {
+    this.packagingtype = packagingtype;
+  }
+
+  private Destination destination;
+  private Typeofgoods typeofgoods;
+  private Packagingtype packagingtype;
+  private Customsdeclarationmethod customsdeclarationmethod;
+
+  public Customsdeclarationmethod getCustomsdeclarationmethod() {
+    return customsdeclarationmethod;
+  }
+
+  public void setCustomsdeclarationmethod(Customsdeclarationmethod customsdeclarationmethod) {
+    this.customsdeclarationmethod = customsdeclarationmethod;
+  }
 
   public Integer getRid() {
     return rid;
@@ -200,18 +272,16 @@ public class Receiptrecordsheet {
     this.receiptnote = receiptnote;
   }
 
+  public Integer getCid() {
+    return cid;
+  }
 
-  public java.sql.Date getRdateofsending() {
+  public Date getRdateofsending() {
     return rdateofsending;
   }
 
-  public void setRdateofsending(java.sql.Date rdateofsending) {
+  public void setRdateofsending(Date rdateofsending) {
     this.rdateofsending = rdateofsending;
-  }
-
-
-  public Integer getCid() {
-    return cid;
   }
 
   public void setCid(Integer cid) {
