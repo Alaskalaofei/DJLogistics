@@ -3,11 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>转运发件管理</title>
-		<script src="../lib/layui-v2.5.4/layui.js"></script>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css" media="all">
-		<link rel="stylesheet" href="../css/layuimini.css" media="all">
-		<script src="../lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
-		<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script src="lib/layui-v2.5.4/layui.js"></script>
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/layuimini.css" media="all">
+		<script src="lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
+		<script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	</head>
 	<style type="text/css">
 		.btn-bgcolor {
@@ -47,11 +48,12 @@
 					<div class="layui-row">
 						<div class="layui-col-xs12">
 							<div class="layui-btn-container">
-								<button id="Addtransfernote" class="layui-btn layui-btn-sm btn-bgcolor4">新增</button><button id="Updatetransfernote"
-								 class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">修改</button><button class="layui-btn layui-btn-sm layui-btn-danger btn-bgcolor2">撤销</button><button
-								 class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">继续发件</button><button class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">发送</button><button
+								<button id="Addtransfernote" class="layui-btn layui-btn-sm btn-bgcolor4">新增转运单</button>
+								<button id="Updatetransfernote" class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor">修改转运单</button>
+								<button class="layui-btn layui-btn-sm layui-btn-danger btn-bgcolor2" id="revoke">撤销</button>
+								<button class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolozzzzzzr" id="Continuesending">继续发件</button><button class="layui-btn layui-btn-sm layui-btn-normal btn-bgcolor" id="ending">发送</button><!--<button
 								 class="layui-btn layui-btn-sm layui-btn-danger btn-bgcolor2">撤销发送</button><button class="layui-btn layui-btn-sm btn-bgcolor">打印</button><button
-								 class="layui-btn layui-btn-sm layui-btn-primary">导出</button><button class="layui-btn layui-btn-sm btn-bgcolor">通用导出</button>
+								 class="layui-btn layui-btn-sm layui-btn-primary">导出</button><button class="layui-btn layui-btn-sm btn-bgcolor">通用导出</button>-->
 							</div>
 						</div>
 						<div class="layui-col-xs12">
@@ -59,12 +61,13 @@
 								<div class="layui-col-xs12">
 									<div class="layui-form-item">
 										<div class="layui-inline">
-											<label class="layui-input-inline"><select>
-													<option value="0">转运单号</option>
-													<option value="1">转运号码</option>
+											<label class="layui-input-inline">
+												<select id="DocNoTypeID">
+													<option value="1">转运单号</option>
+													<option value="2">运单号码</option>
 												</select>
 												<div>
-													<input class="layui-input" />
+													<input id="OddNumbers" class="layui-input" />
 												</div>
 											</label>
 										</div>
@@ -73,7 +76,7 @@
 												转运日期
 											</div>
 											<div class="layui-form-item" style="width: 240px;">
-												<input type="text" class="layui-input" id="test16" placeholder="开始时间    -   结束时间">
+												<input type="text" class="layui-input" id="Transittime" placeholder="开始时间    -   结束时间">
 											</div>
 										</div>
 										<div class="layui-inline" style="margin-left: -10px;">
@@ -81,11 +84,9 @@
 												发件网点
 											</div>
 											<div class="layui-form-item" style="width: 120px;">
-												<select name="city" lay-verify="required">
+												<select id="fjselectOutlet" name="city" lay-verify="required">
 													<option value=""></option>
-													<option value="">运单号码</option>
-													<option value="">参考编号</option>
-													<option value="">订单号码</option>
+
 												</select>
 											</div>
 										</div>
@@ -94,11 +95,9 @@
 												到件网点
 											</div>
 											<div class="layui-form-item" style="width: 120px;">
-												<select name="city" lay-verify="required">
+												<select id="djselectOutlet"  name="city" lay-verify="required">
 													<option value=""></option>
-													<option value="">运单号码</option>
-													<option value="">参考编号</option>
-													<option value="">订单号码</option>
+
 												</select>
 											</div>
 										</div>
@@ -107,16 +106,14 @@
 												转运单状态
 											</div>
 											<div class="layui-form-item" style="width: 120px;">
-												<select name="city" lay-verify="required">
+												<select id="selectTransitStatus" name="city" lay-verify="required">
 													<option value=""></option>
-													<option value="">运单号码</option>
-													<option value="">参考编号</option>
-													<option value="">订单号码</option>
+
 												</select>
 											</div>
 										</div>
 										<div class="layui-inline" style="margin-top: -5px;">
-											<button type="button" class="layui-btn layui-btn-sm  btn-bgcolor btn-bgcolor5">查询</button>
+											<input   id="btn_yes" data-type="reload" class="layui-btn layui-btn-normal layui-btn-sm  btn-bgcolor btn-bgcolor5" type="button" value="查询"/>
 											<button type="button" class="layui-btn layui-btn-sm  layui-btn-primary btn-bgcolor5">重置</button>
 										</div>
 									</div>
@@ -145,57 +142,57 @@
 						laydate = layui.laydate;
 					//日期
 					laydate.render({
-						elem: '#test16',
+						elem: '#Transittime',
 						type: 'datetime',
 						range: '到',
 						format: 'yyyy-M-d'
 					});
+
+			/**
+			 * 发件网点
+			 */
+			$("#fjselectOutlet").load("/selectOutlet",function(result){
+				var role=eval("("+result+")");
+				$("#fjselectOutlet").append("<option value='0'>请选择</option>")
+				$(role).each(function(){
+					$("#fjselectOutlet").append("<option value="+this.oid+">"+this.name+"</option>")
+				})
+				form.render('select');
+			});
+			/**
+			 * 到件网点
+			 */
+			$("#djselectOutlet").load("/selectOutlet",function(result){
+				var role=eval("("+result+")");
+				$("#djselectOutlet").append("<option value='0'>请选择</option>")
+				$(role).each(function(){
+					$("#djselectOutlet").append("<option value="+this.oid+">"+this.name+"</option>")
+				})
+				form.render('select');
+			});
+			/**
+			 * 状态
+			 */
+			$("#selectTransitStatus").load("/selectTransitStatus",function(result){
+				var role=eval("("+result+")");
+				$("#selectTransitStatus").append("<option value='0'>请选择</option>")
+				$(role).each(function(){
+					$("#selectTransitStatus").append("<option value="+this.tsid+">"+this.transitStatusName+"</option>")
+				})
+				form.render('select');
+			});
 					});
-		layui.use('layer', function() {
-			var $ = layui.jquery,
-				layer = layui.layer;
 
-			$("#Addtransfernote").on("click", function() {
-				layer.open({
-					type: 2,
-					content: 'addTransshipmentanddispatchmanagement.html',
-					area: ['800px', '500px'],
-					title: '编辑学生信息',
-					success: function(layero, index) { //弹出层弹出后的回调函数
-						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
-						iframe.child(data.id); // 向子页面的全局函数child传参
-					},
-					end: function() { //弹出层销毁后的事件
-						table.reload("userTableReload"); //增加成功后刷新表格
-					}
-				})
-			});
 
-			$("#Updatetransfernote").on("click", function() {
-				layer.open({
-					type: 2,
-					content: 'addTransshipmentanddispatchmanagement.html',
-					area: ['800px', '500px'],
-					title: '编辑学生信息',
-					success: function(layero, index) { //弹出层弹出后的回调函数
-						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
-						iframe.child(data.id); // 向子页面的全局函数child传参
-					},
-					end: function() { //弹出层销毁后的事件
-						table.reload("userTableReload"); //增加成功后刷新表格
-					}
-				})
-			});
-
-		})
+		layui.use(['element', 'form'], function() {
+			var element = layui.element,
+					form = layui.form;
+			form.render();
+		});
 	</script>
 	
 	<script>
-		layui.use(['element', 'form'], function() {
-			var element = layui.element,
-				form = layui.form;
-			form.render();
-		});
+
 		layui.use(["table", "jquery", "layer", "form", "laypage"], function() {
 			var table = layui.table,
 				$ = layui.jquery,
@@ -203,9 +200,27 @@
 				form = layui.form,
 				util = layui.util;
 
+
+			$("#Addtransfernote").on("click", function() {
+				layer.open({
+					type: 2,
+					content: 'addTransshipmentanddispatchmanagement.html',
+					area: ['800px', '500px'],
+					title: '编辑转运单',
+					success: function(layero, index) { //弹出层弹出后的回调函数
+						/*						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
+                                                iframe.child(data.id); // 向子页面的全局函数child传参*/
+					},
+					end: function() { //弹出层销毁后的事件
+						table.reload("userTableReload"); //增加成功后刷新表格
+					}
+				})
+			});
+
+
 			table.render({
 				elem: '#test',
-				url: '',
+				url: '/TransshipmentInquiry',
 				method: 'post',
 				parseData: function(res) { //res 即为原始返回的数据
 					return {
@@ -216,46 +231,67 @@
 					}
 				},
 				request: {
-					stuName: 'index' //页码的参数名称，默认：page
+					stuName: 'PageNum' //页码的参数名称，默认：page
 						,
-					limitName: 'pageSize' //每页数据量的参数名，默认：limit
+					limitName: 'PageSize' //每页数据量的参数名，默认：limit
 				},
 				cols: [
-					[{
-						field: 'rid',
-						title: '编号',
+					[
+							{
+								type:'checkbox',
+								fixed: 'left'
+							},
+						{
+						field: 'transhipmentNo',
+						title: '转运单号',
 						sort: true
 					}, {
-						field: 'fname',
-						title: '妻子姓名'
-					}, {
-						field: 'fbirth',
-						title: '妻子出生日期',
+						field: 'transshipmentDate',
+						title: '转运日期',
 						templet: function(row) {
-							return createTime(row.fbirth);
+							return createTime(row.transshipmentDate);
 						}
 					}, {
-						field: 'fcertificate',
-						title: '妻子证件号码',
-						sort: true
+						field: 'totalVotes',
+						title: '合计票数'
 					}, {
-						field: 'bname',
-						title: '丈夫姓名'
+						field: 'totalPieces',
+						title: '合计件数'
 					}, {
-						field: 'birth',
-						title: '丈夫出生日期',
+						field: 'totalActualWeight',
+						title: '合计实重'
+					} ,{templet:'<div>{{d.deliveryoutlets.name}}</div>'
+						,title: '发件网点',
+					},{templet:'<div>{{d.arrivaloutlet.name}}</div>'
+						,title: '到件网点',
+					},{templet:'<div>{{d.transitStatus.transitStatusName}}</div>'
+						,title: '转运状态',
+						 },
+						{
+						field: 'arrivalException',
+						title: '发件异常',
+						templet: '#status'
+					}, {
+						field: 'totalVotesArrived',
+						title: '已到票数'
+					}, {
+						field: 'totalPiecesArrived',
+						title: '已到件数'
+					}, {
+						field: 'totalVotesNotArrived',
+						title: '未到票数'
+					}, {
+						field: 'lessThanTotalPieces',
+						title: '未到件数'
+					}/*, {
+						field: 'sender',
+						title: '发送人'
+					}*/, {
+						field: 'creationTime',
+						title: '创建时间'
+						,
 						templet: function(row) {
-							return createTime(row.birth);
-						}
-					}, {
-						field: 'bcertificate',
-						title: '丈夫证件号码',
-						sort: true
-					}, {
-						field: 'creationtime',
-						title: '建档日期',
-						templet: function(row) {
-							return createTime(row.creationtime);
+							return createTime(row.creationTime);
 						}
 					}]
 				],
@@ -264,19 +300,50 @@
 			});
 
 
+			$("#Updatetransfernote").on("click",function () {
+				var checkStatus = table.checkStatus('userTableReload');
+				var ids =null;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+						ids=o.transhipmentNo;
+
+				});
+				if (ids==null) {
+					layer.msg('请选择至少一条转运数据');
+					return false;
+				}else{
+					layer.open({
+						type: 2,
+						content: 'updateTransshipmentanddispatchmanagement.html',
+						area: ['800px', '500px'],
+						title: '编辑转运单',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							var body = layer.getChildFrame('body', index);
+							body.find("#transhipmentNo").val(ids);
+						},
+						end: function() { //弹出层销毁后的事件
+							table.reload("userTableReload"); //增加成功后刷新表格
+						}
+					})
+				}
+			});
+
 			//根据条件查询表格数据重新加载
 			var $ = layui.$,
 				active = {
 					reload: function() {
 						//获取用户名
-						var creationtime = $("#creationtime").val();
-						var fcertificate = $("#fcertificate").val();
-						var fname = $("#fname").val();
-						var bcertificate = $("#bcertificate").val();
-						var bname = $("#bname").val();
-						var fbirth = $("#fbirth").val();
-						var birth = $("#birth").val();
-						var rid = $("#rid").val();
+						var DocNoTypeID = $("#DocNoTypeID").val();
+
+						var OddNumbers = $("#OddNumbers").val();
+
+						var Transittime = $("#Transittime").val();
+
+						var DeliveryOutlets = $("#fjselectOutlet").val();
+
+						var ArrivalOutlet = $("#djselectOutlet").val();
+
+						var TransitStatus = $("#selectTransitStatus").val();
+
 						//执行重载
 						table.reload('userTableReload', {
 							page: {
@@ -285,14 +352,12 @@
 							//根据条件查询
 							,
 							where: {
-								creationtime: creationtime,
-								fcertificate: fcertificate,
-								fname: fname,
-								bcertificate: bcertificate,
-								bname: bname,
-								fbirth: fbirth,
-								birth: birth,
-								rid: rid
+								DocNoTypeID: DocNoTypeID,
+								OddNumbers: OddNumbers,
+								Transittime: Transittime,
+								DeliveryOutlets: DeliveryOutlets,
+								ArrivalOutlet: ArrivalOutlet,
+								TransitStatus: TransitStatus
 							}
 						});
 					}
@@ -303,9 +368,179 @@
 					var type = $(this).data('type');
 					active[type] ? active[type].call(this) : '';
 				});
+		/*继续发件*/
+			$("#Continuesending").on("click", function() {
+				var checkStatus = table.checkStatus('userTableReload');
+				var ids =null;
+				var wid=null;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					ids=o.transhipmentNo;
+					wid=o.arrivaloutlet.oid;
+				});
+				if(ids==null && wid==null)
+				{
+					layer.alert("请选择一项数据");
+				}else{
+				layer.open({
+					type: 2,
+					content: 'Transshipmentdispatch2.html',
+					area: ['1024px', '512px'],
+					title: '编辑转运单',
+					success: function(layero, index) { //弹出层弹出后的回调函数
+						var body = layer.getChildFrame('body', index);
+						body.find("#transhipmentNo").val(ids);
+						body.find("#djselectOutlet").val(wid);
+					},
+					end: function() { //弹出层销毁后的事件
+						table.reload("userTableReload"); //增加成功后刷新表格
+					}
+				})
+				}
+			});
+			$("#ending").on("click",function () {
+				var checkStatus = table.checkStatus('userTableReload');
+				var ids =null;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					ids=o.transhipmentNo;
+
+				});
+				if(ids==null)
+				{
+					layer.alert("请选择一条数据");
+				}else
+					{
+						$.ajax({
+							url: "/addsessiontranshipmentNo",
+							type: "post",
+							data: {
+								"transhipmentNo":ids
+							},
+							dataType: "text",
+							success: function (result) {
+								layer.msg(result)
+							}
+						})
+
+						layer.open({
+							type: 2,
+							content: '/zydTranshipment.html',
+							area: ['1024px', '512px'],
+							title: '转运发件',
+							success: function(layero, index) { //弹出层弹出后的回调函数
+								/*		var body = layer.getChildFrame('body', index);
+                                        body.find("#transhipmentNo").val(ids);*/
+							},
+							end: function() { //弹出层销毁后的事件
+								table.reload("userTableReload"); //增加成功后刷新表格
+							}
+						})
+					}
+			})
+
+			/*撤销*/
+			$("#revoke").on("click", function() {
+				var checkStatus = table.checkStatus('userTableReload');
+
+				var ids =null;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					ids=o.transhipmentNo;
+				});
+				if(ids==null)
+				{
+					layer.alert("请选择一项数据");
+				}else{
+					//询问框
+					layer.confirm('确定要撤销此转运单嘛？', {
+						btn: ['确定','取消'] //按钮
+					}, function(){
+
+						$.ajax({
+							url: "/Transferstatuscancellation",
+							type: "post",
+							data: {
+								"transhipmentNo":ids
+							},
+							dataType: "text",
+							success: function (result) {
+								if (result == "yes") {
+
+									layer.alert("撤销转运单运单成功");
+//获取用户名
+									var DocNoTypeID = $("#DocNoTypeID").val();
+
+									var OddNumbers = $("#OddNumbers").val();
+
+									var Transittime = $("#Transittime").val();
+
+									var DeliveryOutlets = $("#fjselectOutlet").val();
+
+									var ArrivalOutlet = $("#djselectOutlet").val();
+
+									var TransitStatus = $("#selectTransitStatus").val();
+
+									//执行重载
+									table.reload('userTableReload', {
+										page: {
+											curr: 1 //重新从第 1 页开始
+										}
+										//根据条件查询
+										,
+										where: {
+											DocNoTypeID: DocNoTypeID,
+											OddNumbers: OddNumbers,
+											Transittime: Transittime,
+											DeliveryOutlets: DeliveryOutlets,
+											ArrivalOutlet: ArrivalOutlet,
+											TransitStatus: TransitStatus
+										}
+									});
+
+								}else if(result=="nottransshipment")
+								{
+									layer.alert("转运单号为空")
+								}else if(result=="notTransitStatusId")
+								{
+									layer.alert("转运单状态为已建立无法撤销")
+								}
+								else {
+									layer.alert("撤销运单失败");
+								}
+							}
+						})
 
 
-
+					}, function(){
+						layer.msg('取消发送', {
+							time: 20000, //20s后自动关闭
+							btn: ['yes', 'no']
+						});
+					});
+				}
+			});
 		});
+
 	</script>
+	<script type="text/javascript">
+		function createTime(v){
+			var date = new Date(v);
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			m = m<10?'0'+m:m;
+			var d = date.getDate();
+			d = d<10?("0"+d):d;
+			var h = date.getHours();
+			h = h<10?("0"+h):h;
+			var M = date.getMinutes();
+			M = M<10?("0"+M):M;
+			var str = y+"-"+m+"-"+d;
+			return str;
+		}
+	</script>
+	<script type="text/html" id="status">
+		              {{#  if(d.arrivalException === 0){ }}
+		                 <span class="layui-badge layui-bg-green">正常</span>
+		              {{#  } else { }}
+		               <span class="layui-badge">异常</span>
+		              {{#  } }}
+		        </script>
 </html>

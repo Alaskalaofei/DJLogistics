@@ -2,9 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>新增转运单</title>
-		<script src="../lib/layui-v2.5.4/layui.js"></script>
-		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css"  media="all">
+		<title>修改转运单</title>
+		<script src="lib/layui-v2.5.4/layui.js"></script>
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/layuimini.css" media="all">
+		<script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	</head>
 	</head>
 	<style type="text/css">
 		span{
@@ -16,25 +20,24 @@
 	    <form class="layui-form">
 	        <div class="layui-form-item">
 	            <div class="layui-inline">
-	                <label class="layui-input-inline"><span>*</span>转运单号<input class="layui-input" type="text" autocomplete="off" /></label><div></div>
+	                <label class="layui-input-inline"><span>*</span>转运单号<input disabled="disabled" id="transhipmentNo" name="transhipmentNo" class="layui-input" type="text" autocomplete="off" /></label><div></div>
 	            </div>
 	            <div class="layui-inline">
-	                <label class="layui-input-inline"><span>*</span>到件网点<select><option value="0">选项A</option><option value="1">选项B</option></select></label><div></div>
+	                <label class="layui-input-inline"><span>*</span>到件网点<select id="djselectOutlet" name="djselectOutlet"></select></label><div></div>
 	            </div>
 	        </div>
 	        <div class="layui-form-item">
 	            <p>
 	                备注
 	            </p>
-	            <input class="layui-input" type="text" autocomplete="off" />
+	            <input name="remarks" id="remarks" class="layui-input" type="text" autocomplete="off" />
 	        </div>
 	        <div class="layui-form-item">
-	            <input name="checkbox" title="走货路线必须归属为到件网点" type="checkbox" />
+	            <input name="deliveredGoods" id="deliveredGoods" title="走货路线必须归属为到件网点" type="checkbox" />
 	        </div>
 	        <div class="layui-form-item">
 	            <div class="layui-input-block" style="text-align: right;">
-	                <a class="layui-btn">修改</a>
-	                 
+					<input type="button" class="layui-btn layui-icon layui-icon-export" onclick="updatetranshipment()" id="btn_update" value="修改"/>
 	            </div>
 	        </div>
 	    </form>
@@ -48,4 +51,102 @@
 				form.render();
 			});
 	</script>
+
+	<script>
+
+		layui.use(['element', 'form', 'jquery', 'table', 'element', 'layuimini', 'laydate'], function() {
+			var $ = layui.jquery,
+					element = layui.element,
+					layer = layui.layer,
+					form = layui.form,
+					table = layui.table,
+					laydate = layui.laydate;
+
+
+			/**
+			 * 到件网点
+			 */
+			$("#djselectOutlet").load("/selectOutlet",function(result){
+				var role=eval("("+result+")");
+				$("#djselectOutlet").append("<option value='null'>请选择</option>")
+				$(role).each(function(){
+					$("#djselectOutlet").append("<option value="+this.oid+">"+this.name+"</option>")
+				})
+
+				InquiryTransfer();
+
+			});
+
+
+		});
+		function selects() {
+			layui.use('form',function () {
+				var form=layui.form;
+				form.render();
+			})
+		}
+
+	</script>
+<script type="text/javascript">
+	var tid=null;
+	function InquiryTransfer() {
+		var transhipmentNo= $("#transhipmentNo").val();
+		$.ajax({
+			url:"/InquiryTransfer",
+			type:"post",
+			data: {"transhipmentNo":transhipmentNo},
+			dataType:"json",
+			success:function(result){
+					tid=result.tid;
+				$("#transhipmentNo").val(result.transhipmentNo);
+
+				$("#djselectOutlet").val(result.reachPieceOutlets);
+				//*赋值*/
+				selects();
+
+				$("#remarks").val(result.remarks);
+
+				/*$("#deliveredGoods").val(result.deliveredGoods);*/
+
+				if(result.deliveredGoods==1)
+				{
+					$('#deliveredGoods').attr("checked", true); //注意这里使用的是attr()
+					layui.form.render(); //重新渲染显示效果
+				}
+
+			}
+		})
+	}
+function updatetranshipment() {
+
+	var deliveredGoods=0;
+
+	if( document.getElementById("deliveredGoods").checked)
+	{
+		deliveredGoods=1;
+	}
+	if($("#djselectOutlet").val()=='null')
+	{
+		layer.alert("请选择到件网点");
+	}else
+	{
+		$.ajax({
+			url:"/Modifywaybill",
+			type:"post",
+			data: {"tid":tid,"djselectOutlet":$("#djselectOutlet").val(),"remarks":$("#remarks").val(),"deliveredGoods":deliveredGoods},
+			dataType:"text",
+			success:function(result){
+				if (result=="yes"){
+					layer.alert("修改成功");
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index); //再执行关闭
+				}else{
+					layer.alert("修改失败");
+				}
+			}
+		})
+	}
+
+}
+</script>
 </html>

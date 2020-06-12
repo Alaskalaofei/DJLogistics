@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csdj.mapper.LxTransshipmentMapper">
+<!--单个转运单-->
+<resultMap id="oneTransshipment" type="Transshipment">
+    <id property="tid" column="tid"/>
+    <result property="transhipmentNo" column="Transhipment_No"/>
+    <result property="transshipmentDate" column="transshipment_date"/>
+    <result property="totalVotes" column="total_votes"/>
+    <result property="totalPieces" column="total_pieces"/>
+    <result property="totalActualWeight" column="total_actual_weight"/>
+    <result property="dispatchOutlets" column="dispatch_outlets"/>
+    <result property="reachPieceOutlets" column="reach_piece_outlets"/>
+    <result property="transitStatusId" column="transit_status_id"/>
+    <result property="dispatchError" column="dispatch_error"/>
+    <result property="totalVotesArrived" column="total_votes_arrived"/>
+    <result property="totalPiecesArrived" column="total_pieces_arrived"/>
+    <result property="totalVotesNotArrived" column="total_votes_not_arrived"/>
+    <result property="lessThanTotalPieces" column="less_than_total_pieces"/>
+    <result property="arrivalException" column="arrival_exception"/>
+    <result property="sendOutDate" column="send_out_date"/>
+    <result property="sender" column="sender"/>
+    <result property="creationTime" column="creation_time"/>
+    <result property="createdBy" column="created_by"/>
+    <result property="remarks" column="remarks"/>
+    <result property="deliveredGoods" column="delivered_goods"/>
+</resultMap>
+
+    <!--转运单链表-->
+<resultMap id="TransshipmentMap" type="Transshipment">
+    <id property="tid" column="tid"/>
+    <result property="transhipmentNo" column="Transhipment_No"/>
+    <result property="transshipmentDate" column="transshipment_date"/>
+    <result property="totalVotes" column="total_votes"/>
+    <result property="totalPieces" column="total_pieces"/>
+    <result property="totalActualWeight" column="total_actual_weight"/>
+    <result property="dispatchOutlets" column="dispatch_outlets"/>
+    <result property="reachPieceOutlets" column="reach_piece_outlets"/>
+    <result property="transitStatusId" column="transit_status_id"/>
+    <result property="dispatchError" column="dispatch_error"/>
+    <result property="totalVotesArrived" column="total_votes_arrived"/>
+    <result property="totalPiecesArrived" column="total_pieces_arrived"/>
+    <result property="totalVotesNotArrived" column="total_votes_not_arrived"/>
+    <result property="lessThanTotalPieces" column="less_than_total_pieces"/>
+    <result property="arrivalException" column="arrival_exception"/>
+    <result property="sendOutDate" column="send_out_date"/>
+    <result property="sender" column="sender"/>
+    <result property="creationTime" column="creation_time"/>
+    <result property="createdBy" column="created_by"/>
+    <result property="remarks" column="remarks"/>
+    <result property="deliveredGoods" column="delivered_goods"/>
+    <!--发件网点-->
+    <association property="deliveryoutlets" javaType="Outlet">
+        <id column="dispatch_outlets_id" property="oid"/>
+        <result column="dispatch_outlets_name" property="name"/>
+    </association>
+    <!--到件网点-->
+    <association property="arrivaloutlet" javaType="Outlet">
+        <id column="reach_piece_outlets_id" property="oid"/>
+        <result column="reach_piece_outlets_name" property="name"/>
+    </association>
+    <!--转运状态-->
+    <association property="transitStatus" javaType="TransitStatus">
+        <id column="tsid" property="tsid"/>
+        <result column="transit_status_name" property="transitStatusName"/>
+    </association>
+</resultMap>
+
+
+<!--网点-->
+    <resultMap id="selectOutletmap" type="Outlet">
+        <id column="oid" property="oid"/>
+        <result column="name" property="name"/>
+    </resultMap>
+<!--转运状态-->
+    <resultMap id="selectTransitStatusmap" type="TransitStatus">
+        <id column="tsid" property="tsid"/>
+        <result column="transit_status_name" property="transitStatusName"/>
+    </resultMap>
+<!--转运明细-->
+    <resultMap id="TransferDetailsQueryTransfer" type="TransshipmentDetails">
+        <id column="tdid" property="tdid"/>
+        <result column="transhipment_no" property="transhipmentNo"/>
+        <result column="waybill_number" property="waybillNumber"/>
+        <result column="arrived" property="arrived"/>
+        <result column="number_of_tickets_arrived" property="numberOfTicketsArrived"/>
+        <result column="arrival_of_waybill" property="arrivalOfWaybill"/>
+        <result column="review_actual_weight" property="reviewActual_Weight"/>
+        <result column="recheck_abnormality" property="recheckAbnormality"/>
+        <result column="warehousing_time" property="warehousing_Time"/>
+        <result column="scan_time" property="scan_time"/>
+    </resultMap>
+    <!--订单-->
+<resultMap id="Ordermap" type="Order">
+    <result column="oid" property="oid" />
+    <result column="state" property="state" />
+    <result column="waybill_number" property="waybillNumber" />
+    <result column="reference_number" property="referenceNumber" />
+    <result column="billing_status" property="billingStatus" />
+    <result column="order_bag_no" property="orderBagNo" />
+    <result column="order_date" property="orderDate" />
+    <result column="mailing_outlets" property="mailingOutlets" />
+    <result column="mailing_date" property="mailingDate" />
+    <result column="customer_id" property="customerId" />
+    <result column="packing_type" property="packingType" />
+    <result column="goods_type" property="goodsType" />
+    <result column="chinese_name" property="chineseName" />
+    <result column="customs_declaration_method" property="customsDeclarationMethod" />
+    <result column="delivery_outlets" property="deliveryOutlets" />
+    <result column="specify_the_route" property="specifyTheRoute" />
+    <result column="total_votes" property="totalVotes" />
+    <result column="total_pieces" property="totalPieces" />
+    <result column="total_actual_weight" property="totalActualWeight" />
+    <result column="total_packages" property="totalPackages" />
+    <result column="take_the_cargo_route" property="takeTheCargoRoute" />
+    <result column="order_data_source" property="orderDataSource" />
+    <result column="creation_time" property="creationTime" />
+    <result column="created_by" property="createdBy" />
+    <result column="did" property="did" />
+    <result column="rchargeactualweight" property="rchargeactualweight" />
+    <result column="rchargeweight" property="rchargeweight" />
+    <result column="rchargeweights" property="rchargeweights" />
+    <result column="receiveazipcode" property="receiveazipcode" />
+    <result column="receiptcity" property="receiptcity" />
+    <result column="rvaluedeclared" property="rvaluedeclared" />
+    <result column="rpaymentmethod" property="rpaymentmethod" />
+    <result column="rtothepayment" property="rtothepayment" />
+    <result column="rtaxpayment" property="rtaxpayment" />
+    <result column="ragencyfund" property="ragencyfund" />
+    <result column="receiptnote" property="receiptnote" />
+    <result column="sid" property="sid" />
+    <result column="rnumberofcases" property="rnumberofcases" />
+    <result column="pno" property="pno"/>
+    <result column="bno" property="bno"/>
+    <result column="sid" property="sid"/>
+</resultMap>
+
+    <resultMap id="TransferDetailsmap" type="TransshipmentDetails">
+        <id column="tdid" property="tdid"/>
+        <result column="transhipment_no" property="transhipmentNo"/>
+        <result column="waybill_number" property="waybillNumber"/>
+        <result column="arrived" property="arrived"/>
+        <result column="number_of_tickets_arrived" property="numberOfTicketsArrived"/>
+        <result column="arrival_of_waybill" property="arrivalOfWaybill"/>
+        <result column="review_actual_weight" property="reviewActual_Weight"/>
+        <result column="recheck_abnormality" property="recheckAbnormality"/>
+        <result column="warehousing_time" property="warehousing_Time"/>
+        <result column="scan_time" property="scan_time"/>
+        <!--订单-->
+        <association property="order" javaType="Order">
+            <id column="oid" property="oid" />
+            <result column="state" property="state" />
+            <result column="waybill_number" property="waybillNumber" />
+            <result column="reference_number" property="referenceNumber" />
+            <result column="total_pieces" property="totalPieces"/>
+            <result column="total_actual_weight" property="totalActualWeight"/>
+        </association>
+        <!--客户-->
+        <association property="customer" javaType="Customer">
+            <id column="cid" property="cid"/>
+            <result column="name" property="name"/>
+        </association>
+        <!--指定路线-->
+        <association property="specificRoute" javaType="Specificroute">
+            <id column="id" property="id"/>
+            <result column="route_name" property="routeName"/>
+        </association>
+        <!--走货路线-->
+        <association property="cargoRoute" javaType="Specificroute">
+            <id column="id" property="id"/>
+            <result column="route_name" property="routeName"/>
+        </association>
+        <!--货物类型-->
+        <association property="typeofgoods" javaType="Typeofgoods">
+            <id column="tid" property="tid"/>
+            <result column="tname" property="tname"/>
+        </association>
+        <!--目的地-->
+        <association property="destination" javaType="Destination">
+            <id column="did" property="did"/>
+            <result column="dname" property="name"/>
+        </association>
+        <!--报关-->
+        <association property="customsdeclarationmethod" javaType="Customsdeclarationmethod">
+            <id column="cid" property="cid"/>
+            <result column="customs_declaration_method" property="customsDeclarationMethod"/>
+        </association>
+    </resultMap>
+
+
+<!--查询下拉框网点-->
+    <select id="selectOutlet" resultMap="selectOutletmap">
+        SELECT `oid`,`name` FROM `outlet`
+    </select>
+    <!--查询下拉框转运单状态-->
+    <select id="selectTransitStatuses" resultMap="selectTransitStatusmap">
+        SELECT `tsid`,`transit_status_name` FROM `transit_status`
+    </select>
+
+<!--新增转运单-->
+    <insert id="AddTransferNote" parameterType="Transshipment">
+        INSERT INTO `transshipment`(`Transhipment_No`,`transshipment_date`,`dispatch_outlets`,`reach_piece_outlets`,`creation_time`,`created_by`,`remarks`,`delivered_goods`)
+         VALUES(#{transhipmentNo},#{transshipmentDate},#{dispatchOutlets},#{reachPieceOutlets},#{creationTime},#{createdBy},#{remarks},#{deliveredGoods})
+    </insert>
+
+    <!--查询单个转运单-->
+    <select id="InquiryTransfer" resultMap="oneTransshipment">
+        SELECT * FROM `transshipment` WHERE `Transhipment_No`=#{transhipmentNo}
+    </select>
+<!--修改转运单-->
+    <update id="ModifyTransferOrder" parameterType="Transshipment">
+        UPDATE `transshipment`
+
+        <set>
+            <if test="totalVotes!=null and totalVotes!=''">
+                `total_votes`=#{totalVotes},
+            </if>
+
+            <if test="totalPieces!=null and totalPieces!=''">
+                `total_pieces`=#{totalPieces},
+            </if>
+
+            <if test="totalActualWeight!=null and totalActualWeight!=''">
+                `total_actual_weight`=#{totalActualWeight},
+            </if>
+
+
+            <if test="reachPieceOutlets!=null and reachPieceOutlets!=''">
+                `reach_piece_outlets`=#{reachPieceOutlets},
+            </if>
+
+            <if test="transitStatusId!=null and transitStatusId!=''">
+                `transit_status_id`=#{transitStatusId},
+            </if>
+
+            <if test="dispatchError!=null and dispatchError!=''">
+                `dispatch_error`=#{dispatchError},
+            </if>
+
+            <if test="totalVotesArrived!=null and totalVotesArrived!=''">
+                `total_votes_arrived`=#{totalVotesArrived},
+            </if>
+
+            <if test="totalPiecesArrived!=null and totalPiecesArrived!=''">
+                `total_pieces_arrived`=#{totalPiecesArrived},
+            </if>
+
+            <if test="totalVotesNotArrived!=null and totalVotesNotArrived!=''">
+                `total_votes_not_arrived`=#{totalVotesNotArrived},
+            </if>
+
+            <if test="lessThanTotalPieces!=null and lessThanTotalPieces!=''">
+                `less_than_total_pieces`=#{lessThanTotalPieces},
+            </if>
+
+            <if test="arrivalException!=null and arrivalException!=''">
+                `arrival_exception`=#{arrivalException},
+            </if>
+
+            <if test="sendOutDate!=null and sendOutDate!=''">
+                `send_out_date`=#{sendOutDate},
+            </if>
+
+            <if test="sender!=null and sender!=''">
+                `sender`=#{sender},
+            </if>
+
+            <if test="remarks!=null">
+                `remarks`=#{remarks},
+            </if>
+
+            <if test="deliveredGoods!=null">
+                `delivered_goods`=#{deliveredGoods}
+            </if>
+
+        </set>
+            WHERE `tid`=#{tid}
+    </update>
+
+
+   <!--按运单查询出它的转运单号-->
+    <select id="TransferDetailsQueryTransfer" resultMap="TransferDetailsQueryTransfer">
+        SELECT Transhipment_No FROM `transshipment_details` WHERE `waybill_number`=#{waybillNumber}
+    </select>
+
+    <!--查询转运单-->
+    <select id="ConditionalTransferOrder" resultMap="TransshipmentMap" parameterType="Map">
+        SELECT t.*,ts.*,o1.`oid` AS dispatch_outlets_id, o1.name AS dispatch_outlets_name,o2.name AS reach_piece_outlets_name,o2.`oid` AS reach_piece_outlets_id
+        FROM  `transshipment` t,`transit_status` ts,`outlet` o1,`outlet` o2
+        WHERE  t.`transit_status_id`=ts.`tsid` AND t.`dispatch_outlets`=o1.`oid` AND t.`reach_piece_outlets`=o2.`oid`
+        /*转运单号*/
+       <if test="OddNumbers!=null and OddNumbers!=''">
+           AND t.`Transhipment_No`=#{OddNumbers}
+       </if>
+       /*转运日期*/
+        <if test=" TransferStartDate!=null and EndTranshipmentDate!=null">
+        and t.`transshipment_date` &gt;=#{TransferStartDate} and t.`transshipment_date` &lt;=#{EndTranshipmentDate}
+        </if>
+         /*发件网点*/
+         <if test="DeliveryOutlets!=null and DeliveryOutlets!=0">
+           and  t.`dispatch_outlets`=#{DeliveryOutlets}
+         </if>
+         /*到件网点*/
+        <if test="ArrivalOutlet!=null and ArrivalOutlet!=0">
+            and  t.`reach_piece_outlets`=#{ArrivalOutlet}
+        </if>
+        /*转运状态*/
+        <if test="TransitStatus!=null and TransitStatus!=''">
+            AND t.`transit_status_id`=#{TransitStatus}
+        </if>
+    </select>
+
+
+<!--查询转运单明细-->
+    <select id="TransferDetailsInquiry" resultMap="TransferDetailsmap">
+ SELECT td.*,cdm.*,o.*,t.*,c.*,sp1.*,sp2.*,ty.*,de.did,de.name as dname FROM `transshipment_details` td,`order` o,`transshipment` t,`customer` c,`specificroute` sp1,`specificroute` sp2, `typeofgoods` ty,`destination` de,`customs_declaration_method` cdm
+        WHERE td.`waybill_number`=o.`waybill_number` AND  td.`transhipment_no`=t.`Transhipment_No` AND o.`customer_id`=c.`cid` AND o.`specify_the_route`=sp1.`id` AND o.`take_the_cargo_route`=sp2.`id` AND ty.`tid`=o.`goods_type` AND o.`did`=de.`did` and cdm.`cid`=o.`customs_declaration_method`
+        AND t.`Transhipment_No`=#{transhipmentNo}
+    </select>
+<!--查询订单运单-->
+    <select id="WaybillNumberInquiryWaybill" resultMap="Ordermap">
+        SELECT * FROM `order` WHERE `waybill_number`=#{waybillNumber}
+    </select>
+
+<!--新增运单明细表-->
+    <insert id="AddScanNumber" parameterType="TransshipmentDetails">
+        INSERT INTO `transshipment_details`(`transhipment_no`,`waybill_number`,`arrived`,`number_of_tickets_arrived`,`arrival_of_waybill`,`review_actual_weight`,`recheck_abnormality`,`warehousing_time`,`scan_time`)
+         VALUES(#{transhipmentNo},#{waybillNumber},#{arrived},#{numberOfTicketsArrived},#{arrivalOfWaybill},#{reviewActual_Weight},#{recheckAbnormality},#{warehousing_Time},#{scan_time})
+    </insert>
+
+<!--删除此转运单明细-->
+    <delete id="delTransferDetails" >
+        delete from `transshipment_details` where `tdid`=#{tdid}
+    </delete>
+
+    <!--    &lt;!&ndash;查询转运单号是否存在&ndash;&gt;
+    <select id="QueryTransferOrderByOid" resultType="Integer">
+        SELECT COUNT(*) FROM `transshipment` WHERE `Transhipment_No`=#{transhipmentNo}
+    </select>-->
+</mapper>
