@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>费用补录管理</title>
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
+		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/soulTable.css" media="all">
+		<style type="text/css">
+			#luxian {
+				position: absolute;
+				left: 12.5%;
+				top: 15%;
+			}
+		</style>
+	</head>
+	<body>
+		<br/>
+		<div style="margin-left: 20px;">
+			<!-- 导航start -->
+			<form class="layui-form layui-form-pane" action="">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0 ;width: 80px;background-color: #286ED6;" id="BL">补录</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;width: 80px;background-color: #286ED6;" id="XG">修改</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="margin: 0;width: 80px;background-color: red;" id="DEL">删除</button>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>运单号码</label>
+						<div class="layui-input-inline">
+							<input type="text" name="processingStatus" id="processingStatus" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>客户名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="cname" id="cname" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"><span style="color: red;">*</span>科目</label>
+						<div class="layui-input-inline">
+							<select name="subject" id="subjects" lay-search="">
+								<option value="">直接选择或搜索选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn" lay-filter="demo1" id="CX">查询</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+		<!-- 搜索end -->
+		<!-- 显示数据start -->
+		<table class="layui-hide" id="test"></table>
+		<!-- 显示数据end -->
+		</form>
+		</div>
+		<script src="../lib/layui-v2.5.4/layui.js"></script>
+		<script>
+			layui.use(['element', 'layer', 'form', 'layedit', 'laydate', 'table'], function() {
+				var element = layui.element;
+				var $ = layui.jquery;
+				var layer = layui.layer;
+				var form = layui.form;
+				var layedit = layui.layedit;
+				var laydate = layui.laydate;
+				var table = layui.table;
+
+				$.ajax({
+					url: "ps/subjectsselect",
+					type: "post",
+					dataType: "JSON",
+					async:false,
+					success: function (res) {
+						$(res).each(function () {
+							$("#subjects").append("<option value='" + this.sid + "' >" + this.subjectName + "</option>");
+						});
+						form.render('select'); //刷新select选择渲染
+					}
+				});
+
+
+				table.render({
+					elem: '#test',
+					id:"test",
+					url: '/ps/supplementaryRecordingOfExpensesselect',
+					toolbar: true,
+					title: '用户数据表',
+					height:500,
+					totalRow: true,
+					cols: [
+						[ //表头
+							{type: 'radio', fixed: 'left'},
+							{field: 'sid', title: 'ID'},
+							{field: 'processingStatus', title: '运单号码', sort: true,templet: '<div>{{d.order.oid}}</div>',},
+							{field: 'code', title: '客户编码', templet: '<div>{{d.customers.code}}</div>'},
+							{field: 'names', title: '客户名称', templet: '<div>{{d.customers.name}}</div>'},
+							{field: 'processingOutlets', title: '科目编码',templet: '<div>{{d.subjects.subjectCode}}</div>'},
+							{field: 'name', title: '科目名称',  sort: true,templet: '<div>{{d.subjects.subjectName}}</div>'},
+							{field: 'amountOfMoney', title: '金额',  sort: true},
+							/*{field: 'currencyName', title: '币别', sort: true,templet: '<div>{{d.currency.currencyName}}</div>'},*/
+							{field: 'bstate', title: '运单状态',  sort: true},
+							{field: 'mailingDate', title: '寄件日期', sort: true,templet: '<div>{{d.order.mailingDate}}</div>'},
+							{field: 'pname', title: '包装类型',  sort: true},
+							{field: 'tname', title: '货物类型',  sort: true},
+							{field: 'rchargeweights', title: '收费重',  sort: true,templet: '<div>{{d.order.rchargeweights}}</div>'},
+							{field: 'dname', title: '目的地',  sort: true},
+							{field: 'customsdeclarationmethod', title: '报关方式', sort: true},
+							{field: 'routename', title: '指定路线', sort: true}
+						]
+					],
+					page: true,
+					limit: 2
+				});
+
+				$("#BL").on("click", function() {
+					layer.open({
+						type: 2,
+						content: 'Feecollection.html',
+						area: ['700px', '500px'],
+						title: '费用补录',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							//var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+							//iframe.child(data.id);   // 向子页面的全局函数child传参
+						},
+						end: function() { //弹出层销毁后的事件
+							table.reload('test', {
+								method: 'post'
+								, page: {
+									curr: 1 //重新从第 1 页开始
+								}
+							});
+						}
+					})
+				})
+
+				$("#DEL").on("click", function() {
+					var checkStatus = table.checkStatus('test');
+					var sid;
+					$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+						sid=o.sid;
+					});
+					if (sid==null) {
+						layer.msg('请选择需要更改的信息');
+						return false;
+					}else{
+						$.ajax({
+							url: "ps/delSROE",
+							type: "post",
+							dataType: "JSON",
+							data:{sid:sid},
+							success: function (res) {
+								if(res>0){
+									layer.msg("删除成功")
+									table.reload('test', {
+										method: 'post'
+										, page: {
+											curr: 1 //重新从第 1 页开始
+										}
+									});
+								}else{
+									layer.msg("删除失败")
+								}
+							}
+						});
+					}
+				})
+
+				$("#XG").on("click", function() {
+					var checkStatus = table.checkStatus('test');
+					var sid;
+					$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+						sid=o.sid;
+					});
+					if (sid==null) {
+						layer.msg('请选择需要更改的信息');
+						return false;
+					}else{
+					layer.open({
+						type: 2,
+						content: 'Feecollection2.html',
+						area: ['700px', '500px'],
+						title: '修改费用补录',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+							iframe.sid=sid;   // 向子页面的全局函数child传参
+						},
+						end: function() { //弹出层销毁后的事件
+							table.reload('test', {
+								method: 'post'
+								, page: {
+									curr: 1 //重新从第 1 页开始
+								}
+							});
+						}
+					})}
+				})
+
+				$("#CX").click(function () {
+					//表格重载
+					table.reload('test', {
+						method: 'post',
+						where: {
+							"processingStatus": $("#processingStatus").val(),
+							"subject": $("#subject").val(),
+							"cname": $("#cname").val()
+						} //设定异步数据接口的额外参数
+						, page: {
+							curr: 1 //重新从第 1 页开始
+						}
+					});
+				})
+				
+			});
+		</script>
+	</body>
+</html>

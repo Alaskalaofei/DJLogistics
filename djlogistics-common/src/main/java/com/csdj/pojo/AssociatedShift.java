@@ -14,7 +14,15 @@ public class AssociatedShift {
   private Integer customsDeclarationMethod;
   private String remarks;
   private Integer createdBy;
+  private String dname;
 
+  public String getDname() {
+    return dname;
+  }
+
+  public void setDname(String dname) {
+    this.dname = dname;
+  }
 
   public Integer getAid() {
     return aid;

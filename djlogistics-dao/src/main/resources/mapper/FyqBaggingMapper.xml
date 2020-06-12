@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csdj.mapper.FyqBaggingMapper">
+
+    <resultMap id="bagging" type="Bagging">
+        <id column="bid" property="bid"></id>
+        <result column="plate_no" property="plateNo"></result>
+        <result column="customs_clearance_bag_no" property="customsClearanceBagNo"></result>
+        <result column="bagging_strategy" property="baggingStrategy"></result>
+        <result column="delivery_outlets" property="deliveryOutlets"></result>
+        <result column="destination" property="destination"></result>
+        <result column="customs_declaration_method" property="customsDeclarationMethod"></result>
+        <result column="destination_airport_code" property="destinationAirportCode"></result>
+        <result column="restricted_weight_per_ticket" property="restrictedWeightPerTicket"></result>
+        <result column="limited_value_of_single_ticket" property="limitedValueOfSingleTicket"></result>
+        <result column="parcel_exchange_office" property="parcelExchangeOffice"></result>
+        <result column="remarks" property="remarks"></result>
+        <result column="goods_type" property="goodsType"></result>
+        <result column="delivery_outlets_name" property="deliveryOutletsName"></result>
+        <result column="bagging_strategy_name" property="baggingStrategyName"></result>
+        <result column="destination_name" property="destinationName"></result>
+        <result column="gname" property="gname"></result>
+        <result column="cdm_name" property="cdmName"></result>
+        <result column="creator_date" property="creatorDate"></result>
+        <result column="creator_by" property="creatorBy"></result>
+        <result column="sname" property="sname"></result>
+        <result column="sagging_state"  property="saggingState"></result>
+        <result column="take_the_cargo_route_name"  property="takeTheCargoRouteName"></result>
+        <result column="take_the_cargo_route"  property="takeTheCargoRoute"></result>
+    </resultMap>
+
+    <select id="getBagging" resultMap="bagging">
+        SELECT b.*,bs.bagging_strategy bagging_strategy_name, g.gname,o.name delivery_outlets_name,c.customs_declaration_method cdm_name,
+        d.name destination_name,st.name sname,s.route_name take_the_cargo_route_name
+        FROM `bagging` b,`bagging_strategy` bs,goods_type g,outlet o,customs_declaration_method c,destination d,`staff` st,specificroute s
+        WHERE b.bagging_strategy=bs.bid AND b.goods_type=g.gid AND b.delivery_outlets=o.oid
+        AND b.customs_declaration_method=c.cid AND b.destination=d.did AND b.creator_by=st.sid
+         AND b.take_the_cargo_route=s.id
+        <if test="plateNo!=null and plateNo!=''">
+            AND b.plate_no=#{plateNo}
+        </if>
+        <if test="orderNumber!=null">
+            AND b.plate_no=(select pno from `order` where oid=#{orderNumber})
+        </if>
+        <if test="dataSource!=null">
+            AND b.data_source=#{dataSource}
+        </if>
+        <if test="saggingState!=null">
+            AND b.sagging_state=#{saggingState}
+        </if>
+        <if test="creatorDate1!=null and creatorDate2!=null">
+            AND b.creator_date&gt;=#{creatorDate1}  and b.creator_date&lt;=#{creatorDate2}
+        </if>
+    </select>
+
+    <!--查询全部装袋信息-->
+    <select id="getBaggingAll" resultMap="bagging">
+        SELECT b.*,bs.bagging_strategy bagging_strategy_name,d.name destination_name,st.name sname
+        FROM `bagging` b,`bagging_strategy` bs,destination d,`staff` st
+        WHERE b.bagging_strategy=bs.bid AND b.destination=d.did AND b.creator_by=st.sid
+    </select>
+
+    <select id="selectBaggingByPlateNo" resultMap="bagging">
+        SELECT b.*,bs.bagging_strategy bagging_strategy_name, g.gname,o.name delivery_outlets_name,c.customs_declaration_method cdm_name,
+        d.name destination_name,st.name sname,s.route_name take_the_cargo_route_name
+        FROM `bagging` b,`bagging_strategy` bs,goods_type g,outlet o,customs_declaration_method c,destination d,`staff` st,specificroute s
+        WHERE b.bagging_strategy=bs.bid AND b.goods_type=g.gid AND b.delivery_outlets=o.oid
+        AND b.customs_declaration_method=c.cid AND b.destination=d.did
+        AND b.creator_by=st.sid AND b.take_the_cargo_route=s.id
+        and b.plate_no=#{plateNo}
+    </select>
+
+    <update id="updOrder">
+        UPDATE `order`SET bno=#{bno} where oid=#{oid}
+    </update>
+
+    <insert id="addBagging" >
+        INSERT INTO bagging(`plate_no`,`customs_clearance_bag_no`,`bagging_strategy`,
+        `take_the_cargo_route`,`delivery_outlets`,`destination`,`customs_declaration_method`,
+        `destination_airport_code`,`restricted_weight_per_ticket`,`limited_value_of_single_ticket`,
+        `parcel_exchange_office`,`sagging_state`,`goods_type`,`remarks`,`creator_date`,`creator_by`,`data_source`)
+        value(#{plateNo},#{customsClearanceBagNo},#{baggingStrategy},
+        #{takeTheCargoRoute},#{deliveryOutlets},#{destination},
+        #{customsDeclarationMethod},#{destinationAirportCode},#{restrictedWeightPerTicket},
+        #{limitedValueOfSingleTicket},#{parcelExchangeOffice},#{saggingState},
+        #{goodsType},#{remarks},#{creatorDate},#{creatorBy},#{dataSource})
+    </insert>
+
+    <!--查询装袋策略-->
+    <select id="getBS" resultType="BaggingStrategy">
+        SELECT bid,bagging_strategy baggingStrategy FROM `bagging_strategy`
+    </select>
+
+    <update id="updBagging">
+        UPDATE `bagging` SET `customs_clearance_bag_no`=#{customsClearanceBagNo},bagging_strategy=#{baggingStrategy},take_the_cargo_route=#{takeTheCargoRoute},
+        delivery_outlets=#{deliveryOutlets},destination=#{destination},customs_declaration_method=#{customsDeclarationMethod},
+        destination_airport_code=#{destinationAirportCode},
+        restricted_weight_per_ticket=#{restrictedWeightPerTicket},limited_value_of_single_ticket=#{limitedValueOfSingleTicket},
+        parcel_exchange_office=#{parcelExchangeOffice},goods_type=#{goodsType}
+        where plate_no=#{plateNo}
+    </update>
+
+    <!--修改装袋状态-->
+    <update id="updBaggingState">
+        update bagging set sagging_state=#{saggingState} where plate_no=#{plateNo}
+    </update>
+</mapper>

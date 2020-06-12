@@ -24,77 +24,39 @@
 				<div class="layui-form-item">
 					<div class="layui-inline">
 						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: #000000;width: 100px;">全部明细
-							<span class="a">1</span>
+							<span class="a" id="a">1</span>
 						</button>
 					</div>
 					<div class="layui-inline">
 						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: #000000;width: 100px;">已关联
-							<span class="a">1</span>
+							<span class="a" id="b">1</span>
 						</button>
 					</div>
 					<div class="layui-inline">
 						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #ffffff;color: red;width: 100px;">未关联
-							<span style="background-color: red;" class="a">1</span>
+							<span style="background-color: red;" class="a" id="c">1</span>
 						</button>
-					</div>
-					<div class="layui-inline">
-						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 100px;">快速关联</button>
 					</div>
 					<div class="layui-inline">
 						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 100px;" id="AssociatedShift">关联班次</button>
 					</div>
 					<div class="layui-inline">
-						<button type="button" class="layui-btn layui-btn-sm" style="background-color: red;color: FFFFFF;width: 100px;">取消关联</button>
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: red;color:#ffffff;width: 100px;" id="QXGL">取消关联</button>
 					</div>
 					<div class="layui-inline">
-						<h3>已关联班次：</h3>
+						<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;" id="CK">查看已关联班次:</button>
+					</div>
+					<div class="layui-inline">
+						<span id="Aid">
+
+						</span>
 					</div>
 				</div>
 				<div class="layui-form-item" style="margin-right: 20px;">
 					<table class="layui-hide" id="test"></table>
 				</div>
 				<div class="layui-form-item">
-					<div class="layui-inline">
-						<div class="layui-form-item">
-							票数
-						</div>
-						<div class="layui-form-item" style="width: 120px;">
-							<input type="text" name="title" required  lay-verify="required" placeholder="0" autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-inline">
-						<div class="layui-form-item">
-							总件数
-						</div>
-						<div class="layui-form-item" style="width: 120px;">
-							<input type="text" name="title" required  lay-verify="required" placeholder="0" autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-inline">
-						<div class="layui-form-item">
-							总重量
-						</div>
-						<div class="layui-form-item" style="width: 120px;">
-							<input type="text" name="title" required  lay-verify="required" placeholder="0.000" autocomplete="off" class="layui-input">
-						</div>
-					</div>
-					<div class="layui-inline">
-						<div class="layui-form-item" style="height: 23px;">
-							
-						</div>
-						<div class="layui-form-item">
-							<div class="layui-inline">
-									<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 80px;">完成</button>
-							</div>
-							<div class="layui-inline">
-									<span style="font-size: 15px;font-weight:700;margin-left: 10px;">板号：<span>11111113243</span></span>
-							</div>
-							<div class="layui-inline">
-									<input type="checkbox" name="" title="是否验证问题件" lay-skin="primary" checked>
-							</div>
-						</div>
-						
-					</div>
+					<button type="button" class="layui-btn layui-btn-sm" style="background-color: #286ed6;color: #FFFFFF;width: 80px;">完成</button>
 				</div>
 			</form>
 		</div>
@@ -106,66 +68,184 @@
 			layer = layui.layer,
 			form = layui.form,
 			table=layui.table;
-			
+
+
+
+			$("#QXGL").click(function () {
+				var checkStatus = table.checkStatus('test');
+				var plateNo;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					plateNo=o.plateNo;
+				});
+				if (plateNo==null) {
+					layer.msg('请选择');
+					return false;
+				}else {
+				$.ajax({
+					url:"/up/UpdAS",
+					type:"post",
+					dataType:"text",
+					data:{'plateNo':plateNo},
+					success:function (result) {
+						if(result>0){
+							layer.msg("取消成功");
+							$.ajax({
+								url:"/up/getUpAid",
+								type:"post",
+								dataType:"json",
+								success:function (result) {
+									var a=0;
+									var b=0;
+									$.each(result,function (index,item) {
+										if(item.aid==null){
+											a+=1;
+										}else{
+											a+=1;
+											b+=1;
+										}
+									})
+									var c= a-b;
+									$("#a").text(a);
+									$("#b").text(b);
+									$("#c").text(c);
+								}
+							})
+						}else{
+							layer.msg("取消失败");
+						}
+					}
+				})}
+			})
+
+			$("#CK").click(function () {
+				var checkStatus = table.checkStatus('test');
+				var plateNo;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					plateNo=o.plateNo;
+				});
+				if (plateNo==null) {
+					layer.msg('请选择');
+					return false;
+				}else {
+					$.ajax({
+						url:"/up/getAid",
+						type:"post",
+						dataType:"text",
+						data:{'plateNo':plateNo},
+						success:function (result) {
+							if(result!=null && result!=''){
+								$("#Aid").text(result);
+							}else{
+								$("#Aid").text("未关联");
+							}
+						}
+					})}
+			})
+
 			table.render({
 				elem: '#test',
-				url: '/demo/table/user/',
-				cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增,
+				url: '/up/getUP',
 				height:450,
 				toolbar: true,
 				defaultToolbar: ['filter', 'print', 'exports'],
 				cols: [
-					[{
-							field: 'id',
-							title: '扫描时间'
-						}, {
-							field: 'username',
-							title: '类型'
-						}, {
-							field: 'sex',
-							title: '扫描单号',
-						}, {
-							field: 'city',
-							title: '转单号码'
-						}, {
-							field: 'sign',
-							title: '运单号码',
-						} 
-						, {
-							field: 'experience',
-							title: '客户',
-						}, {
-							field: 'score',
-							title: '指定路线',
-						}, {
-							field: 'classify',
-							title: '运单件数'
-						}, {
-							field: 'wealth',
-							title: '出货重',
-						}, {
-							field: 'wealth',
-							title: '目的地',
-						}, {
-							field: 'wealth',
-							title: '走货路线',
-						}, {
-							field: 'wealth',
-							title: '报关类型',
-						}, {
-							field: 'wealth',
-							title: '货物类型'
+					[{type:'radio'},{
+						field: 'buildBoardDate',
+						title: '扫描时间',
+					}, {
+						field: 'uid',
+						title: '扫描单号'
+					}, {
+						field: 'plateNo',
+						title: '板号',
+					}, {
+						field: 'upperState',
+						title: '上板状态',
+						templet:function(result){
+							if(result.upperState==0){
+								return '待上板';
+							}else if(result.upperState==1){
+								return '已上板';
+							}else if(result.upperState==2){
+								return '已出货';
+							}else if(result.upperState==3){
+								return '已撤销';
+							}
 						}
-					]
-				]
+					},{
+						field: 'dname',
+						title: '目的地',
+					}, {
+						field: 'takeTheCargoRouteName',
+						title: '走货路线',
+					}, {
+						field: 'cdmName',
+						title: '报关类型',
+					}, {
+						field: 'gname',
+						title: '货物类型',
+					},{
+						field: 'upperPlateOutletsName',
+						title: '上板网点',
+					},{
+						field: 'ocount',
+						title: '订单数',
+					} , {
+						field: 'buildBoardDate',
+						title: '建板日期',
+					}, {
+						field: 'creatorName',
+						title: '建板人',
+					}]
+				],page:true
+				,limit: 6
+				, limits:[6,7,8],
+				id:'test'
 			});
+
+			$.ajax({
+				url:"/up/getUpAid",
+				type:"post",
+				dataType:"json",
+				success:function (result) {
+					var a=0;
+					var b=0;
+					$.each(result,function (index,item) {
+						if(item.aid==null){
+							a+=1;
+						}else{
+							a+=1;
+							b+=1;
+						}
+					})
+					var c= a-b;
+					$("#a").text(a);
+					$("#b").text(b);
+					$("#c").text(c);
+				}
+			})
+
 			$("#AssociatedShift").click(function(){
-				layer.open({
-					type: 2,
-					content: 'AssociatedShift.html',
-					area: ['740px', '500px'],
-					title:'选择班次交接单'
-				})
+				var checkStatus = table.checkStatus('test');
+				var plateNo;
+				$(checkStatus.data).each(function (i, o) {//o即为表格中一行的数据
+					plateNo=o.plateNo;
+				});
+				if (plateNo==null) {
+					layer.msg('请选择需要关联的信息');
+					return false;
+				}else {
+					layer.open({
+						type: 2,
+						content: 'AssociatedShift.html',
+						area: ['740px', '500px'],
+						title: '选择班次交接单',
+						success: function(layero, index) { //弹出层弹出后的回调函数
+							var iframe = window['layui-layer-iframe' + index];// 获取子页面的iframe
+							iframe.plateNo=plateNo;   // 向子页面的全局函数child传参
+						}
+					})
+				}
 			})
 		});
 	</script>

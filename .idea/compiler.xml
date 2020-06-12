@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="djlogistics-service" />
+        <module name="djlogistics-common" />
+        <module name="djlogistics-util" />
+        <module name="djlogistics-web" />
+        <module name="djlogistics-dao" />
+        <module name="djlogistics-serviceimpl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="djlogistics-common" target="1.8" />
+      <module name="djlogistics-dao" target="1.8" />
+      <module name="djlogistics-service" target="1.8" />
+      <module name="djlogistics-serviceimpl" target="1.8" />
+      <module name="djlogistics-util" target="1.8" />
+      <module name="djlogistics-web" target="1.8" />
+      <module name="expressage" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="djlogistics-common" options="-parameters" />
+      <module name="djlogistics-dao" options="-parameters" />
+      <module name="djlogistics-service" options="-parameters" />
+      <module name="djlogistics-serviceimpl" options="-parameters" />
+      <module name="djlogistics-util" options="-parameters" />
+      <module name="djlogistics-web" options="-parameters" />
+    </option>
+  </component>
+</project>

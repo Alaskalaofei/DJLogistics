@@ -6,10 +6,10 @@
 		<link rel="stylesheet" href="../lib/layui-v2.5.4/css/layui.css">
 	</head>
 	<body>
-		<form class="layui-form" action="">
+		<form class="layui-form" action="" id="form">
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<blockquote class="layui-elem-quote layui-text" style="width: 1500px;">
+					<blockquote class="layui-elem-quote layui-text" style="width: 635px">
 						补录信息
 					</blockquote>
 				</div>
@@ -22,122 +22,84 @@
 						</div>
 					</div>
 					<div class="layui-form-item">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+						<input type="text" style="width: 120px" name="processingStatus" id="processingStatus" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							转单号码
-						</div>
-					</div>
-					<div class="layui-form-item">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
+				<div class="layui-inline">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							寄件时间
 						</div>
 					</div>
 					<div class="layui-form-item">
-						<input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+						<input type="text" name="mailingDate" id="mailingDate" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-inline" style="margin-left: 50px;">
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							邮编
-						</div>
-					</div>
-					<div class="layui-form-item" style="width: 150px;margin-bottom: 20px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
-					</div>
-				</div>
-				<div class="layui-inline" style="margin-left: 100px;margin: 0;margin-top: 20px;">
-					<span class="site-demo-button" id="layerDemo">
-						<button type="button" data-method="offset" data-type="auto" class="layui-btn layui-btn-primary layui-btn-sm"
-						 disabled="disabled"><i class="layui-icon layui-icon-search"></i></button>
-					</span>
-				</div>
-				<div class="layui-inline" style="margin-left: 100px;margin: 0;">
-					<div class="layui-form-item" style="width: 150px;margin-top: 30px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
-					</div>
-				</div>
-				<div class="layui-inline" style="margin: 0;margin-bottom: 5px;">
+				<div class="layui-inline">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							客户编号
 						</div>
 					</div>
-					<div class="layui-form-item" style="margin-bottom: 20px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
+					<div class="layui-form-item">
+						<input type="text" style="width: 110px" name="customer" id="customer" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
+                <div class="layui-inline">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            客户名称
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <input type="text" style="width: 120px" name="name" required lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
 			</div>
 			<div class="layui-form-item">
-				<div class="layui-inline" style="margin-left: 50px;">
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							客户名称
-						</div>
-					</div>
-					<div class="layui-form-item" style="margin-bottom: 20px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" disabled="disabled">
-					</div>
-				</div>
+                <div class="layui-inline"  style="margin-left: 50px;">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <span style="color: red;">*</span>科目
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="width: 120px;">
+                        <select name="subject" id="subject" lay-verify="required" lay-search="">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
 				<div class="layui-inline" style="margin: 0;">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<span style="color: red;">*</span>金额
 						</div>
 					</div>
-					<div class="layui-form-item" style="margin-bottom: 25px;width: 100px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+					<div class="layui-form-item" style="width: 100px;">
+						<input type="text" name="amountOfMoney" id="amountOfMoney" required lay-verify="required" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				<div class="layui-inline" style="margin: 0;">
+				<div class="layui-inline" style="margin-left: 10px">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<span style="color: red;">*</span>币别
 						</div>
 					</div>
-					<div class="layui-form-item" style="margin-bottom: 25px;width: 100px;">
-						<select name="modules" lay-verify="required" lay-search="">
-							<option value="">直接选择或搜索选择</option>
-							<option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option>
-							<option value="4">element</option>
-							<option value="5">laytpl</option>
-							<option value="6">upload</option>
-							<option value="7">laydate</option>
+					<div class="layui-form-item" style="width: 120px;">
+						<select name="currency" id="currency" lay-verify="required" lay-search="">
+							<option value="">请选择</option>
 						</select>
 					</div>
 				</div>
-
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-inline" style="margin-left: 50px;">
+				<div class="layui-inline" style="margin-left: 10px">
 					<div class="layui-form-item">
 						<div class="layui-inline">
 							<span style="color: red;">*</span>寄件网点
 						</div>
 					</div>
-					<div class="layui-form-item" style="margin-bottom: 25px;width: 400px;">
-						<select name="modules" lay-verify="required" lay-search="">
-							<option value="">直接选择或搜索选择</option>
-							<option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option>
-							<option value="4">element</option>
-							<option value="5">laytpl</option>
-							<option value="6">upload</option>
-							<option value="7">laydate</option>
+					<div class="layui-form-item" style="width: 120px;">
+						<select name="mailingOutlets" id="mailingOutlets"  lay-verify="required" lay-search="">
+							<option value="">请选择</option>
 						</select>
 					</div>
 				</div>
@@ -150,7 +112,7 @@
 						</div>
 					</div>
 					<div class="layui-form-item" style="margin-bottom: 20px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 500px;">
+						<input type="text" name="billNotes" id="billNotes" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 580px;">
 					</div>
 				</div>
 			</div>
@@ -162,10 +124,15 @@
 						</div>
 					</div>
 					<div class="layui-form-item" style="margin-bottom: 20px;">
-						<input type="text" name="title" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 500px;">
+						<input type="text" name="internalRemarks" id="internalRemarks" required lay-verify="required" autocomplete="off" class="layui-input" style="width: 580px;">
 					</div>
 				</div>
 			</div>
+            <div style="margin-left: 55%">
+                <button type="button" class="layui-btn layui-btn-sm " lay-submit style="background-color: #286ed6;width: 120px;" id="save_exit">保存并退出</button>
+                <button type="button" class="layui-btn layui-btn-sm "lay-submit  style="background-color: #ffffff; color:#000000;border: #c0c4cc 1px solid; width: 60px;" id="save">保存</button>
+                <button type="button" class="layui-btn layui-btn-sm " style="background-color: #ffffff;color:#000000;border: #c0c4cc 1px solid; width: 60px;" id="exit">关闭</button>
+            </div>
 		</form>
 	</body>
 	<script src="../lib/layui-v2.5.4/layui.js"></script>
@@ -190,7 +157,81 @@
 
 			//日期
 			laydate.render({
-				elem: '#date'
+				elem: '#mailingDate'
+			});
+
+            $.ajax({
+                url: "ps/subjectsselect",
+                type: "post",
+                dataType: "JSON",
+                async:false,
+                success: function (res) {
+                    $(res).each(function () {
+                        $("#subject").append("<option value='" + this.sid + "' >" + this.subjectName + "</option>");
+                    });
+                    form.render('select'); //刷新select选择渲染
+                }
+            });
+
+            function addSROE(i){
+                $.ajax({
+                    url:"/ps/addSROE",
+                    type:"post",
+                    dataType:'text',
+                    data:$("form").serialize(),
+                    success:function (result) {
+                        if(result>0){
+                            alert("新增成功")
+                        }else{
+                            alert("新增失败")
+                        }
+						if(i==1){
+							var index = parent.layer.getFrameIndex(window.name);
+							parent.layer.close(index);//关闭当前页
+						}
+                    }
+                })
+            }
+
+			$("#save_exit").click(function () {
+				form.on('submit', function(data){
+					addSROE(1);
+					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+				});
+			})
+			$("#save").click(function () {
+				form.on('submit', function(data){
+					addSROE(0);
+					return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+				});
+			})
+			$("#exit").click(function () {
+				var index = parent.layer.getFrameIndex(window.name);
+				parent.layer.close(index);//关闭当前页
+			})
+
+			$.ajax({
+				url: "/ps/outletselect",
+				type: "post",
+				dataType: "JSON",
+				success: function (res) {
+					$(res).each(function () {
+						$("#mailingOutlets").append("<option value='" + this.oid + "' >" + this.name + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
+			});
+
+			$.ajax({
+				url: "/ps/selectCurrency",
+				type: "post",
+				dataType: "JSON",
+				success: function (res) {
+					$(res).each(function () {
+						$("#currency").append("<option value='" + this.cid + "' >" + this.currencyName + "</option>");
+					});
+					form.render('select'); //刷新select选择渲染
+				}
 			});
 
 		});

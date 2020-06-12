@@ -1,7 +1,6 @@
 package com.csdj.pojo;
 
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,8 +16,8 @@ public class RegistrationOfProblemsBeforePort {
   private String problemDescription;
   private Integer processingOutlets;
   private Integer problemNotificationPerson;
-  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone="GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date asOfProcessingDate;
   private Integer registrationOutlets;
   private Integer registrant;

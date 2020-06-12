@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-common/djlogistics-common.iml" filepath="$PROJECT_DIR$/djlogistics-common/djlogistics-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-dao/djlogistics-dao.iml" filepath="$PROJECT_DIR$/djlogistics-dao/djlogistics-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-service/djlogistics-service.iml" filepath="$PROJECT_DIR$/djlogistics-service/djlogistics-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-serviceimpl/djlogistics-serviceimpl.iml" filepath="$PROJECT_DIR$/djlogistics-serviceimpl/djlogistics-serviceimpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-util/djlogistics-util.iml" filepath="$PROJECT_DIR$/djlogistics-util/djlogistics-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/djlogistics-web/djlogistics-web.iml" filepath="$PROJECT_DIR$/djlogistics-web/djlogistics-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/expressage.iml" filepath="$PROJECT_DIR$/.idea/expressage.iml" />
+    </modules>
+  </component>
+</project>

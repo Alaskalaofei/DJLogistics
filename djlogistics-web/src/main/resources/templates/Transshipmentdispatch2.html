@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>转运发件</title>
+		<script src="lib/layui-v2.5.4/layui.js"></script>
+		<link rel="stylesheet" href="lib/layui-v2.5.4/css/layui.css" media="all">
+		<link rel="stylesheet" href="css/layuimini.css" media="all">
+		<script src="js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+		<div class="layui-fluid">
+		    <div class="layui-row">
+		        <div class="layui-col-xs12">
+		            <form class="layui-form">
+		                <div class="layui-form-item">
+		                    <div class="layui-inline">
+		                        <label class="layui-input-inline search-data-input" style="font-size: 25px; font-weight: 500;">扫描单号</label><div>
+		                            <input type="text" class="layui-input" name="waybillNumber" id="waybillNumber" />
+		                        </div>
+		                    </div>
+		                    <div class="layui-inline">
+		                        <label class="layui-input-inline" style="font-size: 25px; font-weight: 500;">转运单号</label><div>
+		                            <input disabled="disabled" type="text" class="layui-input" required="required" id="transhipmentNo" name="transhipmentNo" />
+		                        </div>
+		                    </div>
+		                    <div class="layui-inline" style="height: 23px;">
+		                        <div></div>
+		                        <input type="button" class="layui-btn layui-btn-lg layui-btn-fluid" id="Addtransfernoteds" value="新转运单"/>
+		                    </div>
+		                    <div class="layui-inline">
+		                        <label class="layui-input-inline" style="font-size: 25px; font-weight: 500;">到件网点</label><div></div>
+								<select id="djselectOutlet" name="djselectOutlet"></select>
+		                    </div>
+		                </div>
+		            </form>
+		        </div>
+		        <div class="layui-col-xs12">
+					<table class="layui-table" id="test" lay-filter="test"></table>
+				</div>
+		    </div>
+		</div>
+	</body>
+	<script>
+		function selects() {
+			layui.use('form',function () {
+				var form=layui.form;
+				form.render();
+			})
+		}
+			    layui.use(['element', 'layer', 'layuimini','form'], function () {
+			        var $ = layui.jquery,
+			            element = layui.element,
+			            layer = layui.layer,
+			            form = layui.form;
+			    });
+
+				/**
+				 * 到件网点
+				 */
+				$("#djselectOutlet").load("/selectOutlet",function(result){
+					var role=eval("("+result+")");
+					$("#djselectOutlet").append("<option value='null'>请选择</option>")
+					$(role).each(function(){
+						$("#djselectOutlet").append("<option value="+this.oid+">"+this.name+"</option>")
+					})
+					selects();
+				});
+
+			</script>
+	<script>
+		layui.use(['element', 'form', 'jquery', 'table', 'element', 'layuimini', 'laydate'], function() {
+			var $ = layui.jquery,
+					element = layui.element,
+					layer = layui.layer,
+					form = layui.form,
+					table = layui.table,
+					laydate = layui.laydate;
+			$("#Addtransfernoteds").on("click", function() {
+				layer.open({
+					type: 2,
+					content: 'addTransshipment.html',
+					area: ['800px', '500px'],
+					title: '新增转运单',
+					success: function(layero, index) { //弹出层弹出后的回调函数
+						/*						var iframe = window['layui-layer-iframe' + index]; // 获取子页面的iframe
+                                                iframe.child(data.id); // 向子页面的全局函数child传参*/
+					},
+					end: function() { //弹出层销毁后的事件
+						selects();
+						var transhipmentNo=	$("#transhipmentNo").val();
+						//执行重载
+						table.reload('userTableReload', {
+							page: {
+								curr: 1 //重新从第 1 页开始
+							}
+							//根据条件查询
+							,
+							where: {
+								transhipmentNo:transhipmentNo
+							}
+						});
+					}
+				})
+			});
+		});
+	</script>
+	<script>
+		
+	
+		
+		layui.use(['element', 'form'], function() {
+			var element = layui.element,
+				form = layui.form;
+			form.render();
+		});
+		layui.use(["table", "jquery", "layer", "form", "laypage"], function() {
+			var table = layui.table,
+				$ = layui.jquery,
+				layer = layui.layer,
+				form = layui.form,
+				util = layui.util;
+	
+			table.render({
+				elem: '#test',
+				url: '/transshipmentDetailsInquiry',
+				method: 'post',
+				parseData: function(res) { //res 即为原始返回的数据
+					return {
+						"code": res.code, //解析接口状态
+						"msg": res.msg, //解析提示文本
+						"count": res.count, //解析数据长度
+						"data": res.data //解析数据列表
+					}
+				},
+				request: {
+					stuName: 'PageNum' //页码的参数名称，默认：page
+						,
+					limitName: 'PageSize' //每页数据量的参数名，默认：limit
+				},
+				cols: [
+					[{
+						field: 'scan_time',
+						title: '扫描时间',
+						templet: function(row) {
+							return createTime(row.scan_time);
+						}
+					}, {
+						field: 'waybillNumber',
+						title: '运单号码'
+					}, {
+						field: 'name',
+						title: '客户',
+						templet:'<div>{{d.customer.name}}</div>'
+					}, {
+						field: 'routeName',
+						title: '指定路线',
+						templet:'<div>{{d.specificRoute.routeName}}</div>'
+					}, {
+						field: 'totalPieces',
+						title: '运单件数',
+						templet:'<div>{{d.order.totalPieces}}</div>'
+					},{
+						field: 'totalActualWeight',
+						title: '出货重',
+						templet:'<div>{{d.order.totalActualWeight}}</div>'
+					},{
+						field: 'name',
+						title: '目的地',
+						templet:'<div>{{d.destination.name}}</div>'
+					},{
+						field: 'routeName',
+						title: '走货路线',
+						templet:'<div>{{d.cargoRoute.routeName}}</div>'
+					},{
+						field: 'typeofgoods',
+						title: '货物类型',
+						templet:'<div>{{d.typeofgoods.tname}}</div>'
+					}]
+				],
+				page: true,
+				id: 'userTableReload'
+			});
+
+			$(document).ready(function () {
+				var transhipmentNo=	$("#transhipmentNo").val();
+				//执行重载
+				table.reload('userTableReload', {
+					page: {
+						curr: 1 //重新从第 1 页开始
+					}
+					//根据条件查询
+					,
+					where: {
+						transhipmentNo:transhipmentNo
+					}
+				});
+			})
+			//根据条件查询表格数据重新加载
+			var $ = layui.$,
+				active = {
+					reload: function() {
+					var transhipmentNo=	$("#transhipmentNo").val();
+						//执行重载
+						table.reload('userTableReload', {
+							page: {
+								curr: 1 //重新从第 1 页开始
+							}
+							//根据条件查询
+							,
+							where: {
+								transhipmentNo:transhipmentNo
+							}
+						});
+					}
+				};
+
+
+
+			//点击搜索按钮根据用户名称查询
+			$('#waybillNumber').bind('keydown',
+				function(event) {
+					var event = window.event || arguments.callee.caller.arguments[0];
+					if (event.keyCode == 13){
+						if($("#transhipmentNo").val()==null || $("#transhipmentNo").val()=="")
+						{
+							layer.alert("请建立转运单号后再进行扫描");
+						}else {
+							$.ajax({
+								url: "/AddTransferNote",
+								type: "post",
+								data: {
+									"transhipmentNo": $("#transhipmentNo").val(),
+									"waybillNumber": $("#waybillNumber").val()
+								},
+								dataType: "text",
+								success: function (result) {
+									if (result == "yes") {
+										var transhipmentNo=	$("#transhipmentNo").val();
+										//执行重载
+										table.reload('userTableReload', {
+											page: {
+												curr: 1 //重新从第 1 页开始
+											}
+											//根据条件查询
+											,
+											where: {
+												transhipmentNo:transhipmentNo
+											}
+										});
+
+									} else if (result == "order_null") {
+										layer.alert("此运单为空");
+									} else if (result == "transshipment_null") {
+										layer.alert("转运单号不能为空");
+									} else {
+										layer.alert("添加失败");
+									}
+								}
+							})
+						}
+					}
+
+				});
+	
+	
+	
+		});
+	</script>
+	<script type="text/javascript">
+		function createTime(v){
+			var date = new Date(v);
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			m = m<10?'0'+m:m;
+			var d = date.getDate();
+			d = d<10?("0"+d):d;
+			var h = date.getHours();
+			h = h<10?("0"+h):h;
+			var M = date.getMinutes();
+			M = M<10?("0"+M):M;
+			var str = y+"-"+m+"-"+d;
+			return str;
+		}
+	</script>
+</html>
